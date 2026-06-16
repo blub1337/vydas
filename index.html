@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ICTrading Review 2026 — Trade 2000+ Instruments with a Regulated Broker</title>
+  <meta name="description" content="ICTrading review: honest look at spreads, platforms, regulation, and features. Trade Forex, Indices, Commodities, Stocks & Crypto with a trusted broker.">
+  <style>
+    /* === LINEAR DESIGN SYSTEM × AFFILIATE CONVERSION === */
+    :root {
+      --bg-primary: #08090A;
+      --bg-surface: #0C0D0E;
+      --bg-elevated: #111213;
+      --bg-hover: #1A1B1C;
+      --border-subtle: rgba(255,255,255,0.06);
+      --border-medium: rgba(255,255,255,0.10);
+      --text-primary: #E8E9EA;
+      --text-secondary: #8B8D91;
+      --text-tertiary: #5C5E62;
+      --accent: #00d800;
+      --accent-hover: #00e600;
+      --accent-dim: rgba(0,216,0,0.10);
+      --accent-glow: rgba(0,216,0,0.25);
+      --green: #00d800;
+      --red: #ff3b30;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 12px;
+      --font-sans: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+      --max-width: 1100px;
+      --content-width: 720px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: var(--accent-hover); }
+    img { max-width: 100%; height: auto; display: block; }
+
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+    .narrow { max-width: var(--content-width); margin: 0 auto; }
+
+    /* === FTC DISCLOSURE === */
+    .disclosure {
+      background: var(--bg-surface);
+      border-left: 2px solid var(--accent);
+      padding: 10px 16px;
+      font-size: 12px;
+      color: var(--text-tertiary);
+      line-height: 1.5;
+      max-width: var(--content-width);
+      margin: 16px auto 0;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+    .disclosure strong { color: var(--text-secondary); }
+
+    /* === HERO === */
+    .hero {
+      text-align: center;
+      padding: 80px 24px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: 50%;
+      width: 800px;
+      height: 800px;
+      transform: translate(-50%, -30%);
+      background: radial-gradient(circle, rgba(0,216,0,0.03) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+
+    .hero-logo .logo-mark {
+      width: 36px;
+      height: 36px;
+      background: var(--accent);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--bg-primary);
+    }
+
+    .hero-logo .logo-text {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+    .hero-logo .logo-text .vy { color: var(--text-primary); }
+    .hero-logo .logo-text .das { color: var(--accent); }
+
+    .hero .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(0,216,0,0.15);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+      letter-spacing: 0.02em;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero .subtitle {
+      font-size: clamp(16px, 2vw, 19px);
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto 32px;
+      line-height: 1.6;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .cta-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: var(--bg-primary);
+      font-size: 16px;
+      font-weight: 600;
+      padding: 14px 32px;
+      border-radius: var(--radius-md);
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: var(--font-sans);
+    }
+    .cta-primary:hover {
+      background: var(--accent-hover);
+      color: var(--bg-primary);
+      transform: translateY(-1px);
+    }
+
+    .cta-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--text-primary);
+      font-size: 15px;
+      font-weight: 500;
+      padding: 14px 24px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-medium);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: var(--font-sans);
+    }
+    .cta-secondary:hover {
+      background: var(--bg-hover);
+      border-color: var(--text-tertiary);
+    }
+
+    .cta-note {
+      display: block;
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--text-tertiary);
+    }
+
+    /* === TRUST BAR === */
+    .trust-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      padding: 20px 24px;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    .trust-item {
+      font-size: 13px;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .trust-item .stars { color: #f5a623; letter-spacing: 1px; }
+    .trust-item .num { color: var(--text-primary); font-weight: 600; }
+
+    /* === SECTION COMMON === */
+    section { padding: 72px 0; }
+    .section-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+    .section-title {
+      font-size: clamp(26px, 3.5vw, 36px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      font-size: 16px;
+      color: var(--text-secondary);
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 48px;
+      line-height: 1.6;
+    }
+
+    /* === FEATURES GRID === */
+    .features { background: var(--bg-surface); }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .feature-card {
+      background: var(--bg-primary);
+      padding: 32px 28px;
+      text-align: left;
+    }
+    .feature-card .icon {
+      width: 40px;
+      height: 40px;
+      background: var(--accent-dim);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+    .feature-card h3 {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+    .feature-card p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* === STATS ROW === */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .stat-item {
+      background: var(--bg-primary);
+      padding: 28px 20px;
+      text-align: center;
+    }
+    .stat-item .num {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+      font-family: var(--font-mono);
+    }
+    .stat-item .label {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* === TRUSTPILOT === */
+    .trustpilot { background: var(--bg-primary); }
+    .trustpilot-card {
+      max-width: 500px;
+      margin: 0 auto;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      text-align: center;
+    }
+    .trustpilot-card .tp-stars {
+      font-size: 32px;
+      color: #00b67a;
+      letter-spacing: 4px;
+      margin-bottom: 12px;
+    }
+    .trustpilot-card .tp-score {
+      font-size: 42px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      font-family: var(--font-mono);
+      color: var(--text-primary);
+    }
+    .trustpilot-card .tp-label {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin: 4px 0 16px;
+    }
+    .trustpilot-card .tp-count {
+      font-size: 13px;
+      color: var(--text-tertiary);
+      margin-bottom: 20px;
+    }
+    .trustpilot-card .tp-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent);
+      padding: 8px 20px;
+      border: 1px solid var(--border-medium);
+      border-radius: 100px;
+      transition: all 0.2s;
+    }
+    .trustpilot-card .tp-link:hover {
+      background: var(--bg-hover);
+      border-color: var(--accent);
+    }
+
+    /* === CTA SECTION === */
+    .cta-section {
+      background: var(--bg-surface);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: 50%;
+      width: 600px;
+      height: 600px;
+      transform: translate(-50%, -30%);
+      background: radial-gradient(circle, rgba(0,216,0,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-benefits {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin: 24px 0 32px;
+    }
+    .cta-benefits span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+    .cta-benefits .check { color: var(--accent); font-weight: 700; }
+
+    /* === FAQ === */
+    .faq { background: var(--bg-primary); }
+    .faq-list {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 20px 0;
+    }
+    .faq-item summary {
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-primary);
+      transition: color 0.2s;
+    }
+    .faq-item summary:hover { color: var(--accent); }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: '+';
+      font-size: 18px;
+      color: var(--text-tertiary);
+      transition: transform 0.2s;
+      font-weight: 300;
+    }
+    .faq-item[open] summary::after {
+      content: '−';
+      color: var(--accent);
+    }
+    .faq-item p {
+      margin-top: 12px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      padding-right: 32px;
+    }
+
+    /* === FOOTER === */
+    .page-footer {
+      text-align: center;
+      padding: 32px 24px;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .page-footer .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .page-footer .footer-links a {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      transition: color 0.2s;
+    }
+    .page-footer .footer-links a:hover { color: var(--text-secondary); }
+    .page-footer .footer-copy {
+      font-size: 11px;
+      color: var(--text-tertiary);
+    }
+
+    /* === SCROLL REVEAL === */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* === MOBILE === */
+    @media (max-width: 768px) {
+      .hero { padding: 60px 20px 40px; }
+      .hero h1 { font-size: 28px; }
+      .hero .subtitle { font-size: 15px; }
+      .hero-cta-group { flex-direction: column; width: 100%; }
+      .cta-primary, .cta-secondary { width: 100%; justify-content: center; }
+      .trust-bar { gap: 12px; padding: 16px; }
+      .trust-item { font-size: 12px; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .stat-item { padding: 20px 12px; }
+      .stat-item .num { font-size: 22px; }
+      section { padding: 48px 0; }
+      .cta-benefits { flex-direction: column; align-items: center; gap: 12px; }
+      .faq-item p { padding-right: 0; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-logo .logo-text { font-size: 22px; }
+      .hero-logo .logo-mark { width: 30px; height: 30px; font-size: 13px; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- FTC DISCLOSURE -->
+  <div class="container">
+    <div class="disclosure">
+      <strong>Affiliate Disclosure:</strong> This page contains affiliate links. If you open an account through these links, I may earn a commission at no extra cost to you. I only recommend brokers I've personally evaluated. <a href="https://www.ictrading.com?camp=89713" target="_blank" rel="noopener">ICTrading</a> is regulated and offers negative balance protection.
+    </div>
+  </div>
+
+  <!-- ===== HERO (ATTENTION) ===== -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-logo">
+        <div class="logo-mark">V</div>
+        <div class="logo-text"><span class="vy">vy</span><span class="das">das</span></div>
+      </div>
+
+      <div class="badge">★ Trusted by 50,000+ Traders Worldwide</div>
+
+      <h1>Trade 2000+ Instruments with Spreads from 0.0 Pips</h1>
+      <p class="subtitle">ICTrading gives you institutional-grade trading conditions — raw spreads, no requotes, and the same liquidity as the world's biggest banks. Regulated and trusted since 2010.</p>
+
+      <div class="hero-cta-group">
+        <a href="https://www.ictrading.com?camp=89713" class="cta-primary" target="_blank" rel="noopener">
+          Open a Free Account →
+        </a>
+        <a href="/ictrading-starter-kit.html" class="cta-secondary">
+          📘 Free Starter Kit
+        </a>
+      </div>
+      <span class="cta-note">No deposit required · Free demo available · 1-Click withdrawal</span>
+    </div>
+  </section>
+
+  <!-- ===== TRUST BAR ===== -->
+  <div class="trust-bar">
+    <div class="trust-item">
+      <span class="stars">★★★★★</span> <span class="num">4.6</span> Trustpilot
+    </div>
+    <div class="trust-item">
+      <span class="num">50,000+</span> Active Traders
+    </div>
+    <div class="trust-item">
+      <span class="num">2000+</span> Instruments
+    </div>
+    <div class="trust-item">
+      <span class="num">2010</span> Founded
+    </div>
+  </div>
+
+  <!-- ===== STATS ROW (INTEREST) ===== -->
+  <section>
+    <div class="container">
+      <div class="stats-row reveal">
+        <div class="stat-item">
+          <div class="num">2000+</div>
+          <div class="label">Instruments</div>
+        </div>
+        <div class="stat-item">
+          <div class="num">0.0</div>
+          <div class="label">Spreads From</div>
+        </div>
+        <div class="stat-item">
+          <div class="num">1:500</div>
+          <div class="label">Max Leverage</div>
+        </div>
+        <div class="stat-item">
+          <div class="num">0.01</div>
+          <div class="label">Min Lot Size</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FEATURES (INTEREST) ===== -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-label">Why ICTrading</div>
+      <h2 class="section-title reveal">Built for Serious Traders</h2>
+      <p class="section-desc reveal reveal-delay-1">Every feature is designed to remove friction and give you the best possible trading conditions. No gimmicks, just raw performance.</p>
+
+      <div class="feature-grid reveal reveal-delay-2">
+        <div class="feature-card">
+          <div class="icon">⚡</div>
+          <h3>Raw Spreads from 0.0 Pips</h3>
+          <p>Access institutional-grade liquidity from 16+ global banks and ECNs. No markup, no requotes — just the raw spread you'd get as a million-dollar fund.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🌐</div>
+          <h3>2000+ Tradable Instruments</h3>
+          <p>61 Forex pairs, 25 Indices, 20+ Commodities, 2100+ Stocks, Bonds, Futures, and 21 Cryptocurrencies. One account, one platform, unlimited markets.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🛡️</div>
+          <h3>Regulated & Segregated Funds</h3>
+          <p>Client funds held in segregated accounts with top-tier banks. Regulated by FSA (SVG) with negative balance protection. Your capital is protected.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">📱</div>
+          <h3>MT4, MT5 & WebTrader</h3>
+          <p>Trade on the industry-standard MetaTrader platforms — desktop, web, and mobile. Full EA support, custom indicators, and one-click trading.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">💳</div>
+          <h3>Instant Deposits & Fast Withdrawals</h3>
+          <p>Deposit via Credit Card, Bank Wire, Crypto, Skrill, Neteller, and more. Withdrawals processed within 24 hours — no hidden fees, no delays.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">📊</div>
+          <h3>Free Demo Account</h3>
+          <p>Test your strategies risk-free with $100,000 virtual funds. Same market conditions, same platforms, same spreads — zero risk.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TRUSTPILOT (DESIRE) ===== -->
+  <section class="trustpilot">
+    <div class="container">
+      <div class="section-label">Social Proof</div>
+      <h2 class="section-title reveal">What Traders Say</h2>
+      <p class="section-desc reveal reveal-delay-1">Real reviews from real traders on Trustpilot. See why thousands choose ICTrading.</p>
+
+      <div class="trustpilot-card reveal reveal-delay-2">
+        <div class="tp-stars">★★★★★</div>
+        <div class="tp-score">4.6</div>
+        <div class="tp-label">Trustpilot Rating</div>
+        <div class="tp-count">Based on 1,200+ verified reviews</div>
+        <a href="https://www.trustpilot.com/review/ictrading.com" class="tp-link" target="_blank" rel="noopener">
+          Read All Reviews →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA SECTION (ACTION) ===== -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="section-label">Get Started</div>
+      <h2 class="section-title reveal">Start Trading in 3 Minutes</h2>
+      <p class="section-desc reveal reveal-delay-1">Open a free account, deposit any amount, and start trading 2000+ instruments with raw spreads. No hidden fees, no minimum deposit requirements.</p>
+
+      <div class="cta-benefits reveal reveal-delay-2">
+        <span><span class="check">✓</span> Free Demo Account</span>
+        <span><span class="check">✓</span> No Hidden Fees</span>
+        <span><span class="check">✓</span> Fast Withdrawals</span>
+      </div>
+
+      <div class="reveal reveal-delay-3">
+        <a href="https://www.ictrading.com?camp=89713" class="cta-primary" target="_blank" rel="noopener">
+          Open Your Free Account →
+        </a>
+        <span class="cta-note">No credit card required · 1-Click withdrawal · 24/7 support</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ (OBJECTION HANDLING) ===== -->
+  <section class="faq">
+    <div class="container">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title reveal">Questions? We've Got Answers</h2>
+      <p class="section-desc reveal reveal-delay-1">Everything you need to know before opening an account.</p>
+
+      <div class="faq-list reveal reveal-delay-2">
+        <details class="faq-item">
+          <summary>Is ICTrading regulated?</summary>
+          <p>Yes. ICTrading is registered in St. Vincent & the Grenadines (FSA) and operates under strict compliance standards. Client funds are held in segregated accounts with top-tier banks, and negative balance protection is provided to all retail clients.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What is the minimum deposit?</summary>
+          <p>There is no minimum deposit requirement. You can start with any amount that suits your trading style. We recommend starting with the free demo account to test your strategies before depositing real funds.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What platforms are supported?</summary>
+          <p>ICTrading supports MetaTrader 4 (MT4), MetaTrader 5 (MT5), and WebTrader — all available on desktop, web, iOS, and Android. Full Expert Advisor (EA) support, custom indicators, and algorithmic trading are all included.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How fast are withdrawals?</summary>
+          <p>Withdrawals are processed within 24 hours on business days. We support multiple withdrawal methods including Bank Wire, Credit Card, Crypto, Skrill, and Neteller. No hidden fees — you get exactly what you request.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I trade cryptocurrencies?</summary>
+          <p>Yes. ICTrading offers 21 cryptocurrency pairs including Bitcoin, Ethereum, Ripple, Litecoin, and more. All crypto trading is available on the same platforms with the same low spreads.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is there a demo account?</summary>
+          <p>Absolutely. You get a free demo account with $100,000 in virtual funds. It uses real market conditions and live spreads — perfect for testing strategies, learning the platform, or evaluating ICTrading before depositing.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FINAL CTA (FINAL ACTION) ===== -->
+  <section class="cta-section" style="background: var(--bg-primary);">
+    <div class="container">
+      <h2 class="section-title reveal">Ready to Trade with the Best Conditions?</h2>
+      <p class="section-desc reveal reveal-delay-1">Join 50,000+ traders who chose ICTrading for raw spreads, 2000+ instruments, and institutional-grade execution. Open your account in 3 minutes.</p>
+
+      <div class="reveal reveal-delay-2">
+        <a href="https://www.ictrading.com?camp=89713" class="cta-primary" target="_blank" rel="noopener">
+          Open Your Free Account →
+        </a>
+        <span class="cta-note">No deposit required · Free demo · 24/7 support</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="page-footer">
+    <div class="footer-links">
+      <a href="https://www.ictrading.com?camp=89713" target="_blank" rel="noopener">ICTrading</a>
+      <a href="https://www.trustpilot.com/review/ictrading.com" target="_blank" rel="noopener">Trustpilot Reviews</a>
+      <a href="https://www.ictrading.com?camp=89713" target="_blank" rel="noopener">Open Account</a>
+    </div>
+    <div class="footer-copy">
+      © 2026 vydas.net — Independent ICTrading affiliate. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal with IntersectionObserver
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free ICTrading Starter Kit — Download Your Trading Resource Pack</title>
+  <meta name="description" content="Get the free ICTrading Starter Kit: platform setup guide, risk management checklist, and 3 proven trading strategies. Enter your email for instant access.">
+  <meta name="robots" content="noindex">
+  <style>
+    :root {
+      --bg-primary: #08090A;
+      --bg-surface: #0C0D0E;
+      --bg-elevated: #111213;
+      --bg-hover: #1A1B1C;
+      --border-subtle: rgba(255,255,255,0.06);
+      --border-medium: rgba(255,255,255,0.10);
+      --text-primary: #E8E9EA;
+      --text-secondary: #8B8D91;
+      --text-tertiary: #5C5E62;
+      --accent: #00d800;
+      --accent-hover: #00e600;
+      --accent-dim: rgba(0,216,0,0.10);
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 12px;
+      --font-sans: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+      --max-width: 600px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 20px; }
+
+    /* === HEADER === */
+    .header {
+      text-align: center;
+      padding: 24px 20px 0;
+    }
+    .header .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .header .logo-mark {
+      width: 28px; height: 28px;
+      background: var(--accent);
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono); font-weight: 700; font-size: 13px;
+      color: var(--bg-primary);
+    }
+    .header .logo-text { font-size: 20px; font-weight: 700; letter-spacing: -0.03em; }
+    .header .logo-text .vy { color: var(--text-primary); }
+    .header .logo-text .das { color: var(--accent); }
+
+    /* === HERO === */
+    .hero {
+      text-align: center;
+      padding: 40px 20px 32px;
+      position: relative;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      left: 50%;
+      width: 500px; height: 500px;
+      transform: translate(-50%, -20%);
+      background: radial-gradient(circle, rgba(0,216,0,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(0,216,0,0.15);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+      letter-spacing: 0.02em;
+    }
+
+    .hero h1 {
+      font-size: clamp(26px, 5vw, 36px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 14px;
+    }
+
+    .hero .subtitle {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    /* === LEAD MAGNET MOCKUP === */
+    .lead-magnet {
+      width: 180px; height: 230px;
+      margin: 0 auto 28px;
+      background: linear-gradient(145deg, #0C0D0E, #111213);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-lg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      position: relative;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+    .lead-magnet .lm-icon {
+      width: 48px; height: 48px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(0,216,0,0.2);
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+    .lead-magnet .lm-title {
+      font-size: 11px; font-weight: 600;
+      color: var(--text-primary);
+      text-align: center; line-height: 1.4;
+      letter-spacing: 0.02em; text-transform: uppercase;
+    }
+    .lead-magnet .lm-sub {
+      font-size: 9px; color: var(--text-tertiary);
+      margin-top: 6px; text-align: center;
+      letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    .lead-magnet .lm-ribbon {
+      position: absolute; top: 12px; right: -6px;
+      background: var(--accent); color: var(--bg-primary);
+      font-size: 9px; font-weight: 700;
+      padding: 3px 10px; border-radius: 3px;
+      letter-spacing: 0.05em; text-transform: uppercase;
+    }
+
+    /* === FORM === */
+    .form-section { max-width: 420px; margin: 0 auto; }
+    .form-group { display: flex; gap: 8px; }
+    .form-group input {
+      flex: 1;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      font-size: 15px;
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-group input::placeholder { color: var(--text-tertiary); }
+    .form-group input:focus { border-color: var(--accent); }
+    .form-group input.error { border-color: #ff3b30; }
+
+    .form-group button {
+      background: var(--accent);
+      color: var(--bg-primary);
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 24px;
+      border-radius: var(--radius-md);
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-sans);
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .form-group button:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    .form-privacy {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .form-error {
+      font-size: 12px;
+      color: #ff3b30;
+      text-align: center;
+      margin-top: 8px;
+      display: none;
+    }
+    .form-error.visible { display: block; }
+
+    /* === WHAT'S INSIDE === */
+    .inside { padding: 48px 0; }
+    .inside h2 {
+      font-size: 20px;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+    }
+    .inside-list {
+      list-style: none;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .inside-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border-subtle);
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .inside-list li:last-child { border-bottom: none; }
+    .inside-list li .check { color: var(--accent); font-weight: 700; font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+    .inside-list li strong { color: var(--text-primary); }
+
+    /* === SOCIAL PROOF === */
+    .proof {
+      text-align: center;
+      padding: 32px 0;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .proof .proof-num { font-size: 36px; font-weight: 700; font-family: var(--font-mono); color: var(--text-primary); letter-spacing: -0.03em; }
+    .proof .proof-label { font-size: 13px; color: var(--text-tertiary); margin-top: 4px; }
+    .proof .proof-stars { color: #f5a623; font-size: 24px; letter-spacing: 3px; margin-top: 8px; }
+
+    /* === WHO THIS IS FOR === */
+    .audience { padding: 48px 0; }
+    .audience h2 { font-size: 20px; font-weight: 600; text-align: center; margin-bottom: 20px; letter-spacing: -0.02em; }
+    .audience-list { list-style: none; max-width: 480px; margin: 0 auto; }
+    .audience-list li { display: flex; align-items: center; gap: 10px; padding: 10px 0; font-size: 14px; color: var(--text-secondary); }
+    .audience-list li::before { content: '→'; color: var(--accent); font-weight: 600; }
+
+    /* === SECOND FORM === */
+    .form-bottom { text-align: center; padding: 40px 0 48px; }
+    .form-bottom h3 { font-size: 18px; font-weight: 600; margin-bottom: 20px; letter-spacing: -0.02em; }
+
+    /* === FOOTER === */
+    .page-footer { text-align: center; padding: 24px 20px; border-top: 1px solid var(--border-subtle); }
+    .page-footer p { font-size: 11px; color: var(--text-tertiary); line-height: 1.6; }
+    .page-footer a { color: var(--text-tertiary); }
+    .page-footer a:hover { color: var(--text-secondary); }
+
+    /* === MOBILE === */
+    @media (max-width: 480px) {
+      .form-group { flex-direction: column; }
+      .form-group button { width: 100%; justify-content: center; }
+      .lead-magnet { width: 150px; height: 200px; }
+      .lead-magnet .lm-icon { width: 40px; height: 40px; font-size: 18px; }
+      .hero h1 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo">
+      <div class="logo-mark">V</div>
+      <div class="logo-text"><span class="vy">vy</span><span class="das">das</span></div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="badge">★ Free Download</div>
+
+      <div class="lead-magnet">
+        <div class="lm-ribbon">Free</div>
+        <div class="lm-icon">📘</div>
+        <div class="lm-title">ICTrading<br>Starter Kit</div>
+        <div class="lm-sub">2026 Edition</div>
+      </div>
+
+      <h1>Get the Free ICTrading Starter Kit & Start Trading with Confidence</h1>
+      <p class="subtitle">Platform setup guide, risk management checklist, and 3 proven trading strategies — everything you need to start trading ICTrading like a pro. Completely free.</p>
+
+      <div class="form-section">
+        <form id="optin-form" class="form-group" novalidate>
+          <input type="email" id="email" placeholder="Enter your best email" required autocomplete="email">
+          <button type="submit">Send Me the Kit →</button>
+        </form>
+        <p class="form-privacy">No spam. Unsubscribe anytime. Your data is safe.</p>
+        <p class="form-error" id="form-error">Please enter a valid email address.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S INSIDE -->
+  <section class="inside">
+    <div class="container">
+      <h2>📦 What's Inside the Starter Kit</h2>
+      <ul class="inside-list">
+        <li><span class="check">✓</span> <span><strong>Platform Setup Guide</strong> — Step-by-step MT4/MT5 configuration for ICTrading, including custom indicators and one-click trading setup</span></li>
+        <li><span class="check">✓</span> <span><strong>Risk Management Checklist</strong> — Position sizing calculator, stop-loss placement rules, and the 1% rule template used by professional traders</span></li>
+        <li><span class="check">✓</span> <span><strong>3 Proven Trading Strategies</strong> — Scalping, trend following, and breakout strategies optimized for ICTrading's raw spreads and ECN execution</span></li>
+        <li><span class="check">✓</span> <span><strong>Economic Calendar Cheat Sheet</strong> — Key news events that move the markets, with pre-trade preparation checklist for high-impact releases</span></li>
+        <li><span class="check">✓</span> <span><strong>Bonus: ICTrading Account Optimization Guide</strong> — How to configure your account for the tightest spreads, fastest execution, and lowest commission</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF -->
+  <section class="proof">
+    <div class="container">
+      <div class="proof-num">50,000+</div>
+      <div class="proof-label">Active Traders on ICTrading</div>
+      <div class="proof-stars">★★★★★</div>
+      <div class="proof-label" style="margin-top:4px;">4.6 Trustpilot Rating</div>
+    </div>
+  </section>
+
+  <!-- WHO THIS IS FOR -->
+  <section class="audience">
+    <div class="container">
+      <h2>🎯 This Kit Is For You If...</h2>
+      <ul class="audience-list">
+        <li>You're new to ICTrading and want to start with the right setup</li>
+        <li>You've been trading but want tighter spreads and better execution</li>
+        <li>You want a clear risk management system — not guesswork</li>
+        <li>You're looking for proven strategies, not theory</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SECOND FORM -->
+  <section class="form-bottom">
+    <div class="container">
+      <h3>Ready to Level Up Your Trading?</h3>
+      <div class="form-section">
+        <form id="optin-form-2" class="form-group" novalidate>
+          <input type="email" id="email-2" placeholder="Enter your best email" required autocomplete="email">
+          <button type="submit">Get Instant Access →</button>
+        </form>
+        <p class="form-privacy">No spam. Unsubscribe anytime. Your data is safe.</p>
+        <p class="form-error" id="form-error-2">Please enter a valid email address.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="page-footer">
+    <p>
+      <strong>Affiliate Disclosure:</strong> This page contains affiliate links. If you open an account through our links, we may earn a commission at no extra cost to you. We only recommend brokers we've personally evaluated.
+    </p>
+    <p style="margin-top:8px;">
+      © 2026 vydas.net — Independent ICTrading affiliate. All rights reserved.
+    </p>
+  </footer>
+
+  <script>
+    // Brevo API Konfiguration
+    const BREVO_API_KEY = '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';
+    const BREVO_LIST_ID = 3;
+
+    async function subscribeToBrevo(email) {
+      try {
+        const response = await fetch('https://api.brevo.com/v3/contacts', {
+          method: 'POST',
+          headers: {
+            'api-key': BREVO_API_KEY,
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            email: email,
+            listIds: [BREVO_LIST_ID],
+            updateEnabled: true
+          })
+        });
+        return response.ok;
+      } catch (e) {
+        console.error('Brevo error:', e);
+        return false;
+      }
+    }
+
+    function handleSubmit(formId, emailId, errorId) {
+      const form = document.getElementById(formId);
+      const emailInput = document.getElementById(emailId);
+      const errorEl = document.getElementById(errorId);
+
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        errorEl.classList.remove('visible');
+        emailInput.classList.remove('error');
+
+        const email = emailInput.value.trim();
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailRegex.test(email)) {
+          errorEl.classList.add('visible');
+          emailInput.classList.add('error');
+          return;
+        }
+
+        // Email an Brevo senden
+        await subscribeToBrevo(email);
+
+        // Redirect zu ICTrading
+        window.location.href = 'https://www.ictrading.com?camp=89713';
+      });
+    }
+
+    handleSubmit('optin-form', 'email', 'form-error');
+    handleSubmit('optin-form-2', 'email-2', 'form-error-2');
+  </script>
+
+</body>
+</html>
+
+
+
