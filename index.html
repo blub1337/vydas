@@ -21,7 +21,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -213,6 +212,7 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
 @media (min-width:640px){.hero-stats{grid-template-columns:repeat(4,1fr)}.services-grid{grid-template-columns:repeat(2,1fr)}.portfolio-grid{grid-template-columns:repeat(2,1fr)}.testimonials-grid{grid-template-columns:repeat(2,1fr)}.pricing-grid{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:repeat(2,1fr)}}
 @media (min-width:1024px){#menuToggle{display:none}.nav-links{display:flex}.nav-cta{display:inline-flex}.mobile-menu{display:none!important}.hero-content{text-align:left}.hero-sub{margin-left:0;margin-right:0}.hero-actions{justify-content:flex-start}.services-grid{grid-template-columns:repeat(3,1fr)}.portfolio-grid{grid-template-columns:repeat(3,1fr)}.pricing-grid{grid-template-columns:repeat(3,1fr)}.process-grid{grid-template-columns:repeat(4,1fr)}.contact-grid{grid-template-columns:1fr 1.2fr}.footer-grid{grid-template-columns:2fr repeat(3,1fr)}.footer-bottom{flex-direction:row}}
+  svg[aria-hidden="true"]{display:inline-block;vertical-align:middle;flex-shrink:0}
 </style>
 </head>
 <body>
@@ -226,7 +226,7 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
 <!-- NAV -->
 <nav aria-label="Hauptnavigation">
   <div class="nav-inner">
-    <a href="#hero" class="nav-logo" aria-label="VYDAS.NET Startseite"><i class="fa-solid fa-layer-group" aria-hidden="true"></i>VYDAS<span>.NET</span></a>
+    <a href="#hero" class="nav-logo" aria-label="VYDAS.NET Startseite"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>VYDAS<span>.NET</span></a>
     <ul class="nav-links" role="menubar">
       <li role="none"><a href="#services" role="menuitem" data-i18n="nav_services">Υπηρεσίες</a></li>
       <li role="none"><a href="#portfolio" role="menuitem" data-i18n="nav_portfolio">Πορτφόλιο</a></li>
@@ -237,7 +237,7 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
     <div class="nav-right">
       <button class="lang-btn" onclick="toggleLanguage()" aria-label="Sprache wechseln" data-i18n="lang_btn">EN</button>
       <a href="https://chat.whatsapp.com/Grx1qNjlCgcAdEYfcWGvNx?s=cl&amp;p=a&amp;ilr=1" target="_blank" rel="noopener" class="nav-cta" data-i18n="nav_cta">Πάρε Προσφορά</a>
-      <button id="menuToggle" onclick="toggleMenu()" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobileMenu"><i class="fa-solid fa-bars"></i></button>
+      <button id="menuToggle" onclick="toggleMenu()" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobileMenu"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
     </div>
   </div>
 </nav>
@@ -265,7 +265,7 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
     <p class="hero-sub reveal delay-2" data-i18n="hero_p">Εγχειρίδια websites για cafes, εστιατόρια και τοπικές επιχειρήσεις. Χωρίς templates, χωρίς συζήτηση — design που φέρνει κόσμο μέσα.</p>
     
     <div class="hero-actions reveal delay-3">
-      <a href="https://chat.whatsapp.com/Grx1qNjlCgcAdEYfcWGvNx?s=cl&amp;p=a&amp;ilr=1" target="_blank" rel="noopener" class="btn-primary" data-i18n="hero_cta1"><i class="fa-brands fa-whatsapp"></i>Πάρε Προσφορά</a>
+      <a href="https://chat.whatsapp.com/Grx1qNjlCgcAdEYfcWGvNx?s=cl&amp;p=a&amp;ilr=1" target="_blank" rel="noopener" class="btn-primary" data-i18n="hero_cta1"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>Πάρε Προσφορά</a>
       <a href="#portfolio" class="btn-secondary" data-i18n="hero_cta2">Δες τη δουλειά μας</a>
     </div>
     
@@ -289,32 +289,32 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
     
     <div class="services-grid">
       <article class="service-card reveal">
-        <div class="service-icon" aria-hidden="true"><i class="fa-solid fa-pen-ruler"></i></div>
+        <div class="service-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m17 3-5 5-5-5"></path><path d="m17 21-5-5-5 5"></path><path d="M12 8V3"></path><path d="M12 21v-5"></path></svg></div>
         <h3 data-i18n="srv1_t">Σχεδιασμός Ιστοσελίδας</h3>
         <p data-i18n="srv1_d">Κομψές, σύγχρονο design προσαρμοσμένο στην ταυτότητα του καταστήματος.</p>
       </article>
       <article class="service-card reveal delay-1">
-        <div class="service-icon" aria-hidden="true"><i class="fa-solid fa-mobile-screen"></i></div>
+        <div class="service-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg></div>
         <h3 data-i18n="srv2_t">Mobile Friendly</h3>
         <p data-i18n="srv2_d">Άψογα optimized για κινητά — οι περισσότεροι πελάτες σε βλέπουν από το κινητό.</p>
       </article>
       <article class="service-card reveal delay-2">
-        <div class="service-icon" aria-hidden="true"><i class="fa-solid fa-map-location-dot"></i></div>
+        <div class="service-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon><line x1="9" y1="3" x2="9" y2="18"></line><line x1="15" y1="6" x2="15" y2="21"></line></svg></div>
         <h3 data-i18n="srv3_t">Google Maps</h3>
         <p data-i18n="srv3_d">Ενσωμάτωση χάρτη με οδηγίες προς το κατάστημά σου με ένα κλικ.</p>
       </article>
       <article class="service-card reveal">
-        <div class="service-icon" aria-hidden="true"><i class="fa-solid fa-utensils"></i></div>
+        <div class="service-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"></path><path d="M7 2v20"></path><path d="M21 2v10a5 5 0 0 1-5 5h-.25"></path><path d="M21 2v20"></path></svg></div>
         <h3 data-i18n="srv4_t">Ψηφιακό Μενού</h3>
         <p data-i18n="srv4_d">Όμορφο μενού με φωτογραφίες και τιμές — εύκολα ενημερώσιμο.</p>
       </article>
       <article class="service-card reveal delay-1">
-        <div class="service-icon" aria-hidden="true"><i class="fa-solid fa-camera"></i></div>
+        <div class="service-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path><circle cx="12" cy="13" r="3"></circle></svg></div>
         <h3 data-i18n="srv5_t">Φωτογραφίες</h3>
         <p data-i18n="srv5_d">Επαγγελματικές φωτογραφίες καταστήματος και πιάτων για εντυπωσιακό αποτέλεσμα.</p>
       </article>
       <article class="service-card reveal delay-2">
-        <div class="service-icon" aria-hidden="true"><i class="fa-solid fa-bolt"></i></div>
+        <div class="service-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></div>
         <h3 data-i18n="srv6_t">SEO &amp; Ταχύτητα</h3>
         <p data-i18n="srv6_d">Σελίδες που φορτώνουν σε δευτερόλεπτα και βρίσκονται εύκολα στη Google.</p>
       </article>
@@ -475,22 +475,22 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
     
     <div class="process-grid">
       <article class="proc-card reveal">
-        <div class="proc-icon" aria-hidden="true"><i class="fa-solid fa-comments"></i></div>
+        <div class="proc-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
         <h3 data-i18n="proc1_t">Συζήτηση</h3>
         <p data-i18n="proc1_d">Κάνουμε μια κουβέντα για τις ανάγκες και τον χαρακτήρα του καταστήματος.</p>
       </article>
       <article class="proc-card reveal delay-1">
-        <div class="proc-icon" aria-hidden="true"><i class="fa-solid fa-pen-nib"></i></div>
+        <div class="proc-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg></div>
         <h3 data-i18n="proc2_t">Σχεδιασμός</h3>
         <p data-i18n="proc2_d">Δημιουργούμε το design και σας στέλνουμε για έγκριση.</p>
       </article>
       <article class="proc-card reveal delay-2">
-        <div class="proc-icon" aria-hidden="true"><i class="fa-solid fa-code"></i></div>
+        <div class="proc-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
         <h3 data-i18n="proc3_t">Ανάπτυξη</h3>
         <p data-i18n="proc3_d">Χτίζουμε την ιστοσελίδα με ταχύτητα και προσοχή στη λεπτομέρεια.</p>
       </article>
       <article class="proc-card reveal delay-3">
-        <div class="proc-icon" aria-hidden="true"><i class="fa-solid fa-rocket"></i></div>
+        <div class="proc-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path></svg></div>
         <h3 data-i18n="proc4_t">Παράδοση</h3>
         <p data-i18n="proc4_d">Την ανεβάζουμε online και είναι έτοιμη να δεχτεί πελάτες.</p>
       </article>
@@ -513,12 +513,12 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
         <p class="subtitle" data-i18n="price1_s">Ιδανικό για μικρά καφενεία</p>
         <div class="price-amount">€299<span data-i18n="price1_period">/εφάπαξ</span></div>
         <ul class="price-features">
-          <li><i class="fa-solid fa-check"></i> <span data-i18n="price1_f1">Μία σελίδα (Landing)</span></li>
-          <li><i class="fa-solid fa-check"></i> <span data-i18n="price1_f2">Mobile friendly</span></li>
-          <li><i class="fa-solid fa-check"></i> <span data-i18n="price1_f3">Google Maps</span></li>
-          <li><i class="fa-solid fa-check"></i> <span data-i18n="price1_f4">Επαφή WhatsApp</span></li>
-          <li><i class="fa-solid fa-check"></i> <span data-i18n="price1_f5">Ψηφιακό μενού</span></li>
-          <li><i class="fa-solid fa-check"></i> <span data-i18n="price1_f6">Πολλαπλές σελίδες</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="price1_f1">Μία σελίδα (Landing)</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="price1_f2">Mobile friendly</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="price1_f3">Google Maps</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="price1_f4">Επαφή WhatsApp</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="price1_f5">Ψηφιακό μενού</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="price1_f6">Πολλαπλές σελίδες</span></li>
         </ul>
         <a href="https://chat.whatsapp.com/Grx1qNjlCgcAdEYfcWGvNx?s=cl&amp;p=a&amp;ilr=1" target="_blank" rel="noopener" class="btn-primary" data-i18n="price_btn">Ξεκίνα τώρα</a>
       </article>
@@ -529,12 +529,12 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
         <p class="subtitle" data-i18n="price2_s">Για καφενεία που θέλουν να ξεχωρίσουν</p>
         <div class="price-amount">€599<span data-i18n="price2_period">/εφάπαξ</span></div>
         <ul class="price-features">
-          <li><i class="fa-solid fa-check"></i> <span data-i18n="price2_f1">Πολυσελίδα (έως 5)</span></li>
-          <li><i class="fa-solid fa-check"></i> <span data-i18n="price2_f2">Ψηφιακό μενού</span></li>
-          <li><i class="fa-solid fa-check"></i> <span data-i18n="price2_f3">Φωτογραφίες Pexels</span></li>
-          <li><i class="fa-solid fa-check"></i> <span data-i18n="price2_f4">SEO βασικό</span></li>
-          <li><i class="fa-solid fa-check"></i> <span data-i18n="price2_f5">Google Maps</span></li>
-          <li><i class="fa-solid fa-check"></i> <span data-i18n="price2_f6">Επαφή WhatsApp</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="price2_f1">Πολυσελίδα (έως 5)</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="price2_f2">Ψηφιακό μενού</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="price2_f3">Φωτογραφίες Pexels</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="price2_f4">SEO βασικό</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="price2_f5">Google Maps</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="price2_f6">Επαφή WhatsApp</span></li>
         </ul>
         <a href="https://chat.whatsapp.com/Grx1qNjlCgcAdEYfcWGvNx?s=cl&amp;p=a&amp;ilr=1" target="_blank" rel="noopener" class="btn-primary" data-i18n="price_btn">Ξεκίνα τώρα</a>
       </article>
@@ -544,12 +544,12 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
         <p class="subtitle" data-i18n="price3_s">Πλήρης λύση με συνδρομή</p>
         <div class="price-amount">€99<span data-i18n="price3_period">/μήνα</span></div>
         <ul class="price-features">
-          <li><i class="fa-solid fa-check"></i> <span data-i18n="price3_f1">Απεριόριστες σελίδες</span></li>
-          <li><i class="fa-solid fa-check"></i> <span data-i18n="price3_f2">Σχεδιασμός κατ' απαίτηση</span></li>
-          <li><i class="fa-solid fa-check"></i> <span data-i18n="price3_f3">Online παραγγελίες</span></li>
-          <li><i class="fa-solid fa-check"></i> <span data-i18n="price3_f4">Διαχείριση κρατήσεων</span></li>
-          <li><i class="fa-solid fa-check"></i> <span data-i18n="price3_f5">Monthly updates</span></li>
-          <li><i class="fa-solid fa-check"></i> <span data-i18n="price3_f6">Υποστήριξη 24/7</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="price3_f1">Απεριόριστες σελίδες</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="price3_f2">Σχεδιασμός κατ' απαίτηση</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="price3_f3">Online παραγγελίες</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="price3_f4">Διαχείριση κρατήσεων</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="price3_f5">Monthly updates</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="price3_f6">Υποστήριξη 24/7</span></li>
         </ul>
         <a href="https://chat.whatsapp.com/Grx1qNjlCgcAdEYfcWGvNx?s=cl&amp;p=a&amp;ilr=1" target="_blank" rel="noopener" class="btn-primary" data-i18n="price_btn">Ξεκίνα τώρα</a>
       </article>
@@ -619,7 +619,7 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">
           <span data-i18n="faq1_q">Πόσο χρόνο χρειάζεται η κατασκευή;</span>
-          <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="faq-answer">
           <div class="faq-answer-inner" data-i18n="faq1_a">Συνήθως 7–14 ημέρες από την έγκριση του design. Εξαρτάται από τον αριθμό σελίδων και το υλικό που μας στέλνεις.</div>
@@ -629,7 +629,7 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">
           <span data-i18n="faq2_q">Χρειάζεται να έχω φωτογραφίες;</span>
-          <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="faq-answer">
           <div class="faq-answer-inner" data-i18n="faq2_a">Όχι απαραίτητα. Μπορούμε να χρησιμοποιήσουμε επαγγελματικές φωτογραφίες από Pexels/Unsplash που ταιριάζουν στο στυλ σου. Αν έχεις δικές σου, ακόμα καλύτερα.</div>
@@ -639,7 +639,7 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">
           <span data-i18n="faq3_q">Μπορώ να αλλάξω κάτι μετά;</span>
-          <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="faq-answer">
           <div class="faq-answer-inner" data-i18n="faq3_a">Φυσικά. Το πακέτο Business+ περιλαμβάνει μηνιαίες ανανεώσεις. Για εφάπαξ πακέτα προσφέρουμε αλλαγές με μικρή χρέωση.</div>
@@ -649,7 +649,7 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">
           <span data-i18n="faq4_q">Τι γίνεται με το domain και hosting;</span>
-          <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="faq-answer">
           <div class="faq-answer-inner" data-i18n="faq4_a">Αναλαμβάνουμε πλήρως την ανάρτηση στο Cloudflare ή στον πάροχο της επιλογής σου. Μπορούμε επίσης να σε καθοδηγήσουμε για αγορά domain.</div>
@@ -665,7 +665,7 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
     <div class="cta-card reveal">
       <h2 id="cta-title" data-th="cta_h">Έτοιμος να <em>ξεκινήσεις</em>;</h2>
       <p data-i18n="cta_p">Επικοινώνησε μαζί μας στο WhatsApp και φτιάξουμε την ιστοσελίδα του καταστήματός σου.</p>
-      <a href="https://chat.whatsapp.com/Grx1qNjlCgcAdEYfcWGvNx?s=cl&amp;p=a&amp;ilr=1" target="_blank" rel="noopener" class="btn-primary" data-i18n="cta_btn"><i class="fa-brands fa-whatsapp"></i>Στείλε μας μήνυμα</a>
+      <a href="https://chat.whatsapp.com/Grx1qNjlCgcAdEYfcWGvNx?s=cl&amp;p=a&amp;ilr=1" target="_blank" rel="noopener" class="btn-primary" data-i18n="cta_btn"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>Στείλε μας μήνυμα</a>
     </div>
   </div>
 </section>
@@ -682,7 +682,7 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
     <div class="contact-grid reveal">
       <div class="contact-info">
         <a href="https://chat.whatsapp.com/Grx1qNjlCgcAdEYfcWGvNx?s=cl&amp;p=a&amp;ilr=1" target="_blank" rel="noopener" class="contact-item">
-          <i class="fa-brands fa-whatsapp"></i>
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
           <div>
             <strong data-i18n="contact_wa">WhatsApp</strong>
             <span data-i18n="contact_wa_d">Άμεση απάντηση σε λίγα λεπτά</span>
@@ -690,7 +690,7 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
         </a>
         
         <div class="contact-item">
-          <i class="fa-solid fa-location-dot"></i>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
           <div>
             <strong data-i18n="contact_loc">Τοποθεσία</strong>
             <span data-i18n="contact_loc_d">Αγρίνιο, Ελλάδα</span>
@@ -698,7 +698,7 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
         </div>
         
         <div class="contact-item">
-          <i class="fa-solid fa-clock"></i>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
           <div>
             <strong data-i18n="contact_time">Ωράριο</strong>
             <span data-i18n="contact_time_d">Δευτέρα–Σάββατο, 09:00–21:00</span>
@@ -731,7 +731,7 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="#hero" class="nav-logo" aria-label="VYDAS.NET Startseite"><i class="fa-solid fa-layer-group" aria-hidden="true"></i>VYDAS<span>.NET</span></a>
+        <a href="#hero" class="nav-logo" aria-label="VYDAS.NET Startseite"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>VYDAS<span>.NET</span></a>
         <p data-i18n="footer_desc">Premium ιστοσελίδες για καφενεία, εστιατόρια και τοπικές επιχειρήσεις. Χωρίς templates, χωρίς συζήτηση.</p>
       </div>
       
@@ -753,16 +753,16 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
       <div class="footer-col">
         <h4 data-i18n="footer_social">Folge uns</h4>
         <div class="footer-social">
-          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+          <a href="#" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
         </div>
       </div>
     </div>
     
     <div class="footer-bottom">
       <span data-i18n="footer_copy">© 2026 VYDAS.NET — Alle Rechte vorbehalten.</span>
-      <span>Made with <i class="fa-solid fa-bolt" aria-hidden="true"></i> in Agrinio</span>
+      <span>Made with <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg> in Agrinio</span>
     </div>
   </div>
 </footer>
