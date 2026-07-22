@@ -986,7 +986,6 @@ footer{padding:64px 0 32px;background:rgba(10,10,11,.50);backdrop-filter:blur(8p
       targetMouseY = ((e.clientY - rect.top) / height - 0.5) * 2;
     }, {passive:true});
 
-    // Scroll progress across whole page (0..1)
     function getScrollProgress(){
       var st = window.scrollY || window.pageYOffset || 0;
       var doc = document.documentElement;
@@ -994,7 +993,6 @@ footer{padding:64px 0 32px;background:rgba(10,10,11,.50);backdrop-filter:blur(8p
       return Math.min(1, Math.max(0, st / max));
     }
 
-    // Torus
     var torusR = 160, torusr = 50;
     var torusPoints = [];
     var torusRings = 10, torusSectors = 18;
@@ -1006,7 +1004,6 @@ footer{padding:64px 0 32px;background:rgba(10,10,11,.50);backdrop-filter:blur(8p
       }
     }
 
-    // Cube array (world grid)
     var gridCubes = [];
     for(var x=-2; x<=2; x++){
       for(var z=-2; z<=2; z++){
@@ -1015,7 +1012,6 @@ footer{padding:64px 0 32px;background:rgba(10,10,11,.50);backdrop-filter:blur(8p
     }
     var cubeEdges = [[0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7]];
 
-    // Particles
     var particles = [];
     for(var i=0; i<80; i++){
       particles.push({
@@ -1056,15 +1052,13 @@ footer{padding:64px 0 32px;background:rgba(10,10,11,.50);backdrop-filter:blur(8p
       mouseY += (targetMouseY - mouseY) * 0.07;
 
       var progress = getScrollProgress();
-      // progress mapped to camera journey: 0..0.35 torus orbit, 0.35..0.7 fly through cube world, 0.7..1 particle tunnel
 
       ctx.clearRect(0,0,width,height);
 
-      // ambient glow reacts to scroll
-      var glowInt = 0.16 - progress * 0.04;
+      // stronger ambient glow
       var grad = ctx.createRadialGradient(cx+mouseX*80, cy+mouseY*50, 0, cx, cy, Math.max(width,height));
-      grad.addColorStop(0, 'rgba(200,255,0,'+glowInt+')');
-      grad.addColorStop(0.5, 'rgba(255,184,77,0.04)');
+      grad.addColorStop(0, 'rgba(200,255,0,0.22)');
+      grad.addColorStop(0.5, 'rgba(255,184,77,0.10)');
       grad.addColorStop(1, 'rgba(10,10,11,0)');
       ctx.fillStyle = grad;
       ctx.fillRect(0,0,width,height);
@@ -1085,7 +1079,7 @@ footer{padding:64px 0 32px;background:rgba(10,10,11,.50);backdrop-filter:blur(8p
           torusProj.push(project(rp, mouseX*60, mouseY*40, camZ, fov));
         }
         ctx.globalAlpha = torusFade;
-        ctx.lineWidth = 1.6;
+        ctx.lineWidth = 1.8;
         for(var a=0; a<torusRings; a++){
           for(var b=0; b<torusSectors; b++){
             var idx=a*torusSectors+b;
@@ -1093,21 +1087,29 @@ footer{padding:64px 0 32px;background:rgba(10,10,11,.50);backdrop-filter:blur(8p
             var p2=torusProj[a*torusSectors+((b+1)%torusSectors)];
             var p3=torusProj[((a+1)%torusRings)*torusSectors+b];
             if(p1.z<=0 || p2.z<=0 || p3.z<=0) continue;
-            var alpha = Math.max(0.30, 0.90 * ((p1.z-300)/500));
+            var alpha = Math.max(0.25, 0.9 * ((p1.z-300)/500));
+            ctx.shadowColor = 'rgba(200,255,0,0.55)';
+            ctx.shadowBlur = 10;
             ctx.strokeStyle = 'rgba(200,255,0,' + alpha + ')';
             ctx.beginPath(); ctx.moveTo(p1.x,p1.y); ctx.lineTo(p2.x,p2.y); ctx.stroke();
-            ctx.strokeStyle = 'rgba(255,184,77,' + alpha*0.9 + ')';
+            ctx.shadowColor = 'rgba(255,184,77,0.45)';
+            ctx.shadowBlur = 8;
+            ctx.strokeStyle = 'rgba(255,184,77,' + alpha*0.95 + ')';
             ctx.beginPath(); ctx.moveTo(p1.x,p1.y); ctx.lineTo(p3.x,p3.y); ctx.stroke();
+            ctx.shadowBlur = 0;
           }
         }
         ctx.fillStyle = '#C8FF00';
+        ctx.shadowColor = '#C8FF00';
+        ctx.shadowBlur = 10;
         for(var k=0; k<torusProj.length; k+=2){
           var pp=torusProj[k];
           if(pp.z<=0) continue;
-          var a2 = Math.max(0.25, 0.65 * ((pp.z-300)/500));
+          var a2 = Math.max(0.35, 0.95 * ((pp.z-300)/500));
           ctx.globalAlpha = a2 * torusFade;
-          ctx.beginPath(); ctx.arc(pp.x, pp.y, 2*pp.scale, 0, Math.PI*2); ctx.fill();
+          ctx.beginPath(); ctx.arc(pp.x, pp.y, 2.4*pp.scale, 0, Math.PI*2); ctx.fill();
         }
+        ctx.shadowBlur = 0;
         ctx.globalAlpha = 1;
       }
 
@@ -1121,8 +1123,10 @@ footer{padding:64px 0 32px;background:rgba(10,10,11,.50);backdrop-filter:blur(8p
         var camY2 = -80 - progress*120 + mouseY*50;
         var fov2 = 650;
         ctx.globalAlpha = worldFade;
-        ctx.lineWidth = 1.8;
-        ctx.strokeStyle = 'rgba(0,255,200,0.75)';
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = 'rgba(0,255,200,0.9)';
+        ctx.shadowColor = 'rgba(0,255,200,0.45)';
+        ctx.shadowBlur = 12;
         for(var i=0; i<gridCubes.length; i++){
           var gc = gridCubes[i];
           var cubePoints = [
@@ -1141,19 +1145,38 @@ footer{padding:64px 0 32px;background:rgba(10,10,11,.50);backdrop-filter:blur(8p
             var e=cubeEdges[k];
             var p1=proj[e[0]], p2=proj[e[1]];
             if(p1.z<=0 || p2.z<=0) continue;
-            var alpha = Math.max(0.35, 0.95 * ((p1.z+p2.z-400)/900));
+            var alpha = Math.max(0.30, 0.95 * ((p1.z+p2.z-400)/900));
             ctx.globalAlpha = alpha * worldFade;
             ctx.beginPath(); ctx.moveTo(p1.x,p1.y); ctx.lineTo(p2.x,p2.y); ctx.stroke();
           }
-          ctx.fillStyle = '#00FFC8';
+        }
+        ctx.shadowBlur = 0;
+        ctx.fillStyle = '#00FFC8';
+        ctx.shadowColor = '#00FFC8';
+        ctx.shadowBlur = 8;
+        for(var i=0; i<gridCubes.length; i++){
+          var gc = gridCubes[i];
+          var cubePoints = [
+            {x:-gc.size,y:-gc.size,z:-gc.size},{x:gc.size,y:-gc.size,z:-gc.size},
+            {x:gc.size,y:gc.size,z:-gc.size},{x:-gc.size,y:gc.size,z:-gc.size},
+            {x:-gc.size,y:-gc.size,z:gc.size},{x:gc.size,y:-gc.size,z:gc.size},
+            {x:gc.size,y:gc.size,z:gc.size},{x:-gc.size,y:cubeSize,y:gc.size}
+          ];
+          var proj=[];
+          for(var k=0;k<cubePoints.length;k++){
+            var p=rotate(cubePoints[k], worldRotX, worldRotY, 0);
+            p.x += gc.x; p.y += gc.y; p.z += gc.z;
+            proj.push(project(p, mouseX*40, camY2, camZ2, fov2));
+          }
           for(var k=0;k<proj.length;k++){
             var cp=proj[k];
             if(cp.z<=0) continue;
-            var a2 = Math.max(0.25, 0.7 * ((cp.z-400)/900));
+            var a2 = Math.max(0.40, 1.0 * ((cp.z-400)/900));
             ctx.globalAlpha = a2 * worldFade;
-            ctx.beginPath(); ctx.arc(cp.x, cp.y, 2.6*cp.scale, 0, Math.PI*2); ctx.fill();
+            ctx.beginPath(); ctx.arc(cp.x, cp.y, 2.8*cp.scale, 0, Math.PI*2); ctx.fill();
           }
         }
+        ctx.shadowBlur = 0;
         ctx.globalAlpha = 1;
       }
 
@@ -1172,18 +1195,21 @@ footer{padding:64px 0 32px;background:rgba(10,10,11,.50);backdrop-filter:blur(8p
           if(pt.x < -450) pt.x = 450; if(pt.x > 450) pt.x = -450;
           if(pt.y < -300) pt.y = 300; if(pt.y > 300) pt.y = -300;
           var pr = project(pt, mouseX*50, mouseY*30, -100, 600);
-          if(pr.z <= 0) continue;
+          if(pr.z<=0) continue;
           var alpha = Math.max(0.40, 1.0 * ((pr.z-100)/600)) * tunnelFade;
+          var streak = Math.min(22, pr.scale * speed * 5);
           ctx.globalAlpha = alpha;
-          var streak = Math.min(18, pr.scale * speed * 4);
+          ctx.shadowColor = 'rgba(200,255,0,0.5)';
+          ctx.shadowBlur = 8;
+          ctx.strokeStyle = 'rgba(200,255,0,' + alpha + ')';
+          ctx.lineWidth = pr.scale * 2.2;
           ctx.beginPath();
           ctx.moveTo(pr.x, pr.y);
           ctx.lineTo(pr.x - pt.vx*streak, pr.y - pt.vy*streak);
-          ctx.strokeStyle = 'rgba(200,255,0,' + alpha + ')';
-          ctx.lineWidth = pr.scale * 1.4;
           ctx.stroke();
         }
         ctx.globalAlpha = 1;
+        ctx.shadowBlur = 0;
       }
     }
 
@@ -1201,6 +1227,8 @@ footer{padding:64px 0 32px;background:rgba(10,10,11,.50);backdrop-filter:blur(8p
     window.addEventListener('scroll', function(){}, {passive:true});
     loop(0);
   }
+
+  
 
   
 
