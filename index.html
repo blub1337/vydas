@@ -798,11 +798,285 @@ footer{
   }
 
 @supports(padding:max(0px,env(safe-area-inset-bottom))){
-  
+
   .mobile-menu{padding-bottom:max(2rem,env(safe-area-inset-bottom))}
 }
 
-  
+/* ================= 3D DESIGN UPGRADE ================= */
+
+/* Animated gradient mesh background */
+.hero{
+  position:relative;
+  overflow:hidden;
+  perspective:1200px;
+  transform-style:preserve-3d;
+}
+.hero::before{
+  content:'';
+  position:absolute;
+  inset:-50%;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(200,255,0,.15) 0%, transparent 35%),
+    radial-gradient(circle at 80% 70%, rgba(255,184,77,.12) 0%, transparent 35%),
+    radial-gradient(circle at 50% 50%, rgba(0,229,255,.08) 0%, transparent 45%);
+  animation:meshMove 18s ease-in-out infinite;
+  z-index:-1;
+  transform:translateZ(-80px) scale(1.4);
+}
+@keyframes meshMove{
+  0%,100%{transform:translateZ(-80px) scale(1.4) rotate(0deg)}
+  33%{transform:translateZ(-80px) scale(1.5) rotate(2deg)}
+  66%{transform:translateZ(-80px) scale(1.3) rotate(-1deg)}
+}
+
+/* Floating particles */
+.particles{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:-1;
+}
+.particle{
+  position:absolute;
+  width:6px;height:6px;
+  background:var(--accent);
+  border-radius:50%;
+  opacity:.3;
+  animation:floatUp 12s linear infinite;
+  filter:blur(1px);
+}
+@keyframes floatUp{
+  0%{transform:translateY(120vh) translateZ(-50px);opacity:0}
+  10%{opacity:.4}
+  90%{opacity:.3}
+  100%{transform:translateY(-20vh) translateZ(50px);opacity:0}
+}
+
+/* 3D Hero content */
+.hero-inner{
+  transform-style:preserve-3d;
+}
+.hero-badge{
+  transform:translateZ(20px);
+  transition:transform .3s ease,box-shadow .3s ease;
+}
+.hero-badge:hover{
+  transform:translateZ(40px) scale(1.05);
+  box-shadow:0 8px 32px var(--accent-glow);
+}
+.hero h1{transform:translateZ(30px);transition:transform .4s ease}
+.hero p{transform:translateZ(15px)}
+.hero-buttons{transform:translateZ(40px)}
+.hero-visual{transform:translateZ(60px);transition:transform .5s ease}
+.hero-visual:hover{transform:translateZ(80px) rotateY(2deg) rotateX(-2deg)}
+
+/* 3D Buttons */
+.btn-primary,.btn-secondary{
+  position:relative;
+  transform-style:preserve-3d;
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+.btn-primary:hover,.btn-secondary:hover{
+  transform:translateY(-3px) translateZ(10px);
+  box-shadow:0 12px 32px rgba(0,0,0,.35);
+}
+.btn-primary:active,.btn-secondary:active{
+  transform:translateY(-1px) translateZ(5px);
+}
+.btn-primary::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  border-radius:100px;
+  background:linear-gradient(135deg,rgba(255,255,255,.25),transparent);
+  opacity:0;
+  transition:opacity .3s ease;
+}
+.btn-primary:hover::after{opacity:1}
+
+/* 3D Cards with tilt */
+.tilt-card{
+  transform-style:preserve-3d;
+  transition:transform .25s ease,box-shadow .25s ease;
+  will-change:transform;
+}
+.tilt-card:hover{
+  box-shadow:0 25px 50px rgba(0,0,0,.4),0 0 40px var(--accent-dim);
+}
+.tilt-card .card-glow{
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(200,255,0,.15),transparent 60%);
+  opacity:0;
+  transition:opacity .3s ease;
+  pointer-events:none;
+  z-index:0;
+}
+.tilt-card:hover .card-glow{opacity:1}
+
+/* Service cards 3D */
+.service-card{
+  transform-style:preserve-3d;
+  position:relative;
+  overflow:hidden;
+}
+.service-card .icon-wrap{
+  transform:translateZ(30px);
+  transition:transform .3s ease;
+}
+.service-card:hover .icon-wrap{
+  transform:translateZ(50px) scale(1.1);
+}
+.service-card h3,.service-card p{position:relative;z-index:1}
+
+/* Portfolio cards 3D */
+.port-card{
+  transform-style:preserve-3d;
+  transition:transform .3s ease;
+  position:relative;
+  overflow:hidden;
+}
+.port-card img{
+  transition:transform .5s ease;
+}
+.port-card:hover img{
+  transform:scale(1.08);
+}
+.port-card .port-card-overlay{
+  transform:translateY(100%);
+  transition:transform .35s cubic-bezier(.22,1,.36,1);
+}
+.port-card:hover .port-card-overlay{
+  transform:translateY(0);
+}
+.port-card:hover{
+  box-shadow:0 30px 60px rgba(0,0,0,.45);
+}
+
+/* Pricing cards 3D */
+.price-card{
+  transform-style:preserve-3d;
+  transition:transform .3s ease,box-shadow .3s ease;
+}
+.price-card:hover{
+  transform:translateY(-12px) translateZ(20px);
+  box-shadow:0 30px 60px rgba(0,0,0,.35),0 0 60px rgba(255,184,77,.15);
+}
+.price-card.featured{
+  transform:translateZ(30px);
+  box-shadow:0 25px 50px rgba(0,0,0,.4),0 0 50px rgba(255,184,77,.25);
+}
+.price-card.featured:hover{
+  transform:translateY(-12px) translateZ(50px);
+}
+.price-card .badge-popular{
+  transform:translateZ(40px);
+}
+
+/* Process cards */
+.proc-card{
+  transform-style:preserve-3d;
+  transition:transform .3s ease;
+}
+.proc-card:hover{
+  transform:translateY(-8px) translateZ(15px);
+}
+.proc-card .num{
+  transform:translateZ(20px);
+  text-shadow:0 0 30px var(--accent-glow);
+}
+
+/* Testimonial cards */
+.testi-card{
+  transform-style:preserve-3d;
+  transition:transform .3s ease;
+}
+.testi-card:hover{
+  transform:translateY(-6px) translateZ(10px);
+}
+
+/* Scroll reveal animation */
+.reveal{
+  opacity:0;
+  transform:translateY(40px) translateZ(-20px);
+  transition:opacity .8s ease,transform .8s cubic-bezier(.22,1,.36,1);
+}
+.reveal.visible{
+  opacity:1;
+  transform:translateY(0) translateZ(0);
+}
+.reveal.delay-1{transition-delay:.1s}
+.reveal.delay-2{transition-delay:.2s}
+.reveal.delay-3{transition-delay:.3s}
+
+/* Glass panels */
+.glass{
+  background:rgba(255,255,255,.03);
+  backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 8px 32px rgba(0,0,0,.2);
+}
+
+/* Shimmer loading effect */
+@keyframes shimmer{
+  0%{background-position:-200% 0}
+  100%{background-position:200% 0}
+}
+.shimmer{
+  background:linear-gradient(90deg,rgba(255,255,255,.03) 25%,rgba(255,255,255,.08) 50%,rgba(255,255,255,.03) 75%);
+  background-size:200% 100%;
+  animation:shimmer 2s infinite;
+}
+
+/* CTA section glow */
+.cta-section{
+  position:relative;
+  overflow:hidden;
+}
+.cta-section::before{
+  content:'';
+  position:absolute;
+  top:50%;left:50%;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(200,255,0,.12),transparent 70%);
+  transform:translate(-50%,-50%) translateZ(-50px);
+  z-index:-1;
+}
+
+/* 3D perspective container for hero */
+.perspective-wrap{
+  perspective:1200px;
+  transform-style:preserve-3d;
+}
+
+/* Improved focus states */
+a:focus-visible,button:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:3px;
+}
+
+/* Reduced motion respect */
+@media (prefers-reduced-motion:reduce){
+  .hero::before,.particle,.reveal,*::after,*::before{
+    animation:none!important;
+    transition:none!important;
+  }
+  .tilt-card:hover,.price-card:hover,.port-card:hover,.service-card:hover,.proc-card:hover,.testi-card:hover{
+    transform:none!important;
+  }
+}
+
+/* Mobile 3D adjustments */
+@media(max-width:640px){
+  .hero{perspective:800px}
+  .hero h1,.hero p,.hero-buttons{transform:translateZ(0)}
+  .tilt-card:hover{transform:none}
+  .price-card:hover{transform:translateY(-6px)}
+}
+
+
 </style>
 </head>
 <body>
@@ -834,7 +1108,8 @@ footer{
 <!-- HERO -->
 <section id="hero">
   <div class="hero-bg"></div>
-  <div class="container">
+  <div class="particles"></div>
+  <div class="container perspective-wrap">
     <div class="hero-inner">
       <div class="hero-badge reveal">
         <i class="fa-solid fa-bolt"></i>
@@ -883,33 +1158,33 @@ footer{
       <p data-i18n="services_p">Ολοκληρωμένες λύσεις για την ψηφιακή παρουσία της επιχείρησής σου.</p>
     </div>
     <div class="services-grid">
-      <div class="service-card reveal">
-        <div class="service-icon"><i class="fa-solid fa-globe"></i></div>
+      <div class="service-card reveal tilt-card"><div class="card-glow"></div>
+        <div class="service-icon icon-wrap"><i class="fa-solid fa-globe"></i></div>
         <h3 data-i18n="srv1_t">Σχεδιασμός Ιστοσελίδας</h3>
         <p data-i18n="srv1_d">Κομψές, σύγχρονο design προσαρμοσμένο στην ταυτότητα του καταστήματος.</p>
       </div>
-      <div class="service-card reveal">
-        <div class="service-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+      <div class="service-card reveal tilt-card"><div class="card-glow"></div>
+        <div class="service-icon icon-wrap"><i class="fa-solid fa-mobile-screen"></i></div>
         <h3 data-i18n="srv2_t">Mobile Friendly</h3>
         <p data-i18n="srv2_d">Άψογαoptimized για κινητά — οι περισσότεροι πελάτες σε βλέπουν από το κινητό.</p>
       </div>
-      <div class="service-card reveal">
-        <div class="service-icon"><i class="fa-solid fa-compass"></i></div>
+      <div class="service-card reveal tilt-card"><div class="card-glow"></div>
+        <div class="service-icon icon-wrap"><i class="fa-solid fa-compass"></i></div>
         <h3 data-i18n="srv3_t">Google Maps</h3>
         <p data-i18n="srv3_d">Ενσωμάτηση χάρτη με οδηγίες προς το κατάστημά σου με ένα κλικ.</p>
       </div>
-      <div class="service-card reveal">
-        <div class="service-icon"><i class="fa-solid fa-list"></i></div>
+      <div class="service-card reveal tilt-card"><div class="card-glow"></div>
+        <div class="service-icon icon-wrap"><i class="fa-solid fa-list"></i></div>
         <h3 data-i18n="srv4_t">Ψηφιακό Μενού</h3>
         <p data-i18n="srv4_d">Όμορφο μενού με φωτογραφίες και τιμές — εύκολα ενημερώσιμο.</p>
       </div>
-      <div class="service-card reveal">
-        <div class="service-icon"><i class="fa-solid fa-camera"></i></div>
+      <div class="service-card reveal tilt-card"><div class="card-glow"></div>
+        <div class="service-icon icon-wrap"><i class="fa-solid fa-camera"></i></div>
         <h3 data-i18n="srv5_t">Φωτογραφίες</h3>
         <p data-i18n="srv5_d">Επαγγελματικές φωτογραφίες καταστήματος και πιάτων για εντυπωσιακό αποτέλεσμα.</p>
       </div>
-      <div class="service-card reveal">
-        <div class="service-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+      <div class="service-card reveal tilt-card"><div class="card-glow"></div>
+        <div class="service-icon icon-wrap"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
         <h3 data-i18n="srv6_t">SEO & Ταχύτητα</h3>
         <p data-i18n="srv6_d">Σελίδες που φορτώνουν σε δευτερόλεπτα και βρίσκονται εύκολα στη Google.</p>
       </div>
@@ -1062,7 +1337,7 @@ footer{
       <p data-i18n="price_p">Επίλεξε το πακέτο που σου ταιριάζει. Χωρίς κρυφά κόστη.</p>
     </div>
     <div class="pricing-grid">
-      <div class="price-card reveal">
+      <div class="price-card reveal tilt-card"><div class="card-glow"></div>
         <h3 data-i18n="price1_t">Starter</h3>
         <p class="price-sub" data-i18n="price1_s">Ιδανικό για μικρά καφενεία</p>
         <div class="price-amount"><span class="currency">€</span>299<span class="period" data-i18n="price1_period">/εφάπαξ</span></div>
@@ -1077,7 +1352,7 @@ footer{
         <div class="stripe-note" data-i18n="stripe_note">Πληρωμή μέσω Stripe — Ασφαλής συναλλαγή</div>
         <a href="https://buy.stripe.com/14A5kCaeffoefhTgKy0RG05" target="_blank" rel="noopener" class="price-btn" data-i18n="price_btn">Ξεκίνα τώρα</a>
       </div>
-      <div class="price-card featured reveal">
+      <div class="price-card featured reveal tilt-card"><div class="card-glow"></div>
         <div class="price-badge" id="priceBadge" data-badge="Δημοφιλές">Δημοφιλές</div>
         <h3 data-i18n="price2_t">Professional</h3>
         <p class="price-sub" data-i18n="price2_s">Για καφενεία που θέλουν να ξεχωρίσουν</p>
@@ -1093,7 +1368,7 @@ footer{
         <div class="stripe-note" data-i18n="stripe_note">Πληρωμή μέσω Stripe — Ασφαλής συναλλαγή</div>
         <a href="https://buy.stripe.com/cNi3cu2LNcc20mZeCq0RG06" target="_blank" rel="noopener" class="price-btn" data-i18n="price_btn">Ξεκίνα τώρα</a>
       </div>
-      <div class="price-card reveal">
+      <div class="price-card reveal tilt-card"><div class="card-glow"></div>
         <h3 data-i18n="price3_t">Business+</h3>
         <p class="price-sub" data-i18n="price3_s">Πλήρης λύση με συνδρομή</p>
         <div class="price-amount"><span class="currency">€</span>149<span class="period" data-i18n="price3_period">/μήνα</span></div>
@@ -1462,6 +1737,51 @@ document.querySelectorAll('#navLinks a').forEach(function(l){
   });
 });
 
+// ==================== 3D TILT EFFECT ====================
+function initTilt(){
+  var cards = document.querySelectorAll('.tilt-card');
+  if(!cards.length) return;
+  cards.forEach(function(card){
+    var glow = card.querySelector('.card-glow');
+    card.addEventListener('mousemove', function(e){
+      var rect = card.getBoundingClientRect();
+      var x = e.clientX - rect.left;
+      var y = e.clientY - rect.top;
+      var cx = rect.width / 2;
+      var cy = rect.height / 2;
+      var rx = ((y - cy) / cy) * -12;
+      var ry = ((x - cx) / cx) * 12;
+      card.style.transform = 'rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) translateZ(10px)';
+      if(glow){
+        glow.style.setProperty('--mx', (x / rect.width * 100) + '%');
+        glow.style.setProperty('--my', (y / rect.height * 100) + '%');
+      }
+    });
+    card.addEventListener('mouseleave', function(){
+      card.style.transform = 'rotateX(0) rotateY(0) translateZ(0)';
+    });
+  });
+}
+
+// ==================== FLOATING PARTICLES ====================
+function initParticles(){
+  var container = document.querySelector('.particles');
+  if(!container) return;
+  var count = window.innerWidth < 768 ? 15 : 25;
+  for(var i = 0; i < count; i++){
+    var p = document.createElement('div');
+    p.className = 'particle';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.animationDuration = (8 + Math.random() * 10) + 's';
+    p.style.animationDelay = (Math.random() * 12) + 's';
+    p.style.width = (4 + Math.random() * 4) + 'px';
+    p.style.height = p.style.width;
+    var colors = ['var(--accent)', 'var(--accent-2)', 'var(--accent-3)'];
+    p.style.background = colors[Math.floor(Math.random() * colors.length)];
+    container.appendChild(p);
+  }
+}
+
 // ==================== PORTFOLIO SCROLL ====================
 function scrollPort(dir){
   var sc = document.getElementById('portScroll');
@@ -1533,6 +1853,8 @@ window.addEventListener('load', function(){
   }
   initReveal();
   initPortScroll();
+  initTilt();
+  initParticles();
 });
 </script>
 </body>
