@@ -978,6 +978,32 @@ footer{padding:64px 0 32px;background:rgba(10,10,11,.90);border-top:1px solid va
       });
     });
   }
+
+
+  /* Scroll progress bar */
+  var scrollProgress = document.getElementById('scroll-progress');
+  if(scrollProgress){
+    window.addEventListener('scroll', function(){
+      var doc = document.documentElement;
+      var pct = (window.scrollY || window.pageYOffset) / (doc.scrollHeight - window.innerHeight) * 100;
+      scrollProgress.style.width = Math.min(100, pct) + '%';
+    }, {passive:true});
+  }
+
+  /* Cursor glow (desktop only) */
+  if(!window.matchMedia('(pointer: coarse)').matches){
+    var cursorGlow = document.createElement('div');
+    cursorGlow.className = 'cursor-glow';
+    cursorGlow.style.cssText = 'position:fixed;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(200,255,0,.06) 0%,transparent 70%);pointer-events:none;z-index:-1;transform:translate(-50%,-50%);opacity:0;transition:opacity .25s;';
+    document.body.appendChild(cursorGlow);
+    var glowActive = false;
+    document.addEventListener('mousemove', function(e){
+      if(!glowActive){ cursorGlow.style.opacity = '1'; glowActive = true; }
+      cursorGlow.style.left = e.clientX + 'px';
+      cursorGlow.style.top = e.clientY + 'px';
+    }, {passive:true});
+    document.addEventListener('mouseleave', function(){ cursorGlow.style.opacity = '0'; glowActive = false; });
+  }
 })();
 </script>
 </body>
