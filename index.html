@@ -949,16 +949,17 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
     });
   }
 
-  /* LIQUID LIGHT HERO CANVAS */
+  /* ADVANCED LIQUID LIGHT HERO CANVAS */
   function initCanvas(){
     var canvas = document.getElementById('hero-canvas');
     if(!canvas || !canvas.getContext) return;
     var ctx = canvas.getContext('2d', { alpha: true });
     var dpr = Math.min(window.devicePixelRatio || 1, 1.25);
     var width, height, cx, cy;
-    var mouseX = 0, mouseY = 0, targetMouseX = 0, targetMouseY = 0;
+    var mouseX=0, mouseY=0, targetMouseX=0, targetMouseY=0;
     var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var rafId = null;
+    var rafId=null;
+    var time=0;
 
     function resize(){
       var rect = canvas.parentElement.getBoundingClientRect();
@@ -966,50 +967,66 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
       height = Math.floor(rect.height);
       canvas.width = width * dpr;
       canvas.height = height * dpr;
-      canvas.style.width = width + 'px';
-      canvas.style.height = height + 'px';
+      canvas.style.width = width+'px';
+      canvas.style.height = height+'px';
       ctx.setTransform(1,0,0,1,0,0);
-      ctx.scale(dpr, dpr);
-      cx = width / 2;
-      cy = height / 2;
+      ctx.scale(dpr,dpr);
+      cx = width/2; cy = height/2;
+      initLayers();
     }
     resize();
-    window.addEventListener('resize', function(){ resize(); initBlobs(); }, {passive:true});
+    window.addEventListener('resize', resize, {passive:true});
 
-    var lastMouseMove = 0;
+    var lastMouseMove=0;
     canvas.parentElement.addEventListener('mousemove', function(e){
       var now = performance.now();
       if(now - lastMouseMove < 40) return;
       lastMouseMove = now;
       var rect = canvas.parentElement.getBoundingClientRect();
-      targetMouseX = ((e.clientX - rect.left) / width - 0.5) * 2;
-      targetMouseY = ((e.clientY - rect.top) / height - 0.5) * 2;
+      targetMouseX = ((e.clientX - rect.left)/width - 0.5)*2;
+      targetMouseY = ((e.clientY - rect.top)/height - 0.5)*2;
     }, {passive:true});
 
-    var blobs = [];
-    function initBlobs(){
-      blobs = [
-        {x:.35, y:.35, r:.22, hue:78, sat:100, light:58, phase:0, speed:0.0009, dx:0.12, dy:0.08},
-        {x:.65, y:.55, r:.28, hue:38, sat:100, light:65, phase:2.1, speed:0.0007, dx:-0.10, dy:0.12},
-        {x:.5, y:.75, r:.20, hue:185, sat:100, light:58, phase:4.2, speed:0.0011, dx:0.08, dy:-0.10},
-        {x:.2, y:.6, r:.18, hue:78, sat:100, light:62, phase:1.4, speed:0.0008, dx:0.14, dy:0.05}
+    var layers=[];
+    function initLayers(){
+      layers = [
+        {type:'glow', x:.5, y:.45, r:.35, hue:78, sat:100, light:60, phase:0, speed:0.0006, dx:.10, dy:.08, blur:80},
+        {type:'liquid', x:.3, y:.6, r:.22, hue:38, sat:100, light:64, phase:1.2, speed:0.0010, dx:.14, dy:-.10, blur:40},
+        {type:'liquid', x:.7, y:.35, r:.24, hue:185, sat:100, light:58, phase:2.5, speed:0.0009, dx:-.12, dy:.12, blur:44},
+        {type:'liquid', x:.5, y:.75, r:.18, hue:78, sat:100, light:62, phase:3.7, speed:0.0012, dx:.08, dy:-.14, blur:38},
+        {type:'sheen', x:.55, y:.5, r:.45, hue:50, sat:80, light:80, phase:5, speed:0.0004, dx:.06, dy:.06, blur:120}
       ];
     }
-    initBlobs();
+    initLayers();
 
-    function softStep(a,b,x){ return Math.max(0, Math.min(1, (x-a)/(b-a))); }
-    function noiseShape(time, phase, quality){
-      var pts = [];
-      var count = quality? 24 : 16;
-      for(var i=0; i<count; i++){
-        var ang = (i/count) * Math.PI * 2;
-        var rad = 1 + Math.sin(ang*3 + time + phase)*0.18 + Math.cos(ang*5 - time*0.7 + phase*1.3)*0.10 + Math.sin(ang*2 + time*0.4)*0.08;
-        pts.push({x:Math.cos(ang)*rad, y:Math.sin(ang)*rad});
+    function noiseBlob(t, phase, quality){
+      var pts=[];
+      var count = quality ? 32 : 20;
+      for(var i=0;i<count;i++){
+        var ang = (i/count)*Math.PI*2;
+        var r = 1
+          + Math.sin(ang*2 + t*0.7 + phase)*0.22
+          + Math.cos(ang*3 - t*0.5 + phase*1.4)*0.14
+          + Math.sin(ang*5 + t*0.3 + phase*2.1)*0.08
+          + Math.cos(ang*7 - t*0.25)*0.05;
+        pts.push({x:Math.cos(ang)*r, y:Math.sin(ang)*r});
       }
       return pts;
     }
 
-    var lastFrame = 0, skip = false;
+    function drawBlobPath(ctx, x, y, r, pts){
+      ctx.beginPath();
+      for(var i=0;i<=pts.length;i++){
+        var p = pts[i % pts.length];
+        var px = x + p.x*r;
+        var py = y + p.y*r;
+        if(i===0) ctx.moveTo(px,py);
+        else ctx.lineTo(px,py);
+      }
+      ctx.closePath();
+    }
+
+    var lastFrame=0, skip=false;
     function loop(now){
       rafId = requestAnimationFrame(loop);
       if(document.hidden || prefersReduced) return;
@@ -1017,68 +1034,115 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
       if(skip) return;
       if(now - lastFrame < 32) return;
       lastFrame = now;
+      time += 0.012;
 
-      mouseX += (targetMouseX - mouseX) * 0.06;
-      mouseY += (targetMouseY - mouseY) * 0.06;
+      mouseX += (targetMouseX - mouseX)*0.06;
+      mouseY += (targetMouseY - mouseY)*0.06;
 
       ctx.clearRect(0,0,width,height);
 
-      // subtle base gradient
-      var base = ctx.createRadialGradient(cx, cy, 0, cx + mouseX*80, cy + mouseY*60, Math.max(width,height));
-      base.addColorStop(0, 'rgba(200,255,0,0.06)');
-      base.addColorStop(0.5, 'rgba(10,10,11,0)');
-      ctx.fillStyle = base;
+      // deep base vignette
+      var vig = ctx.createRadialGradient(cx + mouseX*60, cy + mouseY*40, 0, cx, cy, Math.max(width,height)*0.9);
+      vig.addColorStop(0, 'rgba(200,255,0,0.04)');
+      vig.addColorStop(0.5, 'rgba(10,10,11,0)');
+      vig.addColorStop(1, 'rgba(10,10,11,0.55)');
+      ctx.fillStyle = vig;
       ctx.fillRect(0,0,width,height);
 
-      for(var i=0; i<blobs.length; i++){
-        var b = blobs[i];
-        b.phase += b.speed;
-        var bx = width * (b.x + Math.sin(b.phase)*0.12 + mouseX * b.dx * 0.08);
-        var by = height * (b.y + Math.cos(b.phase*0.7)*0.10 + mouseY * b.dy * 0.08);
-        var br = Math.min(width, height) * (b.r + Math.sin(b.phase*0.5)*0.03);
+      // chromatic background layers
+      for(var i=0;i<layers.length;i++){
+        var L = layers[i];
+        L.phase += L.speed;
+        var bx = width * (L.x + Math.sin(L.phase)*0.13 + mouseX*L.dx*0.07);
+        var by = height * (L.y + Math.cos(L.phase*0.65)*0.11 + mouseY*L.dy*0.07);
+        var br = Math.min(width,height) * (L.r + Math.sin(L.phase*0.45)*0.04);
 
-        var g = ctx.createRadialGradient(bx, by, 0, bx, by, br);
-        var c1 = 'hsla(' + b.hue + ',' + b.sat + '%,' + b.light + '%,0.55)';
-        var c2 = 'hsla(' + b.hue + ',' + b.sat + '%,' + b.light + '%,0.18)';
-        var c3 = 'hsla(' + b.hue + ',' + b.sat + '%,' + b.light + '%,0)';
-        g.addColorStop(0, c1);
-        g.addColorStop(0.45, c2);
-        g.addColorStop(1, c3);
+        var pts = noiseBlob(time + L.phase*0.5, L.phase, L.type==='liquid');
 
-        var pts = noiseShape(b.phase, b.phase*0.6, i < 2);
-        ctx.beginPath();
-        for(var k=0; k<pts.length; k++){
-          var p = pts[k];
-          var x = bx + p.x * br;
-          var y = by + p.y * br;
-          if(k===0) ctx.moveTo(x,y);
-          else ctx.lineTo(x,y);
+        if(L.type==='sheen'){
+          var g = ctx.createRadialGradient(bx, by, 0, bx, by, br);
+          g.addColorStop(0, 'hsla('+L.hue+','+L.sat+'%,'+L.light+'%,0.22)');
+          g.addColorStop(0.55, 'hsla('+L.hue+','+L.sat+'%,'+L.light+'%,0.05)');
+          g.addColorStop(1, 'hsla('+L.hue+','+L.sat+'%,'+L.light+'%,0)');
+          drawBlobPath(ctx, bx, by, br, pts);
+          ctx.fillStyle = g;
+          ctx.filter = 'blur('+L.blur+'px)';
+          ctx.fill();
+          ctx.filter = 'none';
+          continue;
         }
-        ctx.closePath();
+
+        // RGB split chromatic aberration for liquid type
+        if(L.type==='liquid'){
+          var offsets = [
+            {dx:-3, dy:-2, hue:L.hue-8, alpha:0.55},
+            {dx:2, dy:1, hue:L.hue+8, alpha:0.50},
+            {dx:0, dy:0, hue:L.hue, alpha:0.85}
+          ];
+          for(var k=0;k<offsets.length;k++){
+            var off = offsets[k];
+            var g2 = ctx.createRadialGradient(bx+off.dx, by+off.dy, 0, bx+off.dx, by+off.dy, br);
+            g2.addColorStop(0, 'hsla('+off.hue+','+L.sat+'%,'+L.light+'%,'+off.alpha+')');
+            g2.addColorStop(0.45, 'hsla('+off.hue+','+L.sat+'%,'+L.light+'%,'+off.alpha*0.35+')');
+            g2.addColorStop(1, 'hsla('+off.hue+','+L.sat+'%,'+L.light+'%,0)');
+            drawBlobPath(ctx, bx+off.dx, by+off.dy, br, pts);
+            ctx.fillStyle = g2;
+            ctx.globalCompositeOperation = k===0 ? 'screen' : 'lighter';
+            ctx.filter = 'blur('+L.blur+'px)';
+            ctx.fill();
+          }
+          ctx.globalCompositeOperation = 'source-over';
+          ctx.filter = 'none';
+
+          // internal rim light
+          ctx.strokeStyle = 'hsla('+L.hue+','+L.sat+'%,85%,0.18)';
+          ctx.lineWidth = 1.5;
+          drawBlobPath(ctx, bx, by, br*0.92, pts);
+          ctx.stroke();
+          continue;
+        }
+
+        // glow type
+        var g = ctx.createRadialGradient(bx, by, 0, bx, by, br);
+        g.addColorStop(0, 'hsla('+L.hue+','+L.sat+'%,'+L.light+'%,0.45)');
+        g.addColorStop(0.5, 'hsla('+L.hue+','+L.sat+'%,'+L.light+'%,0.12)');
+        g.addColorStop(1, 'hsla('+L.hue+','+L.sat+'%,'+L.light+'%,0)');
+        drawBlobPath(ctx, bx, by, br, pts);
         ctx.fillStyle = g;
-        ctx.filter = 'blur(28px)';
+        ctx.globalCompositeOperation = 'screen';
+        ctx.filter = 'blur('+L.blur+'px)';
         ctx.fill();
+        ctx.globalCompositeOperation = 'source-over';
         ctx.filter = 'none';
       }
 
-      // very fine grain overlay
-      ctx.globalAlpha = 0.035;
+      // floating micro-particles / film grain
+      ctx.globalAlpha = 0.05;
       ctx.fillStyle = '#fff';
-      for(var i=0; i<300; i+=7){
-        var gx = (i * 137.5 + now * 0.02) % width;
-        var gy = (i * 73.3) % height;
-        ctx.fillRect(gx, gy, 1.2, 1.2);
+      for(var i=0;i<250;i+=5){
+        var gx = (i*131.7 + time*30 + mouseX*20) % width;
+        var gy = (i*79.3 + Math.sin(time+i)*8) % height;
+        ctx.fillRect(gx, gy, 1, 1);
       }
+      ctx.globalAlpha = 1;
+
+      // occasional scanline sheen
+      ctx.globalAlpha = 0.03;
+      ctx.fillStyle = '#C8FF00';
+      var sheenY = (time*60) % (height+200) - 100;
+      ctx.fillRect(0, sheenY, width, 120);
       ctx.globalAlpha = 1;
     }
 
     function onVisibility(){
-      if(document.hidden && rafId){ cancelAnimationFrame(rafId); rafId = null; }
+      if(document.hidden && rafId){ cancelAnimationFrame(rafId); rafId=null; }
       else if(!rafId) rafId = requestAnimationFrame(loop);
     }
     document.addEventListener('visibilitychange', onVisibility, {passive:true});
     loop(0);
   }
+
+  
 
   
 
