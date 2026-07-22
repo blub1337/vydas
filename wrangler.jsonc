@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "landing-page-cipher",
+  "name": "vydas",
   "compatibility_date": "2026-07-17",
   "observability": {
     "enabled": true
