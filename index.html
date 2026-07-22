@@ -1,770 +1,1126 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="el">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ICTrading Review 2026 — Trade 2000+ Instruments with a Regulated Broker</title>
-  <meta name="description" content="ICTrading review: honest look at spreads, platforms, regulation, and features. Trade Forex, Indices, Commodities, Stocks & Crypto with a trusted broker.">
-  <style>
-    /* === LINEAR DESIGN SYSTEM × AFFILIATE CONVERSION === */
-    :root {
-      --bg-primary: #08090A;
-      --bg-surface: #0C0D0E;
-      --bg-elevated: #111213;
-      --bg-hover: #1A1B1C;
-      --border-subtle: rgba(255,255,255,0.06);
-      --border-medium: rgba(255,255,255,0.10);
-      --text-primary: #E8E9EA;
-      --text-secondary: #8B8D91;
-      --text-tertiary: #B0B2B6;
-      --accent: #00d800;
-      --accent-hover: #00e600;
-      --accent-dim: rgba(0,216,0,0.10);
-      --accent-glow: rgba(0,216,0,0.25);
-      --green: #00d800;
-      --red: #ff3b30;
-      --radius-sm: 6px;
-      --radius-md: 10px;
-      --radius-lg: 12px;
-      --font-sans: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-      --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
-      --max-width: 1100px;
-      --content-width: 720px;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: var(--font-sans);
-      background: var(--bg-primary);
-      color: var(--text-primary);
-      line-height: 1.6;
-    a { color: var(--accent); }
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { color: var(--accent-hover); }
-    img { max-width: 100%; height: auto; display: block; }
-
-    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
-    .narrow { max-width: var(--content-width); margin: 0 auto; }
-
-    /* === FTC DISCLOSURE === */
-    .disclosure {
-      background: var(--bg-surface);
-      border-left: 2px solid var(--accent);
-      padding: 10px 16px);
-      font-size: 12px;
-      color: var(--text-primary);
-      line-height: 1.5;
-      max-width: var(--content-width);
-      margin: 16px auto 0;
-      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-    }
-    .disclosure strong { color: var(--accent); }
-    .disclosure a { color: #00ff00; text-decoration: underline; font-weight: 600; }
-
-    /* === HERO === */
-    .hero {
-      text-align: center;
-      padding: 80px 24px 60px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: 50%;
-      width: 800px;
-      height: 800px;
-      transform: translate(-50%, -30%);
-      background: radial-gradient(circle, rgba(0,216,0,0.03) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .hero-logo {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 32px;
-    }
-
-    .hero-logo .logo-mark {
-      width: 36px;
-      height: 36px;
-      background: var(--accent);
-      border-radius: var(--radius-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-mono);
-      font-weight: 700;
-      font-size: 16px;
-      color: var(--bg-primary);
-    }
-
-    .hero-logo .logo-text {
-      font-size: 28px;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-    }
-    .hero-logo .logo-text .vy { color: var(--text-primary); }
-    .hero-logo .logo-text .das { color: var(--accent); }
-
-    .hero .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--accent-dim);
-      border: 1px solid rgba(0,216,0,0.15);
-      color: var(--accent);
-      font-size: 12px;
-      font-weight: 500;
-      padding: 4px 12px;
-      border-radius: 100px;
-      margin-bottom: 24px;
-      letter-spacing: 0.02em;
-    }
-
-    .hero h1 {
-      font-size: clamp(32px, 5vw, 52px);
-      font-weight: 700;
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-      margin-bottom: 16px;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .hero .subtitle {
-      font-size: clamp(16px, 2vw, 19px);
-      color: var(--text-secondary);
-      max-width: 600px;
-      margin: 0 auto 32px;
-      line-height: 1.6;
-    }
-
-    .hero-cta-group {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .cta-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--accent);
-      color: var(--bg-primary);
-      font-size: 16px;
-      font-weight: 600;
-      padding: 14px 32px;
-      border-radius: var(--radius-md);
-      border: none;
-      cursor: pointer;
-      transition: all 0.2s;
-      font-family: var(--font-sans);
-    }
-    .cta-primary:hover {
-      background: var(--accent-hover);
-      color: var(--bg-primary);
-      transform: translateY(-1px);
-    }
-
-    .cta-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: transparent;
-      color: var(--text-primary);
-      font-size: 15px;
-      font-weight: 500;
-      padding: 14px 24px;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border-medium);
-      cursor: pointer;
-      transition: all 0.2s;
-      font-family: var(--font-sans);
-    }
-    .cta-secondary:hover {
-      background: var(--bg-hover);
-      border-color: var(--text-tertiary);
-    }
-
-    .cta-note {
-      display: block;
-      margin-top: 12px;
-      font-size: 13px;
-      color: var(--text-tertiary);
-    }
-
-    /* === TRUST BAR === */
-    .trust-bar {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 32px;
-      flex-wrap: wrap;
-      padding: 20px 24px;
-      border-top: 1px solid var(--border-subtle);
-      border-bottom: 1px solid var(--border-subtle);
-      max-width: var(--max-width);
-      margin: 0 auto;
-    }
-    .trust-item {
-      font-size: 13px;
-      color: var(--text-secondary);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .trust-item .stars { color: #f5a623; letter-spacing: 1px; }
-    .trust-item .num { color: var(--text-primary); font-weight: 600; }
-
-    /* === SECTION COMMON === */
-    section { padding: 72px 0; }
-    .section-label {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 12px;
-      text-align: center;
-    }
-    .section-title {
-      font-size: clamp(26px, 3.5vw, 36px);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-      text-align: center;
-      margin-bottom: 16px;
-    }
-    .section-desc {
-      font-size: 16px;
-      color: var(--text-secondary);
-      text-align: center;
-      max-width: 600px;
-      margin: 0 auto 48px;
-      line-height: 1.6;
-    }
-
-    /* === FEATURES GRID === */
-    .features { background: var(--bg-surface); }
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border-subtle);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-    }
-    .feature-card {
-      background: var(--bg-primary);
-      padding: 32px 28px;
-      text-align: left;
-    }
-    .feature-card .icon {
-      width: 40px;
-      height: 40px;
-      background: var(--accent-dim);
-      border-radius: var(--radius-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      margin-bottom: 16px;
-    }
-    .feature-card h3 {
-      font-size: 17px;
-      font-weight: 600;
-      margin-bottom: 8px;
-      letter-spacing: -0.01em;
-    }
-    .feature-card p {
-      font-size: 14px;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
-
-    /* === STATS ROW === */
-    .stats-row {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: var(--border-subtle);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .stat-item {
-      background: var(--bg-primary);
-      padding: 28px 20px;
-      text-align: center;
-    }
-    .stat-item .num {
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--text-primary);
-      letter-spacing: -0.02em;
-      font-family: var(--font-mono);
-    }
-    .stat-item .label {
-      font-size: 12px;
-      color: var(--text-tertiary);
-      margin-top: 4px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    /* === TRUSTPILOT === */
-    .trustpilot { background: var(--bg-primary); }
-    .trustpilot-card {
-      max-width: 500px;
-      margin: 0 auto;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      padding: 32px;
-      text-align: center;
-    }
-    .trustpilot-card .tp-stars {
-      font-size: 32px;
-      color: #00b67a;
-      letter-spacing: 4px;
-      margin-bottom: 12px;
-    }
-    .trustpilot-card .tp-score {
-      font-size: 42px;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      font-family: var(--font-mono);
-      color: var(--text-primary);
-    }
-    .trustpilot-card .tp-label {
-      font-size: 14px;
-      color: var(--text-secondary);
-      margin: 4px 0 16px;
-    }
-    .trustpilot-card .tp-count {
-      font-size: 13px;
-      color: var(--text-tertiary);
-      margin-bottom: 20px;
-    }
-    .trustpilot-card .tp-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--accent);
-      padding: 8px 20px;
-      border: 1px solid var(--border-medium);
-      border-radius: 100px;
-      transition: all 0.2s;
-    }
-    .trustpilot-card .tp-link:hover {
-      background: var(--bg-hover);
-      border-color: var(--accent);
-    }
-
-    /* === CTA SECTION === */
-    .cta-section {
-      background: var(--bg-surface);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .cta-section::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: 50%;
-      width: 600px;
-      height: 600px;
-      transform: translate(-50%, -30%);
-      background: radial-gradient(circle, rgba(0,216,0,0.04) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .cta-benefits {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      flex-wrap: wrap;
-      margin: 24px 0 32px;
-    }
-    .cta-benefits span {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 14px;
-      color: var(--text-secondary);
-    }
-    .cta-benefits .check { color: var(--accent); font-weight: 700; }
-
-    /* === FAQ === */
-    .faq { background: var(--bg-primary); }
-    .faq-list {
-      max-width: 640px;
-      margin: 0 auto;
-    }
-    .faq-item {
-      border-bottom: 1px solid var(--border-subtle);
-      padding: 20px 0;
-    }
-    .faq-item summary {
-      font-size: 15px;
-      font-weight: 500;
-      cursor: pointer;
-      list-style: none;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: var(--text-primary);
-      transition: color 0.2s;
-    }
-    .faq-item summary:hover { color: var(--accent); }
-    .faq-item summary::-webkit-details-marker { display: none; }
-    .faq-item summary::after {
-      content: '+';
-      font-size: 18px;
-      color: var(--text-tertiary);
-      transition: transform 0.2s;
-      font-weight: 300;
-    }
-    .faq-item[open] summary::after {
-      content: '−';
-      color: var(--accent);
-    }
-    .faq-item p {
-      margin-top: 12px;
-      font-size: 14px;
-      color: var(--text-secondary);
-      line-height: 1.7;
-      padding-right: 32px;
-    }
-
-    /* === FOOTER === */
-    .page-footer {
-      text-align: center;
-      padding: 32px 24px;
-      border-top: 1px solid var(--border-subtle);
-    }
-    .page-footer .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      flex-wrap: wrap;
-      margin-bottom: 12px;
-    }
-    .page-footer .footer-links a {
-      font-size: 12px;
-      color: var(--text-secondary);
-      transition: color 0.2s;
-    }
-    .page-footer .footer-links a:hover { color: var(--accent); }
-    .page-footer .footer-copy {
-      font-size: 11px;
-      color: var(--text-secondary);
-    }
-
-    /* === SCROLL REVEAL === */
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
-
-    @media (prefers-reduced-motion: reduce) {
-      .reveal { opacity: 1; transform: none; transition: none; }
-    }
-
-    /* === MOBILE === */
-    @media (max-width: 768px) {
-      .hero { padding: 60px 20px 40px; }
-      .hero h1 { font-size: 28px; }
-      .hero .subtitle { font-size: 15px; }
-      .hero-cta-group { flex-direction: column; width: 100%; }
-      .cta-primary, .cta-secondary { width: 100%; justify-content: center; }
-      .trust-bar { gap: 12px; padding: 16px; }
-      .trust-item { font-size: 12px; }
-      .feature-grid { grid-template-columns: 1fr; }
-      .stats-row { grid-template-columns: repeat(2, 1fr); }
-      .stat-item { padding: 20px 12px; }
-      .stat-item .num { font-size: 22px; }
-      section { padding: 48px 0; }
-      .cta-benefits { flex-direction: column; align-items: center; gap: 12px; }
-      .faq-item p { padding-right: 0; }
-    }
-
-    @media (max-width: 480px) {
-      .hero-logo .logo-text { font-size: 22px; }
-      .hero-logo .logo-mark { width: 30px; height: 30px; font-size: 13px; }
-      .stats-row { grid-template-columns: repeat(2, 1fr); }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>VYDAS.NET — Premium Ιστοσελίδες για Καφενεία &amp; Εστιατόρια</title>
+<meta name="description" content="Premium ιστοσελίδες για καφενεία, εστιατόρια και cafe-bar. Χωρίς templates, χωρίς συζήτηση — design που φέρνει κόσμο μέσα.">
+<meta name="theme-color" content="#0A0A0B">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="vydas-logo.png">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://vydas.net/">
+<meta property="og:title" content="VYDAS.NET — Premium Ιστοσελίδες για Καφενεία &amp; Εστιατόρια">
+<meta property="og:description" content="Premium ιστοσελίδες για καφενεία, εστιατόρια και cafe-bar. Χωρίς templates, χωρίς συζήτηση — design που φέρνει κόσμο μέσα.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vydas.net/">
+<meta property="og:image" content="https://vydas.net/vydas-logo.png">
+<meta property="og:locale" content="el_GR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="VYDAS.NET — Premium Ιστοσελίδες για Καφενεία &amp; Εστιατόρια">
+<meta name="twitter:description" content="Premium ιστοσελίδες για καφενεία, εστιατόρια και cafe-bar. Χωρίς templates, χωρίς συζήτηση — design που φέρνει κόσμο μέσα.">
+<meta name="twitter:image" content="https://vydas.net/vydas-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"LocalBusiness",
+  "name":"VYDAS.NET",
+  "url":"https://vydas.net/",
+  "logo":"https://vydas.net/vydas-logo.png",
+  "description":"Premium ιστοσελίδες για καφενεία, εστιατόρια και cafe-bar. Χωρίς templates, χωρίς συζήτηση — design που φέρνει κόσμο μέσα.",
+  "areaServed":"Αγρίνιο, Ελλάδα",
+  "priceRange":"€€"
+}
+</script>
+<style>
+/* VYDAS.NET — Premium Agency */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{font-family:'Inter','Space Grotesk',system-ui,sans-serif;background:#0A0A0B;color:#F5F5F7;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:none;background:none}
+ul{list-style:none}
+:root{
+  --bg:#0A0A0B;--bg-1:#0F0F11;--bg-2:#141417;--bg-3:#1A1A1F;
+  --surface:rgba(255,255,255,.04);--surface-hover:rgba(255,255,255,.08);
+  --accent:#C8FF00;--accent-2:#FFB84D;--accent-3:#00E5FF;
+  --accent-dim:rgba(200,255,0,.12);--accent-glow:rgba(200,255,0,.25);
+  --text:#F5F5F7;--text-dim:#A0A0A8;--text-muted:#6E6E78;
+  --border:rgba(255,255,255,.08);--border-hover:rgba(255,255,255,.16);
+  --radius:20px;--radius-sm:12px;--radius-lg:28px;--radius-full:999px;
+  --max-w:1240px;--nav-h:72px;
+  --shadow-sm:0 4px 24px rgba(0,0,0,.25);--shadow-md:0 12px 48px rgba(0,0,0,.35);--shadow-lg:0 28px 90px rgba(0,0,0,.5);
+}
+.container{width:100%;max-width:var(--max-w);margin:0 auto;padding:0 clamp(16px,5vw,48px)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}
+#preloader{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;background:var(--bg);transition:opacity .5s ease,visibility .5s ease}
+#preloader.hide{opacity:0;visibility:hidden}
+.preloader-inner{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.4rem;letter-spacing:.1em}
+.preloader-inner span{color:var(--accent)}
+.preloader-bar{width:120px;height:2px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden;margin-top:14px}
+.preloader-bar i{display:block;height:100%;width:0;background:var(--accent);animation:loadBar 1s ease .2s forwards}
+@keyframes loadBar{to{width:100%}}
+nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:1000;display:flex;align-items:center;background:rgba(10,10,11,.72);backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);border-bottom:1px solid var(--border);transition:background .3s,border-color .3s}
+nav.scrolled{background:rgba(10,10,11,.94);border-color:rgba(255,255,255,.14)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:var(--max-w);margin:0 auto;padding:0 clamp(16px,5vw,48px)}
+.nav-logo{display:flex;align-items:center;gap:8px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.25rem;letter-spacing:-.02em;color:var(--text)}
+.nav-logo i{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;font-size:.85rem;color:#0A0A0B}
+.nav-links{display:none;align-items:center;gap:8px}
+.nav-links a{display:inline-flex;align-items:center;padding:8px 14px;border-radius:var(--radius-full);font-size:.88rem;font-weight:500;color:var(--text-dim);transition:color .2s,background .2s}
+.nav-links a:hover,.nav-links a:focus-visible{color:var(--text);background:var(--surface)}
+.nav-cta{display:none;align-items:center;gap:8px;padding:10px 22px;border-radius:var(--radius-full);background:var(--accent);color:#0A0A0B;font-weight:700;font-size:.85rem;transition:transform .2s,box-shadow .2s}
+.nav-cta:hover,.nav-cta:focus-visible{transform:translateY(-2px);box-shadow:0 0 30px rgba(200,255,0,.3)}
+.lang-btn{width:40px;height:40px;border-radius:var(--radius-full);background:var(--surface);border:1px solid var(--border);color:var(--text-dim);font-weight:700;font-size:.78rem;transition:all .2s}
+.lang-btn:hover,.lang-btn:focus-visible{border-color:var(--accent);color:var(--accent)}
+#menuToggle{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:10px;background:var(--surface);border:1px solid var(--border);color:var(--text);font-size:1.2rem;margin-left:12px}
+.mobile-menu{position:fixed;inset:0;top:var(--nav-h);z-index:999;background:rgba(10,10,11,.98);backdrop-filter:blur(30px);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px;transform:translateY(-101%);transition:transform .45s cubic-bezier(.22,1,.36,1)}
+.mobile-menu.open{transform:translateY(0)}
+.mobile-menu a{font-size:clamp(1.45rem,5vw,2.2rem);font-weight:700;color:var(--text);padding:16px 0;opacity:0;transform:translateY(20px);transition:opacity .3s,transform .3s,color .2s}
+.mobile-menu.open a{opacity:1;transform:translateY(0)}
+.mobile-menu.open a:nth-child(1){transition-delay:.05s}
+.mobile-menu.open a:nth-child(2){transition-delay:.1s}
+.mobile-menu.open a:nth-child(3){transition-delay:.15s}
+.mobile-menu.open a:nth-child(4){transition-delay:.2s}
+.mobile-menu.open a:nth-child(5){transition-delay:.25s}
+.mobile-menu.open a:nth-child(6){transition-delay:.3s}
+.mobile-menu a:hover,.mobile-menu a:focus-visible{color:var(--accent)}
+.mobile-lang{margin-top:24px}
+#hero{position:relative;min-height:100svh;display:flex;align-items:center;padding-top:calc(var(--nav-h) + 40px);padding-bottom:80px;overflow:hidden;background:radial-gradient(ellipse 120% 100% at 80% 0%,rgba(200,255,0,.08),transparent 55%),radial-gradient(ellipse 80% 60% at 20% 100%,rgba(0,229,255,.06),transparent 45%)}
+#hero-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.85;filter:drop-shadow(0 0 20px rgba(200,255,0,.15))}
+.floating-shapes{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.shape{position:absolute;border-radius:30% 70% 70% 30% / 30% 30% 70% 70%;filter:blur(60px);opacity:.35;animation:floatShape 20s ease-in-out infinite}
+.shape-1{width:320px;height:320px;background:var(--accent);top:15%;right:-5%;animation-delay:0s}
+.shape-2{width:260px;height:260px;background:var(--accent-2);bottom:20%;left:-8%;animation-delay:-7s;animation-duration:25s}
+.shape-3{width:180px;height:180px;background:var(--accent-3);top:45%;right:25%;animation-delay:-12s;animation-duration:22s;opacity:.25}
+.shape-4{width:140px;height:140px;background:rgba(200,255,0,.5);top:60%;right:10%;animation-delay:-5s;animation-duration:18s;border-radius:50%}
+@keyframes floatShape{0%,100%{transform:translateY(0) rotate(0deg) scale(1)}50%{transform:translateY(-40px) rotate(20deg) scale(1.1)}}
+.hero-mouse-wrap{position:absolute;inset:0;z-index:2;pointer-events:none;transition:transform .15s linear}
+.hero-gradient{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(200,255,0,.10) 0%,transparent 55%),radial-gradient(ellipse 60% 50% at 80% 60%,rgba(255,184,77,.07) 0%,transparent 50%),radial-gradient(ellipse 50% 40% at 20% 80%,rgba(0,229,255,.05) 0%,transparent 45%)}
+.hero-grid{position:absolute;inset:0;z-index:1;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse 80% 60% at 50% 50%,black,transparent)}
+.hero-content{position:relative;z-index:2;width:100%}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;padding:10px 20px;border-radius:var(--radius-full);background:var(--surface);border:1px solid var(--border);font-size:.78rem;font-weight:700;color:var(--text-dim);margin-bottom:28px;backdrop-filter:blur(8px)}
+.hero-badge::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+#hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.7rem,7.5vw,5.4rem);font-weight:700;line-height:1.04;letter-spacing:-.03em;margin-bottom:24px}
+#hero h1 em{font-style:normal;background:linear-gradient(135deg,var(--accent) 0%,var(--accent-2) 50%,var(--accent-3) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-fill-color:transparent;filter:drop-shadow(0 0 26px rgba(200,255,0,.25))}
+#hero h1 .dim{color:var(--text-muted)}
+.hero-sub{font-size:clamp(1.05rem,2vw,1.3rem);color:var(--text-dim);max-width:600px;margin-bottom:36px;line-height:1.7}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:56px}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;padding:16px 32px;border-radius:var(--radius-full);background:var(--accent);color:#0A0A0B;font-weight:800;font-size:.95rem;transition:transform .2s,box-shadow .2s,filter .2s}
+.btn-primary:hover,.btn-primary:focus-visible{transform:translateY(-3px);box-shadow:0 12px 40px rgba(200,255,0,.25);filter:brightness(1.05)}
+.btn-secondary{display:inline-flex;align-items:center;gap:10px;padding:16px 32px;border-radius:var(--radius-full);background:var(--surface);border:1px solid var(--border);color:var(--text);font-weight:600;font-size:.95rem;transition:all .25s;backdrop-filter:blur(8px)}
+.btn-secondary:hover,.btn-secondary:focus-visible{border-color:var(--accent);color:var(--accent);background:rgba(200,255,0,.06)}
+.hero-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.hero-stat{padding:20px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--border);backdrop-filter:blur(12px)}
+.hero-stat .num{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:800;color:var(--accent);line-height:1}
+.hero-stat .label{font-size:.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em;margin-top:6px}
+.section-header{margin-left:auto;margin-right:auto;max-width:760px;text-align:center;margin-bottom:56px}
+.section-header.center{text-align:center}
+.section-tag{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.15em;color:var(--accent);margin-bottom:14px}
+.section-header h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,5vw,3.6rem);font-weight:700;line-height:1.08;letter-spacing:-.02em;margin-bottom:16px}
+.section-header h2 em{font-style:normal;color:var(--accent-2)}
+.section-header p{color:var(--text-dim);max-width:580px;font-size:1.05rem;line-height:1.6}
+#services,#process,#testimonials,#contact{padding:100px 0}
+#portfolio,#pricing,#faq{padding:100px 0;background:var(--bg-1)}
+.services-grid{align-items:stretch;display:grid;grid-template-columns:1fr;gap:20px}
+.service-card{position:relative;padding:28px;border-radius:var(--radius);background:linear-gradient(180deg,var(--bg-2),var(--bg-1));border:1px solid var(--border);overflow:hidden;transition:transform .35s,box-shadow .35s,border-color .35s;transform-style:preserve-3d}
+.service-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(200,255,0,.10),transparent 50%);opacity:0;transition:opacity .3s;pointer-events:none}
+.service-card:hover::before{opacity:1}
+.service-card:hover{transform:translateY(-8px);border-color:var(--border-hover);box-shadow:var(--shadow-md)}
+.service-icon{width:54px;height:54px;border-radius:14px;background:var(--surface);border:1px solid var(--border);display:grid;place-items:center;font-size:1.4rem;color:var(--accent);margin-bottom:22px;transition:transform .3s}
+.service-card:hover .service-icon{transform:scale(1.1)}
+.service-card h3{font-size:1.25rem;font-weight:700;margin-bottom:10px}
+.service-card p{font-size:.95rem;color:var(--text-dim);line-height:1.6}
+.portfolio-grid{align-items:stretch;display:grid;grid-template-columns:1fr;gap:24px}
+.port-card{position:relative;border-radius:var(--radius);overflow:hidden;background:var(--bg-2);border:1px solid var(--border);aspect-ratio:4/3;transition:transform .35s,box-shadow .35s;transform-style:preserve-3d}
+.port-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .65s cubic-bezier(.22,1,.36,1)}
+.port-card:hover img{transform:scale(1.08)}
+.port-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
+.port-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(10,10,11,.92) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:24px;opacity:1;transition:opacity .3s}
+.port-card h3{font-size:1.3rem;font-weight:700;margin-bottom:4px}
+.port-card .cat{font-size:.78rem;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.port-link{position:absolute;inset:0;z-index:2}
+.port-link:focus-visible{outline:3px solid var(--accent);outline-offset:-4px}
+.process-grid{align-items:stretch;display:grid;grid-template-columns:1fr;gap:20px;counter-reset:step}
+.proc-card{position:relative;padding:28px;border-radius:var(--radius);background:var(--bg-2);border:1px solid var(--border);transition:transform .3s,border-color .3s;overflow:hidden}
+.proc-card::before{counter-increment:step;content:'0' counter(step);position:absolute;top:16px;right:20px;font-family:'Space Grotesk',sans-serif;font-size:2.8rem;font-weight:800;color:rgba(255,255,255,.04);line-height:1}
+.proc-card:hover{transform:translateY(-6px);border-color:var(--border-hover)}
+.proc-icon{width:48px;height:48px;border-radius:12px;background:var(--surface);border:1px solid var(--border);display:grid;place-items:center;font-size:1.1rem;color:var(--accent);margin-bottom:18px}
+.proc-card h3{font-size:1.2rem;font-weight:700;margin-bottom:8px}
+.proc-card p{font-size:.95rem;color:var(--text-dim);line-height:1.6}
+.pricing-grid{align-items:stretch;display:grid;grid-template-columns:1fr;gap:24px}
+.price-card{position:relative;padding:32px;border-radius:var(--radius-lg);background:linear-gradient(180deg,var(--bg-2),var(--bg-1));border:1px solid var(--border);transition:transform .35s,box-shadow .35s;transform-style:preserve-3d}
+.price-card.featured{border-color:rgba(255,184,77,.35);background:linear-gradient(180deg,rgba(255,184,77,.08),var(--bg-1))}
+.price-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-md)}
+.price-card.featured:hover{box-shadow:0 28px 90px rgba(255,184,77,.15)}
+.price-badge{position:absolute;top:16px;right:16px;padding:6px 14px;border-radius:var(--radius-full);background:var(--accent);color:#0A0A0B;font-size:.7rem;font-weight:900;text-transform:uppercase;letter-spacing:.05em}
+.price-card h3{font-size:1.55rem;font-weight:800;margin-bottom:6px}
+.price-card .subtitle{font-size:.92rem;color:var(--text-dim);margin-bottom:20px}
+.price-amount{font-family:'Space Grotesk',sans-serif;font-size:3rem;font-weight:900;color:var(--text);line-height:1}
+.price-amount span{font-size:1rem;color:var(--text-muted);font-weight:500}
+.price-features{margin:26px 0}
+.price-features li{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:.93rem;color:var(--text-dim)}
+.price-features li:last-child{border-bottom:none}
+.price-features i{color:var(--accent);font-size:.85rem}
+.price-card .btn-primary{width:100%;justify-content:center}
+.testimonials-grid{display:grid;grid-template-columns:1fr;gap:20px}
+.testi-card{position:relative;padding:28px;border-radius:var(--radius);background:var(--bg-2);border:1px solid var(--border);transition:transform .3s,box-shadow .3s}
+.testi-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-sm)}
+.testi-stars{color:var(--accent-2);font-size:.9rem;margin-bottom:16px;letter-spacing:2px}
+.testi-card p{font-size:1.05rem;color:var(--text);line-height:1.7;margin-bottom:24px}
+.testi-author{display:flex;align-items:center;gap:14px}
+.testi-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;font-weight:800;color:#0A0A0B;font-size:1rem}
+.testi-author div{font-size:.95rem;font-weight:700}
+.testi-author span{display:block;font-size:.8rem;color:var(--text-muted);font-weight:500}
+.faq-list{max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.faq-item{border-radius:var(--radius);background:var(--bg-2);border:1px solid var(--border);overflow:hidden}
+.faq-question{width:100%;display:flex;align-items:center;justify-content:space-between;padding:22px 24px;text-align:left;color:var(--text);font-size:1.05rem;font-weight:700;transition:background .2s}
+.faq-question:hover,.faq-question:focus-visible{background:var(--surface-hover)}
+.faq-question i{color:var(--accent);font-size:.85rem;transition:transform .3s}
+.faq-item.open .faq-question i{transform:rotate(180deg)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.22,1,.36,1)}
+.faq-answer-inner{padding:0 24px 22px;color:var(--text-dim);line-height:1.7;font-size:.95rem}
+#cta{position:relative;padding:120px 0;overflow:hidden}
+#cta::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(200,255,0,.10),transparent 60%);pointer-events:none}
+.cta-card{position:relative;z-index:2;text-align:center;padding:clamp(40px,6vw,80px);border-radius:var(--radius-lg);background:linear-gradient(180deg,var(--bg-2),var(--bg));border:1px solid var(--border);box-shadow:var(--shadow-lg);overflow:hidden}
+.cta-card::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(255,255,255,.06),transparent 50%);pointer-events:none}
+#cta h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:800;line-height:1.08;margin-bottom:16px}
+#cta p{color:var(--text-dim);max-width:560px;margin:0 auto 32px;font-size:1.1rem;line-height:1.6}
+.contact-grid{display:grid;grid-template-columns:1fr;gap:40px}
+.contact-info{display:flex;flex-direction:column;gap:18px}
+.contact-item{display:flex;align-items:flex-start;gap:16px;padding:22px;border-radius:var(--radius);background:var(--bg-2);border:1px solid var(--border);transition:transform .25s,border-color .25s}
+.contact-item:hover{transform:translateY(-4px);border-color:var(--border-hover)}
+.contact-item i{width:44px;height:44px;border-radius:12px;background:var(--surface);border:1px solid var(--border);display:grid;place-items:center;color:var(--accent);font-size:1.1rem;flex-shrink:0}
+.contact-item strong{display:block;font-size:1.05rem;margin-bottom:4px}
+.contact-item span{color:var(--text-dim);font-size:.9rem}
+.contact-cta{display:flex;flex-direction:column;gap:18px;padding:32px;border-radius:var(--radius-lg);background:var(--bg-2);border:1px solid var(--border);justify-content:center;height:100%}
+.contact-cta .btn-primary,.contact-cta .btn-secondary{justify-content:center}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group label{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted)}
+.form-group input,.form-group textarea{padding:14px 16px;border-radius:var(--radius-sm);background:var(--bg-1);border:1px solid var(--border);color:var(--text);font-size:.95rem;transition:border-color .2s,box-shadow .2s}
+.form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(200,255,0,.1)}
+.form-group textarea{min-height:120px;resize:vertical}
+footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--border)}
+.footer-grid{display:grid;grid-template-columns:1fr;gap:40px;margin-bottom:48px}
+.footer-brand .nav-logo{margin-bottom:16px}
+.footer-brand p{color:var(--text-dim);font-size:.95rem;max-width:320px;line-height:1.6}
+.footer-col h4{font-size:.85rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--text);margin-bottom:20px}
+.footer-col a{display:block;color:var(--text-dim);padding:8px 0;font-size:.9rem;transition:color .2s}
+.footer-col a:hover,.footer-col a:focus-visible{color:var(--accent)}
+.footer-bottom{display:flex;flex-direction:column;gap:16px;align-items:center;justify-content:space-between;padding-top:24px;border-top:1px solid var(--border);color:var(--text-muted);font-size:.85rem}
+.footer-social{display:flex;gap:12px}
+.footer-social a{width:40px;height:40px;border-radius:50%;background:var(--bg-2);border:1px solid var(--border);display:grid;place-items:center;color:var(--text-dim);transition:all .2s}
+.footer-social a:hover,.footer-social a:focus-visible{background:var(--accent);color:#0A0A0B;border-color:var(--accent)}
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal.delay-1{transition-delay:.1s}
+.reveal.delay-2{transition-delay:.2s}
+.reveal.delay-3{transition-delay:.3s}
+*:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+@media (min-width:640px){.hero-stats{grid-template-columns:repeat(4,1fr)}.services-grid{grid-template-columns:repeat(2,1fr)}.portfolio-grid{grid-template-columns:repeat(2,1fr)}.testimonials-grid{grid-template-columns:repeat(2,1fr)}.pricing-grid{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1024px){#menuToggle{display:none}.nav-links{display:flex}.nav-cta{display:inline-flex}.mobile-menu{display:none!important}.hero-content{text-align:center}.hero-sub{margin-left:auto;margin-right:auto;max-width:640px}.hero-actions{justify-content:center}.services-grid{grid-template-columns:repeat(3,1fr)}.portfolio-grid{grid-template-columns:repeat(3,1fr)}.pricing-grid{grid-template-columns:repeat(3,1fr)}.process-grid{grid-template-columns:repeat(4,1fr)}.contact-grid{grid-template-columns:1fr 1fr;align-items:stretch}.footer-grid{grid-template-columns:repeat(4,1fr)}.footer-bottom{flex-direction:row}}
+  svg[aria-hidden="true"]{display:inline-block;vertical-align:middle;flex-shrink:0}
+.contact-cta{display:flex;flex-direction:column;gap:18px;padding:32px;border-radius:var(--radius-lg);background:var(--bg-2);border:1px solid var(--border);justify-content:center;height:100%}
+.contact-cta .btn-primary,.contact-cta .btn-secondary{justify-content:center}
+.footer-link-text{display:block;color:var(--text-dim);font-size:.9rem;margin-bottom:.4rem}
+.section-header,.hero-content,.contact-grid{box-sizing:border-box}
+</style>
 </head>
-<body><main>
+<body>
+<!-- PRELOADER -->
+<div id="preloader" role="status" aria-live="polite" aria-label="Φόρτωση σελίδας">
+  <div class="preloader-inner">VYDAS<span>.NET</span>
+    <div class="preloader-bar"><i></i></div>
+  </div>
+</div>
 
-  <!-- FTC DISCLOSURE -->
+<!-- NAV -->
+<nav aria-label="Hauptnavigation">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo" aria-label="VYDAS.NET Startseite"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>VYDAS<span>.NET</span></a>
+    <ul class="nav-links" role="menubar">
+      <li role="none"><a href="#services" role="menuitem" data-i18n="nav_services"></a></li>
+      <li role="none"><a href="#portfolio" role="menuitem" data-i18n="nav_portfolio"></a></li>
+      <li role="none"><a href="#process" role="menuitem" data-i18n="nav_process"></a></li>
+      <li role="none"><a href="#pricing" role="menuitem" data-i18n="nav_pricing"></a></li>
+      <li role="none"><a href="#faq" role="menuitem" data-i18n="nav_faq"></a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="lang-btn" onclick="toggleLanguage()" aria-label="Sprache wechseln" data-i18n="lang_btn"></button>
+      <a href="https://chat.whatsapp.com/Grx1qNjlCgcAdEYfcWGvNx?s=cl&amp;p=a&amp;ilr=1" target="_blank" rel="noopener" class="nav-cta" data-i18n="nav_cta"></a>
+      <button id="menuToggle" onclick="toggleMenu()" aria-label="Άνοιγμα μενού" aria-expanded="false" aria-controls="mobileMenu"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobile Navigation" aria-modal="true">
+  <a href="#services" onclick="closeMenu()" data-i18n="nav_services"></a>
+  <a href="#portfolio" onclick="closeMenu()" data-i18n="nav_portfolio"></a>
+  <a href="#process" onclick="closeMenu()" data-i18n="nav_process"></a>
+  <a href="#pricing" onclick="closeMenu()" data-i18n="nav_pricing"></a>
+  <a href="#faq" onclick="closeMenu()" data-i18n="nav_faq"></a>
+  <div class="mobile-lang">
+    <button class="lang-btn" onclick="toggleLanguage();closeMenu()" data-i18n="lang_btn"></button>
+  </div>
+</div>
+
+<!-- HERO -->
+<section id="hero" aria-label="Hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-gradient" aria-hidden="true"></div>
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="floating-shapes" aria-hidden="true">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+  </div>
+  <div class="container hero-content">
+    <div class="hero-badge reveal" data-i18n="hero_badge"></div>
+    <h1 class="reveal delay-1" data-th="hero_h"><em>όντως</em> φέρνουν<span class="dim"> κόσμο μέσα.</span></h1>
+    <p class="hero-sub reveal delay-2" data-i18n="hero_p"></p>
+    
+    <div class="hero-actions reveal delay-3">
+      <a href="https://chat.whatsapp.com/Grx1qNjlCgcAdEYfcWGvNx?s=cl&amp;p=a&amp;ilr=1" target="_blank" rel="noopener" class="btn-primary" data-i18n="hero_cta1"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>Πάρε Προσφορά</a>
+      <a href="#portfolio" class="btn-secondary" data-i18n="hero_cta2"></a>
+    </div>
+    
+    <div class="hero-stats reveal delay-3">
+      <div class="hero-stat"><div class="num">50+</div><div class="label" data-i18n="stat1_label"></div></div>
+      <div class="hero-stat"><div class="num">100%</div><div class="label" data-i18n="stat2_label"></div></div>
+      <div class="hero-stat"><div class="num">2</div><div class="label" data-i18n="stat3_label"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" aria-labelledby="services-title">
   <div class="container">
-    <div class="disclosure">
-      <strong>Affiliate Disclosure:</strong> This page contains affiliate links. If you open an account through these links, I may earn a commission at no extra cost to you. I only recommend brokers I've personally evaluated. <a href="https://www.ictrading.com?camp=89713" target="_blank" rel="noopener">ICTrading</a> is regulated and offers negative balance protection.
+    <header class="section-header center reveal">
+      <span class="section-tag" data-i18n="services_tag"></span>
+      <h2 id="services-title" data-th="services_h"><em>καφενείο</em> σου</h2>
+      <p data-i18n="services_p"></p>
+    </header>
+    
+    <div class="services-grid">
+      <article class="service-card reveal">
+        <div class="service-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m17 3-5 5-5-5"></path><path d="m17 21-5-5-5 5"></path><path d="M12 8V3"></path><path d="M12 21v-5"></path></svg></div>
+        <h3 data-i18n="srv1_t"></h3>
+        <p data-i18n="srv1_d"></p>
+      </article>
+      <article class="service-card reveal delay-1">
+        <div class="service-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg></div>
+        <h3 data-i18n="srv2_t"></h3>
+        <p data-i18n="srv2_d"></p>
+      </article>
+      <article class="service-card reveal delay-2">
+        <div class="service-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon><line x1="9" y1="3" x2="9" y2="18"></line><line x1="15" y1="6" x2="15" y2="21"></line></svg></div>
+        <h3 data-i18n="srv3_t"></h3>
+        <p data-i18n="srv3_d"></p>
+      </article>
+      <article class="service-card reveal">
+        <div class="service-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"></path><path d="M7 2v20"></path><path d="M21 2v10a5 5 0 0 1-5 5h-.25"></path><path d="M21 2v20"></path></svg></div>
+        <h3 data-i18n="srv4_t"></h3>
+        <p data-i18n="srv4_d"></p>
+      </article>
+      <article class="service-card reveal delay-1">
+        <div class="service-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path><circle cx="12" cy="13" r="3"></circle></svg></div>
+        <h3 data-i18n="srv5_t"></h3>
+        <p data-i18n="srv5_d"></p>
+      </article>
+      <article class="service-card reveal delay-2">
+        <div class="service-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></div>
+        <h3 data-i18n="srv6_t"></h3>
+        <p data-i18n="srv6_d"></p>
+      </article>
     </div>
   </div>
+</section>
 
-  <!-- ===== HERO (ATTENTION) ===== -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-logo">
-        <div class="logo-mark">V</div>
-        <div class="logo-text"><span class="vy">vy</span><span class="das">das</span></div>
-      </div>
-
-      <div class="badge">★ Trusted by 50,000+ Traders Worldwide</div>
-
-      <h1>Trade 2000+ Instruments with Spreads from 0.0 Pips</h1>
-      <p class="subtitle">ICTrading gives you institutional-grade trading conditions — raw spreads, no requotes, and the same liquidity as the world's biggest banks. Regulated and trusted since 2010.</p>
-
-      <div class="hero-cta-group">
-        <a href="https://www.ictrading.com?camp=89713" class="cta-primary" target="_blank" rel="noopener">
-          Open a Free Account →
-        </a>
-        <a href="/ictrading-starter-kit.html" class="cta-secondary">
-          📘 Free Starter Kit
-        </a>
-      </div>
-      <span class="cta-note">No deposit required · Free demo available · 1-Click withdrawal</span>
-    </div>
-  </section>
-
-  <!-- ===== TRUST BAR ===== -->
-  <div class="trust-bar">
-    <div class="trust-item">
-      <span class="stars">★★★★★</span> <span class="num">4.6</span> Trustpilot
-    </div>
-    <div class="trust-item">
-      <span class="num">50,000+</span> Active Traders
-    </div>
-    <div class="trust-item">
-      <span class="num">2000+</span> Instruments
-    </div>
-    <div class="trust-item">
-      <span class="num">2010</span> Founded
+<!-- PORTFOLIO -->
+<section id="portfolio" aria-labelledby="portfolio-title">
+  <div class="container">
+    <header class="section-header center reveal">
+      <span class="section-tag" data-i18n="port_tag"></span>
+      <h2 id="portfolio-title" data-th="port_h"><em>έργα</em></h2>
+      <p data-i18n="port_p"></p>
+    </header>
+    
+    <div class="portfolio-grid">
+      <article class="port-card reveal">
+        <a href="https://plateia.cipherclaw.workers.dev" target="_blank" rel="noopener" class="port-link" aria-label="Cafe Plateia" ></a>
+        <img src="https://images.pexels.com/photos/32912254/pexels-photo-32912254.jpeg?auto=compress&cs=tinysrgb&w=500&h=300" alt="Cafe Plateia" width="800" height="600" loading="lazy" decoding="async">
+        <div class="port-overlay">
+          <span class="cat">Καφενείο</span>
+          <h3>Cafe Plateia</h3>
+        </div>
+      </article>
+      <article class="port-card reveal delay-1">
+        <a href="https://roadrunner.cipherclaw.workers.dev" target="_blank" rel="noopener" class="port-link" aria-label="Road Runner" ></a>
+        <img src="https://images.pexels.com/photos/18719653/pexels-photo-18719653.jpeg?auto=compress&cs=tinysrgb&w=500&h=300" alt="Road Runner" width="800" height="600" loading="lazy" decoding="async">
+        <div class="port-overlay">
+          <span class="cat">Fast Food</span>
+          <h3>Road Runner</h3>
+        </div>
+      </article>
+      <article class="port-card reveal delay-2">
+        <a href="https://bonjour.cipherclaw.workers.dev" target="_blank" rel="noopener" class="port-link" aria-label="Bonjour" ></a>
+        <img src="https://images.pexels.com/photos/27967012/pexels-photo-27967012.jpeg?auto=compress&cs=tinysrgb&w=500&h=300" alt="Bonjour" width="800" height="600" loading="lazy" decoding="async">
+        <div class="port-overlay">
+          <span class="cat">Καφενείο</span>
+          <h3>Bonjour</h3>
+        </div>
+      </article>
+      <article class="port-card reveal">
+        <a href="https://coffeestate.cipherclaw.workers.dev" target="_blank" rel="noopener" class="port-link" aria-label="Coffee State" ></a>
+        <img src="https://images.pexels.com/photos/38082102/pexels-photo-38082102.jpeg?auto=compress&cs=tinysrgb&w=500&h=300" alt="Coffee State" width="800" height="600" loading="lazy" decoding="async">
+        <div class="port-overlay">
+          <span class="cat">Καφενείο</span>
+          <h3>Coffee State</h3>
+        </div>
+      </article>
+      <article class="port-card reveal delay-1">
+        <a href="https://ilnove.cipherclaw.workers.dev" target="_blank" rel="noopener" class="port-link" aria-label="Il Nove" ></a>
+        <img src="https://images.pexels.com/photos/19075109/pexels-photo-19075109.jpeg?auto=compress&cs=tinysrgb&w=500&h=300" alt="Il Nove" width="800" height="600" loading="lazy" decoding="async">
+        <div class="port-overlay">
+          <span class="cat">Εστιατόριο</span>
+          <h3>Il Nove</h3>
+        </div>
+      </article>
+      <article class="port-card reveal delay-2">
+        <a href="https://bcafebar.cipherclaw.workers.dev" target="_blank" rel="noopener" class="port-link" aria-label="B. Cafe Bar" ></a>
+        <img src="https://images.pexels.com/photos/29702582/pexels-photo-29702582.jpeg?auto=compress&cs=tinysrgb&w=500&h=300" alt="B. Cafe Bar" width="800" height="600" loading="lazy" decoding="async">
+        <div class="port-overlay">
+          <span class="cat">Cafe Bar</span>
+          <h3>B. Cafe Bar</h3>
+        </div>
+      </article>
+      <article class="port-card reveal">
+        <a href="https://zucchero.cipherclaw.workers.dev" target="_blank" rel="noopener" class="port-link" aria-label="Zucchero" ></a>
+        <img src="https://images.pexels.com/photos/35727292/pexels-photo-35727292.jpeg?auto=compress&cs=tinysrgb&w=500&h=300" alt="Zucchero" width="800" height="600" loading="lazy" decoding="async">
+        <div class="port-overlay">
+          <span class="cat">Καφενείο</span>
+          <h3>Zucchero</h3>
+        </div>
+      </article>
+      <article class="port-card reveal delay-1">
+        <a href="https://akis.cipherclaw.workers.dev" target="_blank" rel="noopener" class="port-link" aria-label="Akis" ></a>
+        <img src="https://images.pexels.com/photos/13561529/pexels-photo-13561529.jpeg?auto=compress&cs=tinysrgb&w=500&h=300" alt="Akis" width="800" height="600" loading="lazy" decoding="async">
+        <div class="port-overlay">
+          <span class="cat">Εστιατόριο</span>
+          <h3>Akis</h3>
+        </div>
+      </article>
+      <article class="port-card reveal delay-2">
+        <a href="https://elatte.cipherclaw.workers.dev" target="_blank" rel="noopener" class="port-link" aria-label="E Latte" ></a>
+        <img src="https://images.pexels.com/photos/14361688/pexels-photo-14361688.jpeg?auto=compress&cs=tinysrgb&w=500&h=300" alt="E Latte" width="800" height="600" loading="lazy" decoding="async">
+        <div class="port-overlay">
+          <span class="cat">Καφενείο</span>
+          <h3>E Latte</h3>
+        </div>
+      </article>
+      <article class="port-card reveal">
+        <a href="https://mrcoffee.cipherclaw.workers.dev" target="_blank" rel="noopener" class="port-link" aria-label="Mr Coffee" ></a>
+        <img src="https://images.pexels.com/photos/2133449/pexels-photo-2133449.jpeg?auto=compress&cs=tinysrgb&w=500&h=300" alt="Mr Coffee" width="800" height="600" loading="lazy" decoding="async">
+        <div class="port-overlay">
+          <span class="cat">Καφενείο</span>
+          <h3>Mr Coffee</h3>
+        </div>
+      </article>
+      <article class="port-card reveal delay-1">
+        <a href="https://liveloula.cipherclaw.workers.dev" target="_blank" rel="noopener" class="port-link" aria-label="Liveloula" ></a>
+        <img src="https://images.pexels.com/photos/19615766/pexels-photo-19615766.jpeg?auto=compress&cs=tinysrgb&w=500&h=300" alt="Liveloula" width="800" height="600" loading="lazy" decoding="async">
+        <div class="port-overlay">
+          <span class="cat">Cafe Bar</span>
+          <h3>Liveloula</h3>
+        </div>
+      </article>
+      <article class="port-card reveal delay-2">
+        <a href="https://panda.cipherclaw.workers.dev" target="_blank" rel="noopener" class="port-link" aria-label="Panda" ></a>
+        <img src="https://images.pexels.com/photos/5946616/pexels-photo-5946616.jpeg?auto=compress&cs=tinysrgb&w=500&h=300" alt="Panda" width="800" height="600" loading="lazy" decoding="async">
+        <div class="port-overlay">
+          <span class="cat">Fast Food</span>
+          <h3>Panda</h3>
+        </div>
+      </article>
+      <article class="port-card reveal">
+        <a href="https://grillfilias.cipherclaw.workers.dev" target="_blank" rel="noopener" class="port-link" aria-label="Grill Filias" ></a>
+        <img src="https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&w=500&h=300" alt="Grill Filias" width="800" height="600" loading="lazy" decoding="async">
+        <div class="port-overlay">
+          <span class="cat">Grill House</span>
+          <h3>Grill Filias</h3>
+        </div>
+      </article>
+      <article class="port-card reveal delay-1">
+        <a href="https://dos.cipherclaw.workers.dev" target="_blank" rel="noopener" class="port-link" aria-label="Dos Cafe Bar" ></a>
+        <img src="https://images.pexels.com/photos/1234565/pexels-photo-1234565.jpeg?auto=compress&cs=tinysrgb&w=500&h=300" alt="Dos Cafe Bar" width="800" height="600" loading="lazy" decoding="async">
+        <div class="port-overlay">
+          <span class="cat">Cafe Bar</span>
+          <h3>Dos Cafe Bar</h3>
+        </div>
+      </article>
+      <article class="port-card reveal delay-2">
+        <a href="https://jolly-mud-5973.cipherclaw.workers.dev/" target="_blank" rel="noopener" class="port-link" aria-label="Frodizo" ></a>
+        <img src="https://wild-cell-41b0.cipherclaw.workers.dev/images/about-care-1.jpg" alt="Frodizo" width="800" height="600" loading="lazy" decoding="async">
+        <div class="port-overlay">
+          <span class="cat">NGO</span>
+          <h3>Frodizo</h3>
+        </div>
+      </article>
+      <article class="port-card reveal">
+        <a href="https://wild-cell-41b0.cipherclaw.workers.dev/" target="_blank" rel="noopener" class="port-link" aria-label="Frodizo V2" ></a>
+        <img src="https://wild-cell-41b0.cipherclaw.workers.dev/images/about-care-2.jpg" alt="Frodizo V2" width="800" height="600" loading="lazy" decoding="async">
+        <div class="port-overlay">
+          <span class="cat">NGO</span>
+          <h3>Frodizo V2</h3>
+        </div>
+      </article>
     </div>
   </div>
+</section>
 
-  <!-- ===== STATS ROW (INTEREST) ===== -->
-  <section>
-    <div class="container">
-      <div class="stats-row reveal">
-        <div class="stat-item">
-          <div class="num">2000+</div>
-          <div class="label">Instruments</div>
+<!-- PROCESS -->
+<section id="process" aria-labelledby="process-title">
+  <div class="container">
+    <header class="section-header center reveal">
+      <span class="section-tag" data-i18n="proc_tag"></span>
+      <h2 id="process-title" data-th="proc_h"><em>δουλεύουμε</em></h2>
+      <p data-i18n="proc_p"></p>
+    </header>
+    
+    <div class="process-grid">
+      <article class="proc-card reveal">
+        <div class="proc-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
+        <h3 data-i18n="proc1_t"></h3>
+        <p data-i18n="proc1_d"></p>
+      </article>
+      <article class="proc-card reveal delay-1">
+        <div class="proc-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg></div>
+        <h3 data-i18n="proc2_t"></h3>
+        <p data-i18n="proc2_d"></p>
+      </article>
+      <article class="proc-card reveal delay-2">
+        <div class="proc-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
+        <h3 data-i18n="proc3_t"></h3>
+        <p data-i18n="proc3_d"></p>
+      </article>
+      <article class="proc-card reveal delay-3">
+        <div class="proc-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path></svg></div>
+        <h3 data-i18n="proc4_t"></h3>
+        <p data-i18n="proc4_d"></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" aria-labelledby="pricing-title">
+  <div class="container">
+    <header class="section-header center reveal">
+      <span class="section-tag" data-i18n="price_tag"></span>
+      <h2 id="pricing-title" data-th="price_h"><em>τιμές</em></h2>
+      <p data-i18n="price_p"></p>
+    </header>
+    
+    <div class="pricing-grid">
+      <article class="price-card reveal">
+        <h3 data-i18n="price1_t"></h3>
+        <p class="subtitle" data-i18n="price1_s"></p>
+        <div class="price-amount">€299<span data-i18n="price1_period"></span></div>
+        <ul class="price-features">
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="price1_f1"></span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="price1_f2"></span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="price1_f3"></span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="price1_f4"></span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="price1_f5"></span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="price1_f6"></span></li>
+        </ul>
+        <a href="https://chat.whatsapp.com/Grx1qNjlCgcAdEYfcWGvNx?s=cl&amp;p=a&amp;ilr=1" target="_blank" rel="noopener" class="btn-primary" data-i18n="price_btn"></a>
+      </article>
+      
+      <article class="price-card featured reveal delay-1">
+        <span class="price-badge" data-i18n="popular_badge"></span>
+        <h3 data-i18n="price2_t"></h3>
+        <p class="subtitle" data-i18n="price2_s"></p>
+        <div class="price-amount">€599<span data-i18n="price2_period"></span></div>
+        <ul class="price-features">
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="price2_f1"></span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="price2_f2"></span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="price2_f3"></span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="price2_f4"></span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="price2_f5"></span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="price2_f6"></span></li>
+        </ul>
+        <a href="https://chat.whatsapp.com/Grx1qNjlCgcAdEYfcWGvNx?s=cl&amp;p=a&amp;ilr=1" target="_blank" rel="noopener" class="btn-primary" data-i18n="price_btn"></a>
+      </article>
+      
+      <article class="price-card reveal delay-2">
+        <h3 data-i18n="price3_t"></h3>
+        <p class="subtitle" data-i18n="price3_s"></p>
+        <div class="price-amount">€99<span data-i18n="price3_period"></span></div>
+        <ul class="price-features">
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="price3_f1"></span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="price3_f2"></span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="price3_f3"></span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="price3_f4"></span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="price3_f5"></span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="price3_f6"></span></li>
+        </ul>
+        <a href="https://chat.whatsapp.com/Grx1qNjlCgcAdEYfcWGvNx?s=cl&amp;p=a&amp;ilr=1" target="_blank" rel="noopener" class="btn-primary" data-i18n="price_btn"></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" aria-labelledby="testimonials-title">
+  <div class="container">
+    <header class="section-header center reveal">
+      <span class="section-tag" data-i18n="testi_tag"></span>
+      <h2 id="testimonials-title" data-th="testi_h"><em>πελάτες</em> μας</h2>
+      <p data-i18n="testi_p"></p>
+    </header>
+    
+    <div class="testimonials-grid">
+      <article class="testi-card reveal">
+        <div class="testi-stars" aria-label="5 στα 5 Τέλειο">★★★★★</div>
+        <p data-i18n="testi1_t"></p>
+        <div class="testi-author">
+          <div class="testi-avatar" aria-hidden="true">Π</div>
+          <div>
+            <div data-i18n="testi1_r"></div>
+            <span>Καφενείο, Αγρίνιο</span>
+          </div>
         </div>
-        <div class="stat-item">
-          <div class="num">0.0</div>
-          <div class="label">Spreads From</div>
+      </article>
+      
+      <article class="testi-card reveal delay-1">
+        <div class="testi-stars" aria-label="5 στα 5 Τέλειο">★★★★★</div>
+        <p data-i18n="testi2_t"></p>
+        <div class="testi-author">
+          <div class="testi-avatar" aria-hidden="true">Κ</div>
+          <div>
+            <div data-i18n="testi2_r"></div>
+            <span>Cafe Bar, Αγρίνιο</span>
+          </div>
         </div>
-        <div class="stat-item">
-          <div class="num">1:500</div>
-          <div class="label">Max Leverage</div>
+      </article>
+      
+      <article class="testi-card reveal delay-2">
+        <div class="testi-stars" aria-label="5 στα 5 Τέλειο">★★★★★</div>
+        <p data-i18n="testi3_t"></p>
+        <div class="testi-author">
+          <div class="testi-avatar" aria-hidden="true">I</div>
+          <div>
+            <div data-i18n="testi3_r"></div>
+            <span>Εστιατόριο, Αγρίνιο</span>
+          </div>
         </div>
-        <div class="stat-item">
-          <div class="num">0.01</div>
-          <div class="label">Min Lot Size</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" aria-labelledby="faq-title">
+  <div class="container">
+    <header class="section-header center reveal">
+      <span class="section-tag" data-i18n="faq_tag"></span>
+      <h2 id="faq-title" data-th="faq_h"><em>ερωτήσεις</em></h2>
+      <p data-i18n="faq_p"></p>
+    </header>
+    
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span data-i18n="faq1_q"></span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner" data-i18n="faq1_a"></div>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span data-i18n="faq2_q"></span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner" data-i18n="faq2_a"></div>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span data-i18n="faq3_q"></span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner" data-i18n="faq3_a"></div>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span data-i18n="faq4_q"></span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner" data-i18n="faq4_a"></div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ===== FEATURES (INTEREST) ===== -->
-  <section class="features" id="features">
-    <div class="container">
-      <div class="section-label">Why ICTrading</div>
-      <h2 class="section-title reveal">Built for Serious Traders</h2>
-      <p class="section-desc reveal reveal-delay-1">Every feature is designed to remove friction and give you the best possible trading conditions. No gimmicks, just raw performance.</p>
+<!-- CTA -->
+<section id="cta" aria-labelledby="cta-title">
+  <div class="container">
+    <div class="cta-card reveal">
+      <h2 id="cta-title" data-th="cta_h"><em>ξεκινήσεις</em>;</h2>
+      <p data-i18n="cta_p"></p>
+      <a href="https://chat.whatsapp.com/Grx1qNjlCgcAdEYfcWGvNx?s=cl&amp;p=a&amp;ilr=1" target="_blank" rel="noopener" class="btn-primary" data-i18n="cta_btn"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>Στείλε μας μήνυμα</a>
+    </div>
+  </div>
+</section>
 
-      <div class="feature-grid reveal reveal-delay-2">
-        <div class="feature-card">
-          <div class="icon">⚡</div>
-          <h3>Raw Spreads from 0.0 Pips</h3>
-          <p>Access institutional-grade liquidity from 16+ global banks and ECNs. No markup, no requotes — just the raw spread you'd get as a million-dollar fund.</p>
+<!-- CONTACT -->
+<section id="contact" aria-labelledby="contact-title">
+  <div class="container">
+    <header class="section-header center reveal">
+      <span class="section-tag" data-i18n="contact_tag"></span>
+      <h2 id="contact-title" data-th="contact_h"><em>χρειάζεσαι</em></h2>
+      <p data-i18n="contact_p"></p>
+    </header>
+    
+    <div class="contact-grid reveal">
+      <div class="contact-info">
+        <a href="https://chat.whatsapp.com/Grx1qNjlCgcAdEYfcWGvNx?s=cl&amp;p=a&amp;ilr=1" target="_blank" rel="noopener" class="contact-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+          <div>
+            <strong data-i18n="contact_wa"></strong>
+            <span data-i18n="contact_wa_d"></span>
+          </div>
+        </a>
+        
+        <div class="contact-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          <div>
+            <strong data-i18n="contact_loc"></strong>
+            <span data-i18n="contact_loc_d"></span>
+          </div>
         </div>
-        <div class="feature-card">
-          <div class="icon">🌐</div>
-          <h3>2000+ Tradable Instruments</h3>
-          <p>61 Forex pairs, 25 Indices, 20+ Commodities, 2100+ Stocks, Bonds, Futures, and 21 Cryptocurrencies. One account, one platform, unlimited markets.</p>
-        </div>
-        <div class="feature-card">
-          <div class="icon">🛡️</div>
-          <h3>Regulated & Segregated Funds</h3>
-          <p>Client funds held in segregated accounts with top-tier banks. Regulated by FSA (SVG) with negative balance protection. Your capital is protected.</p>
-        </div>
-        <div class="feature-card">
-          <div class="icon">📱</div>
-          <h3>MT4, MT5 & WebTrader</h3>
-          <p>Trade on the industry-standard MetaTrader platforms — desktop, web, and mobile. Full EA support, custom indicators, and one-click trading.</p>
-        </div>
-        <div class="feature-card">
-          <div class="icon">💳</div>
-          <h3>Instant Deposits & Fast Withdrawals</h3>
-          <p>Deposit via Credit Card, Bank Wire, Crypto, Skrill, Neteller, and more. Withdrawals processed within 24 hours — no hidden fees, no delays.</p>
-        </div>
-        <div class="feature-card">
-          <div class="icon">📊</div>
-          <h3>Free Demo Account</h3>
-          <p>Test your strategies risk-free with $100,000 virtual funds. Same market conditions, same platforms, same spreads — zero risk.</p>
+        
+        <div class="contact-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <div>
+            <strong data-i18n="contact_time"></strong>
+            <span data-i18n="contact_time_d"></span>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ===== TRUSTPILOT (DESIRE) ===== -->
-  <section class="trustpilot">
-    <div class="container">
-      <div class="section-label">Social Proof</div>
-      <h2 class="section-title reveal">What Traders Say</h2>
-      <p class="section-desc reveal reveal-delay-1">Real reviews from real traders on Trustpilot. See why thousands choose ICTrading.</p>
-
-      <div class="trustpilot-card reveal reveal-delay-2">
-        <div class="tp-stars">★★★★★</div>
-        <div class="tp-score">4.6</div>
-        <div class="tp-label">Trustpilot Rating</div>
-        <div class="tp-count">Based on 1,200+ verified reviews</div>
-        <a href="https://www.trustpilot.com/review/ictrading.com" class="tp-link" target="_blank" rel="noopener">
-          Read All Reviews →
+      
+      <div class="contact-cta">
+        <a href="https://chat.whatsapp.com/Grx1qNjlCgcAdEYfcWGvNx?s=cl&amp;p=a&amp;ilr=1" target="_blank" rel="noopener" class="btn-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+          <span data-i18n="contact_wa_btn"></span>
+        </a>
+        <a href="mailto:info@vydas.net" class="btn-secondary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          <span data-i18n="contact_email_btn"></span>
         </a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ===== CTA SECTION (ACTION) ===== -->
-  <section class="cta-section">
-    <div class="container">
-      <div class="section-label">Get Started</div>
-      <h2 class="section-title reveal">Start Trading in 3 Minutes</h2>
-      <p class="section-desc reveal reveal-delay-1">Open a free account, deposit any amount, and start trading 2000+ instruments with raw spreads. No hidden fees, no minimum deposit requirements.</p>
-
-      <div class="cta-benefits reveal reveal-delay-2">
-        <span><span class="check">✓</span> Free Demo Account</span>
-        <span><span class="check">✓</span> No Hidden Fees</span>
-        <span><span class="check">✓</span> Fast Withdrawals</span>
+<!-- FOOTER -->
+<footer aria-label="Footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#hero" class="nav-logo" aria-label="VYDAS.NET Startseite"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>VYDAS<span>.NET</span></a>
+        <p data-i18n="footer_desc"></p>
       </div>
-
-      <div class="reveal reveal-delay-3">
-        <a href="https://www.ictrading.com?camp=89713" class="cta-primary" target="_blank" rel="noopener">
-          Open Your Free Account →
-        </a>
-        <span class="cta-note">No credit card required · 1-Click withdrawal · 24/7 support</span>
+      
+      <div class="footer-col">
+        <h4 data-i18n="footer_nav"></h4>
+        <a href="#services" data-i18n="nav_services"></a>
+        <a href="#portfolio" data-i18n="nav_portfolio"></a>
+        <a href="#pricing" data-i18n="nav_pricing"></a>
+        <a href="#faq" data-i18n="nav_faq"></a>
       </div>
-    </div>
-  </section>
-
-  <!-- ===== FAQ (OBJECTION HANDLING) ===== -->
-  <section class="faq">
-    <div class="container">
-      <div class="section-label">FAQ</div>
-      <h2 class="section-title reveal">Questions? We've Got Answers</h2>
-      <p class="section-desc reveal reveal-delay-1">Everything you need to know before opening an account.</p>
-
-      <div class="faq-list reveal reveal-delay-2">
-        <details class="faq-item">
-          <summary>Is ICTrading regulated?</summary>
-          <p>Yes. ICTrading is registered in St. Vincent & the Grenadines (FSA) and operates under strict compliance standards. Client funds are held in segregated accounts with top-tier banks, and negative balance protection is provided to all retail clients.</p>
-        </details>
-        <details class="faq-item">
-          <summary>What is the minimum deposit?</summary>
-          <p>There is no minimum deposit requirement. You can start with any amount that suits your trading style. We recommend starting with the free demo account to test your strategies before depositing real funds.</p>
-        </details>
-        <details class="faq-item">
-          <summary>What platforms are supported?</summary>
-          <p>ICTrading supports MetaTrader 4 (MT4), MetaTrader 5 (MT5), and WebTrader — all available on desktop, web, iOS, and Android. Full Expert Advisor (EA) support, custom indicators, and algorithmic trading are all included.</p>
-        </details>
-        <details class="faq-item">
-          <summary>How fast are withdrawals?</summary>
-          <p>Withdrawals are processed within 24 hours on business days. We support multiple withdrawal methods including Bank Wire, Credit Card, Crypto, Skrill, and Neteller. No hidden fees — you get exactly what you request.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Can I trade cryptocurrencies?</summary>
-          <p>Yes. ICTrading offers 21 cryptocurrency pairs including Bitcoin, Ethereum, Ripple, Litecoin, and more. All crypto trading is available on the same platforms with the same low spreads.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Is there a demo account?</summary>
-          <p>Absolutely. You get a free demo account with $100,000 in virtual funds. It uses real market conditions and live spreads — perfect for testing strategies, learning the platform, or evaluating ICTrading before depositing.</p>
-        </details>
+      
+      <div class="footer-col">
+        <h4 data-i18n="footer_legal"></h4>
+        <a href="#" data-i18n="footer_privacy"></a>
+        <a href="#" data-i18n="footer_terms"></a>
+        <a href="#" data-i18n="footer_imprint"></a>
+      </div>
+      
+      <div class="footer-col">
+        <h4 data-i18n="footer_social"></h4>
+        <div class="footer-social">
+          <a href="javascript:void(0);" aria-disabled="true" aria-label="Instagram><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+          <a href="javascript:void(0);" aria-disabled="true" aria-label="Facebook><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+          <a href="javascript:void(0);" aria-disabled="true" aria-label="LinkedIn><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+        </div>
       </div>
     </div>
-  </section>
-
-  <!-- ===== FINAL CTA (FINAL ACTION) ===== -->
-  <section class="cta-section" style="background: var(--bg-primary);">
-    <div class="container">
-      <h2 class="section-title reveal">Ready to Trade with the Best Conditions?</h2>
-      <p class="section-desc reveal reveal-delay-1">Join 50,000+ traders who chose ICTrading for raw spreads, 2000+ instruments, and institutional-grade execution. Open your account in 3 minutes.</p>
-
-      <div class="reveal reveal-delay-2">
-        <a href="https://www.ictrading.com?camp=89713" class="cta-primary" target="_blank" rel="noopener">
-          Open Your Free Account →
-        </a>
-        <span class="cta-note">No deposit required · Free demo · 24/7 support</span>
-      </div>
+    
+    <div class="footer-bottom">
+      <span data-i18n="footer_copy"></span>
+      <span>Made with <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg> in Agrinio</span>
     </div>
-  </section>
+  </div>
+</footer>
+<script>
+(function(){
+  'use strict';
 
-  <!-- ===== FOOTER ===== -->
-  </main><footer class="page-footer">
-    <div class="footer-links">
-      <a href="https://www.ictrading.com?camp=89713" target="_blank" rel="noopener">ICTrading</a>
-      <a href="https://www.trustpilot.com/review/ictrading.com" target="_blank" rel="noopener">Trustpilot Reviews ?</a>
-      <a href="https://www.ictrading.com?camp=89713" target="_blank" rel="noopener">Open Account ?</a>
-    </div>
-    <div class="footer-copy">
-      © 2026 vydas.net — Independent ICTrading affiliate. All rights reserved.
-    </div>
-  </footer></main>
+  var T = {
+    gr: {
+      nav_services:'Υπηρεσίες', nav_portfolio:'Πορτφόλιο', nav_process:'Διαδικασία', nav_pricing:'Τιμές', nav_testimonials:'Μαρτυρίες', nav_faq:'FAQ', nav_cta:'Πάρε Προσφορά', lang_btn:'EN',
+      hero_badge:'Custom Web Design · Premium Ιστοσελίδες · Αγρίνιο',
+      hero_p:'Εγχειρίδια websites για cafes, εστιατόρια και τοπικές επιχειρήσεις. Χωρίς templates, χωρίς συζήτηση — design που φέρνει κόσμο μέσα.',
+      hero_cta1:'Πάρε Προσφορά', hero_cta2:'Δες τη δουλειά μας',
+      stat1_label:'Projects Delivered', stat2_label:'Custom Built', stat3_label:'EN / GR Bilingual',
+      services_tag:'Υπηρεσίες', services_p:'Ολοκληρωμένες λύσεις για την ψηφιακή παρουσία της επιχείρησής σου.',
+      srv1_t:'Σχεδιασμός Ιστοσελίδας', srv1_d:'Κομψές, σύγχρονο design προσαρμοσμένο στην ταυτότητα του καταστήματος.',
+      srv2_t:'Mobile Friendly', srv2_d:'Άψογα optimized για κινητά — οι περισσότεροι πελάτες σε βλέπουν από το κινητό.',
+      srv3_t:'Google Maps', srv3_d:'Ενσωμάτωση χάρτη με οδηγίες προς το κατάστημά σου με ένα κλικ.',
+      srv4_t:'Ψηφιακό Μενού', srv4_d:'Όμορφο μενού με φωτογραφίες και τιμές — εύκολα ενημερώσιμο.',
+      srv5_t:'Φωτογραφίες', srv5_d:'Επαγγελματικές φωτογραφίες καταστήματος και πιάτων για εντυπωσιακό αποτέλεσμα.',
+      srv6_t:'SEO & Ταχύτητα', srv6_d:'Σελίδες που φορτώνουν σε δευτερόλεπτα και βρίσκονται εύκολα στη Google.',
+      port_tag:'Πορτφόλιο', port_p:'Ιστοσελίδες που σχεδιάσαμε για καφενεία και εστιατόρια.',
+      proc_tag:'Διαδικασία', proc_p:'Απλά βήματα από την ιδέα στην παράδοση.',
+      proc1_t:'Συζήτηση', proc1_d:'Κάνουμε μια κουβέντα για τις ανάγκες και τον χαρακτήρα του καταστήματος.',
+      proc2_t:'Σχεδιασμός', proc2_d:'Δημιουργούμε το design και σας στέλνουμε για έγκριση.',
+      proc3_t:'Ανάπτυξη', proc3_d:'Χτίζουμε την ιστοσελίδα με ταχύτητα και προσοχή στη λεπτομέρεια.',
+      proc4_t:'Παράδοση', proc4_d:'Την ανεβάζουμε online και είναι έτοιμη να δεχτεί πελάτες.',
+      price_tag:'Τιμές', price_p:'Επίλεξε το πακέτο που σου ταιριάζει. Χωρίς κρυφά κόστη.',
+      price1_t:'Starter', price1_s:'Ιδανικό για μικρά καφενεία', price1_period:'/εφάπαξ',
+      price1_f1:'Μία σελίδα (Landing)', price1_f2:'Mobile friendly', price1_f3:'Google Maps', price1_f4:'Επαφή WhatsApp', price1_f5:'Ψηφιακό μενού', price1_f6:'Social Media Links',
+      price2_t:'Professional', price2_s:'Για καφενεία που θέλουν να ξεχωρίσουν', price2_period:'/εφάπαξ',
+      price2_f1:'Πολυσελίδα (έως 5)', price2_f2:'Ψηφιακό μενού', price2_f3:'Φωτογραφίες Pexels', price2_f4:'SEO βασικό', price2_f5:'Google Maps', price2_f6:'Επαφή WhatsApp',
+      price3_t:'Business+', price3_s:'Πλήρης λύση με συνδρομή', price3_period:'/μήνα',
+      price3_f1:'Απεριόριστες σελίδες', price3_f2:'Σχεδιασμός κατ\' απαίτηση', price3_f3:'Online παραγγελίες', price3_f4:'Διαχείριση κρατήσεων', price3_f5:'Monthly updates', price3_f6:'Υποστήριξη 24/7',
+      price_btn:'Ξεκίνα τώρα', popular_badge:'Δημοφιλές',
+      testi_tag:'Μαρτυρίες', testi_p:'Η ικανοποίηση των πελατών μας είναι προτεραιότητα.',
+      testi1_t:'Η ιστοσελίδα που μας έφτιαξαν ήταν εξαιρετική. Οι πελάτες μας συχνά κάνουν κομπλιμέντο. Συνιστώ ανεπιφύλακτα!', testi1_r:'Cafe Plateia',
+      testi2_t:'Επαγγελματική δουλειά, γρήγορη παράδοση. Το μενού online άλλαξε το κατάστημά μας. Άριστη συνεργασία.', testi2_r:'Coffee State',
+      testi3_t:'Από την πρώτη επαφή ήταν άψογοι. Κατάλαβαν ακριβώς τι θέλαμε και το υλοποίησαν πάνω από τις προσδοκίες μας.', testi3_r:'Il Nove',
+      faq_tag:'FAQ', faq_p:'Ό,τι χρειάζεται να ξέρεις πριν ξεκινήσεις.',
+      faq1_q:'Πόσο χρόνο χρειάζεται η κατασκευή;', faq1_a:'Συνήθως 7–14 ημέρες από την έγκριση του design. Εξαρτάται από τον αριθμό σελίδων και το υλικό που μας στέλνεις.',
+      faq2_q:'Χρειάζεται να έχω φωτογραφίες;', faq2_a:'Όχι απαραίτητα. Μπορούμε να χρησιμοποιήσουμε επαγγελματικές φωτογραφίες από Pexels/Unsplash που ταιριάζουν στο στυλ σου. Αν έχεις δικές σου, ακόμα καλύτερα.',
+      faq3_q:'Μπορώ να αλλάξω κάτι μετά;', faq3_a:'Φυσικά. Το πακέτο Business+ περιλαμβάνει μηνιαίες ανανεώσεις. Για εφάπαξ πακέτα προσφέρουμε αλλαγές με μικρή χρέωση.',
+      faq4_q:'Τι γίνεται με το domain και hosting;', faq4_a:'Αναλαμβάνουμε πλήρως την ανάρτηση στο Cloudflare ή στον πάροχο της επιλογής σου. Μπορούμε επίσης να σε καθοδηγήσουμε για αγορά domain.',
+      cta_p:'Επικοινώνησε μαζί μας στο WhatsApp και φτιάξουμε την ιστοσελίδα του καταστήματός σου.', cta_btn:'Στείλε μας μήνυμα',
+      contact_tag:'Επικοινωνία', contact_p:'Στείλε μας μήνυμα και θα επικοινωνήσουμε μαζί σου άμεσα.',
+      contact_wa:'WhatsApp', contact_wa_d:'Άμεση απάντηση σε λίγα λεπτά',
+      contact_loc:'Τοποθεσία', contact_loc_d:'Αγρίνιο, Ελλάδα',
+      contact_time:'Ωράριο', contact_time_d:'Δευτέρα–Σάββατο, 09:00–21:00',
+      footer_desc:'Premium ιστοσελίδες για καφενεία, εστιατόρια και τοπικές επιχειρήσεις. Χωρίς templates, χωρίς συζήτηση.',
+      footer_nav:'Navigation', footer_legal:'Νομικά', footer_privacy:'Πολιτική Απορρήτου', footer_terms:'Όροι Χρήσης', footer_imprint:'Impressum', footer_social:'Ακολούθησέ μας', footer_copy:'© 2026 VYDAS.NET — Με επιφύλαξη παντός δικαιώματος.'
+    },
+    en: {
+      nav_services:'Services', nav_portfolio:'Portfolio', nav_process:'Process', nav_pricing:'Pricing', nav_testimonials:'Testimonials', nav_faq:'FAQ', nav_cta:'Get a Quote', lang_btn:'GR',
+      hero_badge:'Custom Web Design · Premium Websites · Agrinio',
+      hero_p:'Handcrafted websites for cafes, restaurants and local businesses. No templates, no back-and-forth — design that brings customers in.',
+      hero_cta1:'Get a Quote', hero_cta2:'View Our Work',
+      stat1_label:'Projects Delivered', stat2_label:'Custom Built', stat3_label:'EN / GR Bilingual',
+      services_tag:'Services', services_p:'Complete solutions for your digital business presence.',
+      srv1_t:'Website Design', srv1_d:'Clean, modern design tailored to your shop\'s identity.',
+      srv2_t:'Mobile Friendly', srv2_d:'Flawlessly optimized for mobile — most customers find you on their phone.',
+      srv3_t:'Google Maps', srv3_d:'Embedded map with directions to your shop in one tap.',
+      srv4_t:'Digital Menu', srv4_d:'Beautiful menu with photos and prices — easy to update.',
+      srv5_t:'Photography', srv5_d:'Professional shop and dish photos for an impressive result.',
+      srv6_t:'SEO & Speed', srv6_d:'Pages that load in seconds and rank easily on Google.',
+      port_tag:'Portfolio', port_p:'Websites we designed for cafes and restaurants.',
+      proc_tag:'Process', proc_p:'Simple steps from idea to delivery.',
+      proc1_t:'Discovery', proc1_d:'We talk about your needs and the character of your shop.',
+      proc2_t:'Design', proc2_d:'We create the design and send it for your approval.',
+      proc3_t:'Development', proc3_d:'We build the website with speed and attention to detail.',
+      proc4_t:'Launch', proc4_d:'We publish it online and it is ready to welcome customers.',
+      price_tag:'Pricing', price_p:'Pick the package that fits you. No hidden costs.',
+      price1_t:'Starter', price1_s:'Ideal for small cafes', price1_period:'/one-time',
+      price1_f1:'One page (Landing)', price1_f2:'Mobile friendly', price1_f3:'Google Maps', price1_f4:'WhatsApp contact', price1_f5:'Digital menu', price1_f6:'Social media links',
+      price2_t:'Professional', price2_s:'For cafes that want to stand out', price2_period:'/one-time',
+      price2_f1:'Multi-page (up to 5)', price2_f2:'Digital menu', price2_f3:'Pexels photos', price2_f4:'Basic SEO', price2_f5:'Google Maps', price2_f6:'WhatsApp contact',
+      price3_t:'Business+', price3_s:'Full solution with subscription', price3_period:'/month',
+      price3_f1:'Unlimited pages', price3_f2:'Custom design', price3_f3:'Online orders', price3_f4:'Booking management', price3_f5:'Monthly updates', price3_f6:'24/7 support',
+      price_btn:'Start Now', popular_badge:'Popular',
+      testi_tag:'Testimonials', testi_p:'Our customers\' satisfaction is our priority.',
+      testi1_t:'The website they built for us was excellent. Our customers often compliment it. Highly recommended!', testi1_r:'Cafe Plateia',
+      testi2_t:'Professional work, fast delivery. The online menu changed our shop. Excellent collaboration.', testi2_r:'Coffee State',
+      testi3_t:'From the first contact they were flawless. They understood exactly what we wanted and delivered beyond expectations.', testi3_r:'Il Nove',
+      faq_tag:'FAQ', faq_p:'Everything you need to know before starting.',
+      faq1_q:'How long does it take to build?', faq1_a:'Usually 7–14 days from design approval. It depends on the number of pages and the material you send us.',
+      faq2_q:'Do I need photos?', faq2_a:'Not necessarily. We can use professional photos from Pexels/Unsplash that match your style. If you have your own, even better.',
+      faq3_q:'Can I change something later?', faq3_a:'Of course. The Business+ package includes monthly updates. For one-time packages we offer changes at a small fee.',
+      faq4_q:'What about domain and hosting?', faq4_a:'We fully handle publishing on Cloudflare or a provider of your choice. We can also guide you in buying a domain.',
+      cta_p:'Message us on WhatsApp and let\'s build your shop\'s website.', cta_btn:'Send a Message',
+      contact_tag:'Contact', contact_p:'Send us a message and we will get back to you immediately.',
+      contact_wa:'WhatsApp', contact_wa_d:'Instant reply in a few minutes',
+      contact_loc:'Location', contact_loc_d:'Agrinio, Greece',
+      contact_time:'Hours', contact_time_d:'Mon–Sat, 09:00–21:00',
+      footer_desc:'Premium websites for cafes, restaurants and local businesses. No templates, no back-and-forth.',
+      footer_nav:'Navigation', footer_legal:'Legal', footer_privacy:'Privacy Policy', footer_terms:'Terms of Use', footer_imprint:'Imprint', footer_social:'Follow Us', footer_copy:'© 2026 VYDAS.NET — All rights reserved.'
+    }
+  };
 
-  <script>
-    // Scroll reveal with IntersectionObserver
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+  var TH = {
+    gr: {
+      hero_h:'Websites που <em>όντως</em> φέρνουν<span class="dim"> κόσμο μέσα.</span>',
+      services_h:'Όλα όσα χρειάζεται το <em>καφενείο</em> σου',
+      port_h:'Πρόσφατα <em>έργα</em>',
+      proc_h:'Πώς <em>δουλεύουμε</em>',
+      price_h:'Διαφανείς <em>τιμές</em>',
+      testi_h:'Τι λένε οι <em>πελάτες</em> μας',
+      faq_h:'Συχνές <em>ερωτήσεις</em>',
+      cta_h:'Έτοιμος να <em>ξεκινήσεις</em>;',
+      contact_h:'Πες μας τι <em>χρειάζεσαι</em>'
+    },
+    en: {
+      hero_h:'Websites that <em>actually</em> bring<span class="dim"> customers in.</span>',
+      services_h:'Everything your <em>cafe</em> needs',
+      port_h:'Recent <em>work</em>',
+      proc_h:'How we <em>work</em>',
+      price_h:'Transparent <em>pricing</em>',
+      testi_h:'What our <em>clients</em> say',
+      faq_h:'Frequently asked <em>questions</em>',
+      cta_h:'Ready to <em>start</em>?',
+      contact_h:'Tell us what you <em>need</em>'
+    }
+  };
+
+  var lang = localStorage.getItem('vydas-lang') || 'gr';
+
+  function setText(el, val){
+    if(!el || val === undefined) return;
+    if(val.indexOf('<') > -1) el.innerHTML = val; else el.textContent = val;
+  }
+
+  function applyLang(newLang){
+    lang = newLang;
+    localStorage.setItem('vydas-lang', lang);
+    var t = T[lang];
+    var th = TH[lang];
+    document.documentElement.lang = lang === 'gr' ? 'el' : 'en';
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var key = el.getAttribute('data-i18n');
+      if(t[key] !== undefined){
+        var svg = el.querySelector('svg');
+        if(svg){
+          var txt = document.createTextNode(' ' + t[key]);
+          el.appendChild(txt);
+          var combined = '';
+          el.childNodes.forEach(function(n){ if(n.nodeType === 3) combined += n.textContent; });
+          el.innerHTML = '';
+          el.appendChild(svg);
+          el.appendChild(document.createTextNode(' ' + t[key]));
+        } else {
+          setText(el, t[key]);
+        }
+      }
+    });
+    document.querySelectorAll('[data-th]').forEach(function(el){
+      var key = el.getAttribute('data-th');
+      if(th[key] !== undefined) el.innerHTML = th[key];
+    });
+  }
+
+  window.toggleLanguage = function(){
+    applyLang(lang === 'gr' ? 'en' : 'gr');
+  };
+
+  /* Mobile menu */
+  var menu = document.getElementById('mobileMenu');
+  var toggle = document.getElementById('menuToggle');
+
+  window.toggleMenu = function(){
+    var open = menu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.style.overflow = open ? 'hidden' : '';
+  };
+  window.closeMenu = function(){
+    menu.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  };
+
+  /* Preloader */
+  setTimeout(function(){ var p = document.getElementById('preloader'); if(p) p.classList.add('hide'); }, 1200);
+  window.addEventListener('load', function(){
+    setTimeout(function(){
+      var p = document.getElementById('preloader');
+      if(p) p.classList.add('hide');
+    }, 300);
+  });
+
+  /* Scroll nav background */
+  var nav = document.querySelector('nav');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 20) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  }, {passive:true});
+
+  /* Scroll reveal */
+  function initReveal(){
+    if(!('IntersectionObserver' in window)){
+      document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('active'); });
+      return;
+    }
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    }, {threshold: 0.15, rootMargin: '0px 0px -30px 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){ observer.observe(el); });
+  }
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-  </script>
+  /* FAQ accordion */
+  function initFAQ(){
+    document.querySelectorAll('.faq-question').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var item = btn.parentElement;
+        var open = item.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        var answer = item.querySelector('.faq-answer');
+        if(open) answer.style.maxHeight = answer.scrollHeight + 'px';
+        else answer.style.maxHeight = '0';
+      });
+    });
+  }
 
+  /* Card spotlight effect */
+  function initSpotlight(){
+    if(window.matchMedia('(pointer: coarse)').matches) return;
+    document.querySelectorAll('.service-card, .price-card').forEach(function(card){
+      card.addEventListener('mousemove', function(e){
+        var rect = card.getBoundingClientRect();
+        card.style.setProperty('--mx', ((e.clientX - rect.left) / rect.width * 100) + '%');
+        card.style.setProperty('--my', ((e.clientY - rect.top) / rect.height * 100) + '%');
+      });
+    });
+  }
+
+  /* Canvas 3D wireframe torus */
+  function initCanvas(){
+    var canvas = document.getElementById('hero-canvas');
+    if(!canvas || !canvas.getContext) return;
+    var ctx = canvas.getContext('2d');
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var width, height;
+    var mouseX = 0, mouseY = 0;
+
+    function resize(){
+      width = canvas.parentElement.clientWidth;
+      height = canvas.parentElement.clientHeight;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      canvas.style.width = width + 'px';
+      canvas.style.height = height + 'px';
+      ctx.setTransform(1,0,0,1,0,0);
+      ctx.scale(dpr, dpr);
+    }
+    resize();
+    window.addEventListener('resize', resize, {passive:true});
+    canvas.parentElement.addEventListener('mousemove', function(e){
+      var rect = canvas.parentElement.getBoundingClientRect();
+      mouseX = (e.clientX - rect.left) / width - 0.5;
+      mouseY = (e.clientY - rect.top) / height - 0.5;
+    }, {passive:true});
+
+    var points = [];
+    var rings = 10, sectors = 16;
+    var R = 160, r = 50;
+    for(var i = 0; i < rings; i++){
+      for(var j = 0; j < sectors; j++){
+        var u = i / rings * Math.PI * 2;
+        var v = j / sectors * Math.PI * 2;
+        points.push({
+          x: (R + r * Math.cos(v)) * Math.cos(u),
+          y: (R + r * Math.cos(v)) * Math.sin(u),
+          z: r * Math.sin(v)
+        });
+      }
+    }
+
+    var angleX = 0.2, angleY = 0.4, angleZ = 0;
+    var t = 0;
+    var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var lastFrame = 0;
+
+    function loop(now){
+      requestAnimationFrame(loop);
+      if(now - lastFrame < 50) return;
+      lastFrame = now;
+      if(document.hidden) return;
+
+      t += prefersReduced ? 0.003 : 0.008;
+      angleY += 0.003;
+      angleX = 0.2 + Math.sin(t) * 0.12 + mouseY * 0.25;
+      angleZ = mouseX * 0.2;
+      ctx.clearRect(0, 0, width, height);
+
+      var projected = [];
+      for(var k = 0; k < points.length; k++){
+        var p = points[k];
+        var y1 = p.y * Math.cos(angleX) - p.z * Math.sin(angleX);
+        var z1 = p.y * Math.sin(angleX) + p.z * Math.cos(angleX);
+        var x2 = p.x * Math.cos(angleY) - z1 * Math.sin(angleY);
+        var z2 = p.x * Math.sin(angleY) + z1 * Math.cos(angleY);
+        var x3 = x2 * Math.cos(angleZ) - y1 * Math.sin(angleZ);
+        var y3 = x2 * Math.sin(angleZ) + y1 * Math.cos(angleZ);
+        var scale = 520 / (520 + z2 + 200);
+        projected.push({ x: width/2 + x3 * scale, y: height/2 + y3 * scale, z: z2 });
+      }
+
+      ctx.lineWidth = 1.4;
+      for(var a = 0; a < rings; a++){
+        for(var b = 0; b < sectors; b++){
+          var idx = a * sectors + b;
+          var p1 = projected[idx];
+          var p2 = projected[a * sectors + ((b + 1) % sectors)];
+          var p3 = projected[((a + 1) % rings) * sectors + b];
+          var alpha = Math.max(0.08, 0.35 * ((p1.z + 250) / 500));
+          ctx.strokeStyle = 'rgba(200,255,0,' + alpha + ')';
+          ctx.beginPath(); ctx.moveTo(p1.x, p1.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
+          ctx.strokeStyle = 'rgba(255,184,77,' + alpha * 0.8 + ')';
+          ctx.beginPath(); ctx.moveTo(p1.x, p1.y); ctx.lineTo(p3.x, p3.y); ctx.stroke();
+        }
+      }
+
+      ctx.fillStyle = 'rgba(200,255,0,0.85)';
+      for(var k = 0; k < projected.length; k += 4){
+        var pp = projected[k];
+        var a2 = Math.max(0.15, 0.55 * ((pp.z + 250) / 500));
+        ctx.globalAlpha = a2;
+        ctx.beginPath();
+        ctx.arc(pp.x, pp.y, 1.4, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+    }
+    loop(0);
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    applyLang(lang);
+    initReveal();
+    initFAQ();
+    initSpotlight();
+    initCanvas();
+  });
+})();
+</script>
 </body>
 </html>
-
-
-
-
-
-
-
-
