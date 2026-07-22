@@ -949,7 +949,7 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
     });
   }
 
-  /* OPTIMIZED 3D HERO CANVAS */
+  /* SCROLL-SCRUBBED 3D WORLD CANVAS */
   function initCanvas(){
     var canvas = document.getElementById('hero-canvas');
     if(!canvas || !canvas.getContext) return;
@@ -957,8 +957,7 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
     var ctx = canvas.getContext('2d', { alpha: true });
     var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
     var width, height, cx, cy;
-    var mouseX = 0, mouseY = 0, targetMouseX = 0, targetMouseY = 0;
-    var t = 0;
+    var mouseX=0, mouseY=0, targetMouseX=0, targetMouseY=0;
     var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var rafId = null;
 
@@ -988,9 +987,18 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
       targetMouseY = ((e.clientY - rect.top) / height - 0.5) * 2;
     }, {passive:true});
 
-    var torusR = 170, torusr = 55;
+    // Scroll progress across whole page (0..1)
+    function getScrollProgress(){
+      var st = window.scrollY || window.pageYOffset || 0;
+      var doc = document.documentElement;
+      var max = Math.max(doc.scrollHeight - window.innerHeight, 1);
+      return Math.min(1, Math.max(0, st / max));
+    }
+
+    // Torus
+    var torusR = 160, torusr = 50;
     var torusPoints = [];
-    var torusRings = 12, torusSectors = 20;
+    var torusRings = 10, torusSectors = 18;
     for(var i=0; i<torusRings; i++){
       for(var j=0; j<torusSectors; j++){
         var u = i/torusRings * Math.PI * 2;
@@ -999,165 +1007,203 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
       }
     }
 
-    var cubeSize = 68;
-    var cubePoints = [
-      {x:-cubeSize,y:-cubeSize,z:-cubeSize},{x:cubeSize,y:-cubeSize,z:-cubeSize},
-      {x:cubeSize,y:cubeSize,z:-cubeSize},{x:-cubeSize,y:cubeSize,z:-cubeSize},
-      {x:-cubeSize,y:-cubeSize,z:cubeSize},{x:cubeSize,y:-cubeSize,z:cubeSize},
-      {x:cubeSize,y:cubeSize,z:cubeSize},{x:-cubeSize,y:cubeSize,z:cubeSize}
-    ];
+    // Cube array (world grid)
+    var gridCubes = [];
+    for(var x=-2; x<=2; x++){
+      for(var z=-2; z<=2; z++){
+        gridCubes.push({x:x*110, y:0, z:z*110, size:34});
+      }
+    }
     var cubeEdges = [[0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7]];
 
+    // Particles
     var particles = [];
-    for(var i=0; i<60; i++){
+    for(var i=0; i<80; i++){
       particles.push({
-        x:(Math.random()-0.5)*width, y:(Math.random()-0.5)*height, z:(Math.random()-0.5)*700,
-        vx:(Math.random()-0.5)*0.6, vy:(Math.random()-0.5)*0.6, vz:(Math.random()-0.5)*0.6,
-        size:Math.random()*1.8+0.5
+        x:(Math.random()-0.5)*900, y:(Math.random()-0.5)*600, z:(Math.random()-0.5)*800,
+        vx:(Math.random()-0.5)*0.5, vy:(Math.random()-0.5)*0.5, vz:(Math.random()-0.5)*0.5,
+        size:Math.random()*1.8+0.4
       });
     }
 
     function rotate(p, rx, ry, rz){
-      var cosX = Math.cos(rx), sinX = Math.sin(rx);
-      var y1 = p.y*cosX - p.z*sinX;
-      var z1 = p.y*sinX + p.z*cosX;
-      var cosY = Math.cos(ry), sinY = Math.sin(ry);
-      var x2 = p.x*cosY - z1*sinY;
-      var z2 = p.x*sinY + z1*cosY;
-      var cosZ = Math.cos(rz), sinZ = Math.sin(rz);
-      var x3 = x2*cosZ - y1*sinZ;
-      var y3 = x2*sinZ + y1*cosZ;
+      var cosX=Math.cos(rx), sinX=Math.sin(rx);
+      var y1=p.y*cosX - p.z*sinX;
+      var z1=p.y*sinX + p.z*cosX;
+      var cosY=Math.cos(ry), sinY=Math.sin(ry);
+      var x2=p.x*cosY - z1*sinY;
+      var z2=p.x*sinY + z1*cosY;
+      var cosZ=Math.cos(rz), sinZ=Math.sin(rz);
+      var x3=x2*cosZ - y1*sinZ;
+      var y3=x2*sinZ + y1*cosZ;
       return {x:x3, y:y3, z:z2};
     }
 
-    function project(p, camX, camY){
-      var scale = 720 / (720 + p.z + 200);
-      return { x: cx + p.x*scale + camX, y: cy + p.y*scale + camY, z: p.z, scale: scale };
+    function project(p, camX, camY, camZ, fov){
+      var z = p.z + camZ + 300;
+      if(z <= 0) z = 0.01;
+      var scale = fov / z;
+      return {x: cx + (p.x + camX)*scale, y: cy + (p.y + camY)*scale, z:z, scale:scale};
     }
 
     var lastFrame = 0;
     function loop(now){
       rafId = requestAnimationFrame(loop);
-      if(document.hidden) return;
-      if(prefersReduced) return;
+      if(document.hidden || prefersReduced) return;
       if(now - lastFrame < 33) return;
       lastFrame = now;
 
-      t += 0.014;
-      mouseX += (targetMouseX - mouseX) * 0.08;
-      mouseY += (targetMouseY - mouseY) * 0.08;
-      var camX = mouseX * 70;
-      var camY = mouseY * 45;
+      mouseX += (targetMouseX - mouseX) * 0.07;
+      mouseY += (targetMouseY - mouseY) * 0.07;
+
+      var progress = getScrollProgress();
+      // progress mapped to camera journey: 0..0.35 torus orbit, 0.35..0.7 fly through cube world, 0.7..1 particle tunnel
 
       ctx.clearRect(0,0,width,height);
 
-      var grad = ctx.createRadialGradient(cx+mouseX*100, cy+mouseY*60, 0, cx, cy, Math.max(width,height));
-      grad.addColorStop(0, 'rgba(200,255,0,0.08)');
+      // ambient glow reacts to scroll
+      var glowInt = 0.08 - progress * 0.03;
+      var grad = ctx.createRadialGradient(cx+mouseX*80, cy+mouseY*50, 0, cx, cy, Math.max(width,height));
+      grad.addColorStop(0, 'rgba(200,255,0,'+glowInt+')');
       grad.addColorStop(0.5, 'rgba(255,184,77,0.04)');
       grad.addColorStop(1, 'rgba(10,10,11,0)');
       ctx.fillStyle = grad;
       ctx.fillRect(0,0,width,height);
 
-      ctx.fillStyle = '#C8FF00';
-      for(var i=0; i<particles.length; i++){
-        var pt = particles[i];
-        pt.x += pt.vx + mouseX*2.5;
-        pt.y += pt.vy + mouseY*1.5;
-        pt.z += pt.vz;
-        if(pt.x < -width/2) pt.x = width/2;
-        if(pt.x > width/2) pt.x = -width/2;
-        if(pt.y < -height/2) pt.y = height/2;
-        if(pt.y > height/2) pt.y = -height/2;
-        if(pt.z < -350) pt.z = 350;
-        if(pt.z > 350) pt.z = -350;
-        var pr = project(rotate(pt, t*0.2, t*0.3, 0), camX, camY);
-        var alpha = Math.max(0.15, 0.5 * ((pr.z+350)/700));
-        ctx.globalAlpha = alpha;
-        ctx.beginPath();
-        ctx.arc(pr.x, pr.y, pt.size*pr.scale, 0, Math.PI*2);
-        ctx.fill();
-      }
-      ctx.globalAlpha = 1;
-
-      var rx = 0.4 + Math.sin(t*0.7)*0.16 + mouseY*0.35;
-      var ry = t*0.35 + mouseX*0.4;
-      var rz = mouseX*0.25;
-      var torusProj = [];
-      for(var k=0; k<torusPoints.length; k++){
-        var rp = rotate(torusPoints[k], rx, ry, rz);
-        rp.x += 50;
-        torusProj.push(project(rp, camX, camY));
-      }
-
-      ctx.lineWidth = 1.6;
-      ctx.shadowBlur = 0;
-      for(var a=0; a<torusRings; a++){
-        for(var b=0; b<torusSectors; b++){
-          var idx = a*torusSectors + b;
-          var p1 = torusProj[idx];
-          var p2 = torusProj[a*torusSectors + ((b+1)%torusSectors)];
-          var p3 = torusProj[((a+1)%torusRings)*torusSectors + b];
-          var alpha = Math.max(0.12, 0.55 * ((p1.z+250)/500));
-          ctx.strokeStyle = 'rgba(200,255,0,' + alpha + ')';
-          ctx.beginPath(); ctx.moveTo(p1.x,p1.y); ctx.lineTo(p2.x,p2.y); ctx.stroke();
-          ctx.strokeStyle = 'rgba(255,184,77,' + alpha*0.6 + ')';
-          ctx.beginPath(); ctx.moveTo(p1.x,p1.y); ctx.lineTo(p3.x,p3.y); ctx.stroke();
+      // Phase 1: Torus (0..0.35)
+      var torusFade = 1 - smoothstep(0.30, 0.45, progress);
+      if(torusFade > 0.01){
+        var t = now*0.001 + progress*6;
+        var rx = 0.4 + Math.sin(t*0.7)*0.16 + mouseY*0.35 + progress*1.2;
+        var ry = t*0.35 + mouseX*0.4 + progress*2.5;
+        var rz = mouseX*0.25;
+        var camZ = -200 + progress*800;
+        var fov = 700;
+        var torusProj = [];
+        for(var k=0; k<torusPoints.length; k++){
+          var rp = rotate(torusPoints[k], rx, ry, rz);
+          rp.x += 40;
+          torusProj.push(project(rp, mouseX*60, mouseY*40, camZ, fov));
         }
+        ctx.globalAlpha = torusFade;
+        ctx.lineWidth = 1.6;
+        for(var a=0; a<torusRings; a++){
+          for(var b=0; b<torusSectors; b++){
+            var idx=a*torusSectors+b;
+            var p1=torusProj[idx];
+            var p2=torusProj[a*torusSectors+((b+1)%torusSectors)];
+            var p3=torusProj[((a+1)%torusRings)*torusSectors+b];
+            if(p1.z<=0 || p2.z<=0 || p3.z<=0) continue;
+            var alpha = Math.max(0.12, 0.55 * ((p1.z-300)/500));
+            ctx.strokeStyle = 'rgba(200,255,0,' + alpha + ')';
+            ctx.beginPath(); ctx.moveTo(p1.x,p1.y); ctx.lineTo(p2.x,p2.y); ctx.stroke();
+            ctx.strokeStyle = 'rgba(255,184,77,' + alpha*0.6 + ')';
+            ctx.beginPath(); ctx.moveTo(p1.x,p1.y); ctx.lineTo(p3.x,p3.y); ctx.stroke();
+          }
+        }
+        ctx.fillStyle = '#C8FF00';
+        for(var k=0; k<torusProj.length; k+=2){
+          var pp=torusProj[k];
+          if(pp.z<=0) continue;
+          var a2 = Math.max(0.25, 0.65 * ((pp.z-300)/500));
+          ctx.globalAlpha = a2 * torusFade;
+          ctx.beginPath(); ctx.arc(pp.x, pp.y, 2*pp.scale, 0, Math.PI*2); ctx.fill();
+        }
+        ctx.globalAlpha = 1;
       }
 
-      ctx.fillStyle = '#C8FF00';
-      for(var k=0; k<torusProj.length; k+=2){
-        var pp = torusProj[k];
-        var a2 = Math.max(0.25, 0.65 * ((pp.z+250)/500));
-        ctx.globalAlpha = a2;
-        ctx.beginPath();
-        ctx.arc(pp.x, pp.y, 2*pp.scale, 0, Math.PI*2);
-        ctx.fill();
+      // Phase 2: Cube World (0.25..0.75)
+      var worldFade = smoothstep(0.25,0.40,progress) * (1 - smoothstep(0.65,0.80,progress));
+      if(worldFade > 0.01){
+        var t2 = now*0.001;
+        var worldRotY = t2*0.15 + progress*1.5;
+        var worldRotX = mouseY*0.3 + 0.25;
+        var camZ2 = 600 - progress*1200 + Math.sin(progress*Math.PI*2)*150;
+        var camY2 = -80 - progress*120 + mouseY*50;
+        var fov2 = 650;
+        ctx.globalAlpha = worldFade;
+        ctx.lineWidth = 1.8;
+        ctx.strokeStyle = 'rgba(0,255,200,0.75)';
+        for(var i=0; i<gridCubes.length; i++){
+          var gc = gridCubes[i];
+          var cubePoints = [
+            {x:-gc.size,y:-gc.size,z:-gc.size},{x:gc.size,y:-gc.size,z:-gc.size},
+            {x:gc.size,y:gc.size,z:-gc.size},{x:-gc.size,y:gc.size,z:-gc.size},
+            {x:-gc.size,y:-gc.size,z:gc.size},{x:gc.size,y:-gc.size,z:gc.size},
+            {x:gc.size,y:gc.size,z:gc.size},{x:-gc.size,y:gc.size,z:gc.size}
+          ];
+          var proj = [];
+          for(var k=0;k<cubePoints.length;k++){
+            var p = rotate(cubePoints[k], worldRotX, worldRotY, 0);
+            p.x += gc.x; p.y += gc.y; p.z += gc.z;
+            proj.push(project(p, mouseX*40, camY2, camZ2, fov2));
+          }
+          for(var k=0;k<cubeEdges.length;k++){
+            var e=cubeEdges[k];
+            var p1=proj[e[0]], p2=proj[e[1]];
+            if(p1.z<=0 || p2.z<=0) continue;
+            var alpha = Math.max(0.15, 0.65 * ((p1.z+p2.z-400)/900));
+            ctx.globalAlpha = alpha * worldFade;
+            ctx.beginPath(); ctx.moveTo(p1.x,p1.y); ctx.lineTo(p2.x,p2.y); ctx.stroke();
+          }
+          ctx.fillStyle = '#00FFC8';
+          for(var k=0;k<proj.length;k++){
+            var cp=proj[k];
+            if(cp.z<=0) continue;
+            var a2 = Math.max(0.25, 0.7 * ((cp.z-400)/900));
+            ctx.globalAlpha = a2 * worldFade;
+            ctx.beginPath(); ctx.arc(cp.x, cp.y, 2.6*cp.scale, 0, Math.PI*2); ctx.fill();
+          }
+        }
+        ctx.globalAlpha = 1;
       }
-      ctx.globalAlpha = 1;
 
-      var cRx = t*0.6;
-      var cRy = t*0.35 + mouseY*0.3;
-      var cRz = t*0.2 + mouseX*0.3;
-      var cubeProj = [];
-      for(var k=0; k<cubePoints.length; k++){
-        var cp = rotate(cubePoints[k], cRx, cRy, cRz);
-        cp.x -= 140;
-        cp.y += 30;
-        cubeProj.push(project(cp, camX, camY));
+      // Phase 3: Particle tunnel / warp (0.65..1.0)
+      var tunnelFade = smoothstep(0.65,0.80,progress);
+      if(tunnelFade > 0.01){
+        var speed = 1 + progress*3;
+        ctx.fillStyle = '#C8FF00';
+        for(var i=0; i<particles.length; i++){
+          var pt = particles[i];
+          pt.z += pt.vz * speed + speed*2;
+          pt.y += pt.vy * 0.5 + mouseY*1.5;
+          pt.x += pt.vx * 0.5 + mouseX*2;
+          if(pt.z > 500) pt.z = -800;
+          if(pt.z < -800) pt.z = 500;
+          if(pt.x < -450) pt.x = 450; if(pt.x > 450) pt.x = -450;
+          if(pt.y < -300) pt.y = 300; if(pt.y > 300) pt.y = -300;
+          var pr = project(pt, mouseX*50, mouseY*30, -100, 600);
+          if(pr.z <= 0) continue;
+          var alpha = Math.max(0.15, 0.7 * ((pr.z-100)/600)) * tunnelFade;
+          ctx.globalAlpha = alpha;
+          var streak = Math.min(18, pr.scale * speed * 4);
+          ctx.beginPath();
+          ctx.moveTo(pr.x, pr.y);
+          ctx.lineTo(pr.x - pt.vx*streak, pr.y - pt.vy*streak);
+          ctx.strokeStyle = 'rgba(200,255,0,' + alpha + ')';
+          ctx.lineWidth = pr.scale * 1.4;
+          ctx.stroke();
+        }
+        ctx.globalAlpha = 1;
       }
+    }
 
-      ctx.lineWidth = 2;
-      ctx.strokeStyle = 'rgba(0,255,200,0.75)';
-      for(var k=0; k<cubeEdges.length; k++){
-        var e = cubeEdges[k];
-        var p1 = cubeProj[e[0]];
-        var p2 = cubeProj[e[1]];
-        var alpha = Math.max(0.2, 0.6 * ((p1.z+p2.z+500)/1000));
-        ctx.globalAlpha = alpha;
-        ctx.beginPath(); ctx.moveTo(p1.x,p1.y); ctx.lineTo(p2.x,p2.y); ctx.stroke();
-      }
-      ctx.globalAlpha = 1;
-
-      ctx.fillStyle = '#00FFC8';
-      for(var k=0; k<cubeProj.length; k++){
-        var cp = cubeProj[k];
-        var a2 = Math.max(0.3, 0.7 * ((cp.z+250)/500));
-        ctx.globalAlpha = a2;
-        ctx.beginPath();
-        ctx.arc(cp.x, cp.y, 2.8*cp.scale, 0, Math.PI*2);
-        ctx.fill();
-      }
-      ctx.globalAlpha = 1;
+    function smoothstep(a,b,x){
+      if(x<=a) return 0; if(x>=b) return 1;
+      var t=(x-a)/(b-a);
+      return t*t*(3-2*t);
     }
 
     function onVisibility(){
-      if(document.hidden && rafId){ cancelAnimationFrame(rafId); rafId = null; }
+      if(document.hidden && rafId){ cancelAnimationFrame(rafId); rafId=null; }
       else if(!rafId) rafId = requestAnimationFrame(loop);
     }
     document.addEventListener('visibilitychange', onVisibility, {passive:true});
+    window.addEventListener('scroll', function(){}, {passive:true});
     loop(0);
   }
+
+  
 
   
 
