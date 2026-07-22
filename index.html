@@ -1194,6 +1194,64 @@ a:focus-visible,button:focus-visible{
   .tilt-card:hover{transform:none}
   .price-card:hover{transform:translateY(-6px)}
 }
+
+
+/* ================= EXTRA 3D EFFECTS ================= */
+
+/* Text gradient glow on H1 */
+.hero h1 em{
+  background:linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 50%, var(--accent-3) 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-fill-color:transparent;
+  filter:drop-shadow(0 0 24px rgba(200,255,0,.25));
+  display:inline;
+}
+.hero h1 .dim{
+  color:var(--text-dim);
+  text-shadow:0 0 40px rgba(255,255,255,.05);
+}
+
+/* Shimmer effect on cards */
+.tilt-card::before{
+  content:'';
+  position:absolute;
+  top:0;left:-100%;
+  width:50%;height:100%;
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,.08), transparent);
+  transform:skewX(-20deg);
+  transition:left .6s ease;
+  pointer-events:none;
+  z-index:2;
+}
+.tilt-card:hover::before{
+  left:150%;
+}
+
+/* Hero image parallax */
+.hero-visual{
+  will-change:transform;
+  transition:transform .1s linear;
+}
+
+/* Floating badge */
+.hero-badge{
+  animation:floatBadge 5s ease-in-out infinite;
+}
+@keyframes floatBadge{
+  0%,100%{transform:translateY(0) translateZ(20px)}
+  50%{transform:translateY(-6px) translateZ(30px)}
+}
+
+/* Glow pulse on accent elements */
+.accent-pulse{
+  animation:glowPulse 3s ease-in-out infinite;
+}
+@keyframes glowPulse{
+  0%,100%{box-shadow:0 0 20px rgba(200,255,0,.2)}
+  50%{box-shadow:0 0 40px rgba(200,255,0,.4)}
+}
 </style>
 </head>
 <body>
@@ -1212,7 +1270,6 @@ a:focus-visible,button:focus-visible{
       <li><a href="#pricing" data-i18n="nav_pricing">Τιμές</a></li>
       <li><a href="#testimonials" data-i18n="nav_testimonials">Μαρτυρίες</a></li>
       <li class="mobile-lang"><button class="lang-toggle" onclick="toggleLanguage()" data-i18n="lang_btn">EN</button></li>
-      <li class="mobile-cta-item"><a href="https://chat.whatsapp.com/Grx1qNjlCgcAdEYfcWGvNx?s=cl&p=a&ilr=1" target="_blank" rel="noopener" class="nav-cta" data-i18n="nav_cta">Ξεκίνα τώρα</a></li>
     </ul>
     <div class="nav-right">
       <button class="lang-toggle" onclick="toggleLanguage()" data-i18n="lang_btn">EN</button>
@@ -2021,6 +2078,56 @@ window.addEventListener('load', function(){
   } else {
     initTilt();
     initReveal();
+  }
+})();
+</script>
+
+
+<script>
+/* PARTICLES + PARALLAX */
+(function(){
+  function createParticles(){
+    const container = document.getElementById('particles');
+    if(!container) return;
+    const count = window.innerWidth < 768 ? 18 : 35;
+    for(let i=0;i<count;i++){
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left = Math.random()*100 + '%';
+      p.style.width = (Math.random()*4 + 2) + 'px';
+      p.style.height = p.style.width;
+      p.style.animationDuration = (Math.random()*8 + 8) + 's';
+      p.style.animationDelay = (Math.random()*10) + 's';
+      p.style.opacity = Math.random()*0.3 + 0.1;
+      const colors = ['var(--accent)','var(--accent-2)','var(--accent-3)'];
+      p.style.background = colors[Math.floor(Math.random()*colors.length)];
+      container.appendChild(p);
+    }
+  }
+
+  function parallaxHero(){
+    const visual = document.querySelector('.hero-visual');
+    if(!visual || window.innerWidth < 900) return;
+    const hero = document.getElementById('hero');
+    hero.addEventListener('mousemove', function(e){
+      const rect = hero.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      visual.style.transform = 'translateZ(60px) rotateY('+(x*6)+'deg) rotateX('+(y*-6)+'deg)';
+    });
+    hero.addEventListener('mouseleave', function(){
+      visual.style.transform = 'translateZ(60px)';
+    });
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){
+      createParticles();
+      parallaxHero();
+    });
+  } else {
+    createParticles();
+    parallaxHero();
   }
 })();
 </script>
