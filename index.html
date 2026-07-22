@@ -707,7 +707,7 @@ footer{
   }
   .nav-links li:last-child{border-bottom:none}
   .nav-links a{
-    display:flex;align-items:center;justify-content:space-between;
+    display:flex;align-items:center;justify-content:center;
     font-size:clamp(1.3rem,5.5vw,1.9rem);
     font-weight:600;
     letter-spacing:-.01em;
@@ -716,10 +716,9 @@ footer{
     color:var(--text);
     width:100%;
     box-sizing:border-box;
+    text-align:center;
   }
-  .nav-links a::after{
-    content:'→';font-size:1.25rem;color:var(--accent);opacity:.7;
-  }
+  .nav-links a:hover{color:var(--accent);background:rgba(255,255,255,.04)}
   .nav-links a:hover{color:var(--accent)}
   .nav-cta{
     display:flex;align-items:center;justify-content:center;
