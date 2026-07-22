@@ -90,10 +90,10 @@ nav.scrolled{background:rgba(10,10,11,.94);border-color:rgba(255,255,255,.14)}
 .mobile-menu a:hover,.mobile-menu a:focus-visible{color:var(--accent)}
 .mobile-lang{margin-top:24px}
 #hero{position:relative;min-height:100svh;display:flex;align-items:center;padding-top:calc(var(--nav-h) + 40px);padding-bottom:80px;overflow:hidden;background:radial-gradient(ellipse 120% 100% at 80% 0%,rgba(200,255,0,.08),transparent 55%),radial-gradient(ellipse 80% 60% at 20% 100%,rgba(0,229,255,.06),transparent 45%)}
-#hero-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.85;filter:drop-shadow(0 0 20px rgba(200,255,0,.15))}
+#hero-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.95}
 .floating-shapes{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
 .shape{position:absolute;border-radius:30% 70% 70% 30% / 30% 30% 70% 70%;filter:blur(60px);opacity:.35;animation:floatShape 20s ease-in-out infinite}
-.shape-1{width:320px;height:320px;background:var(--accent);top:15%;right:-5%;animation-delay:0s}
+.shape-1{width:260px;height:260px;background:var(--accent);top:15%;right:-5%;animation-delay:0s;opacity:.18}.shape-2{opacity:.15}.shape-3{opacity:.12}.shape-4{opacity:.10}
 .shape-2{width:260px;height:260px;background:var(--accent-2);bottom:20%;left:-8%;animation-delay:-7s;animation-duration:25s}
 .shape-3{width:180px;height:180px;background:var(--accent-3);top:45%;right:25%;animation-delay:-12s;animation-duration:22s;opacity:.25}
 .shape-4{width:140px;height:140px;background:rgba(200,255,0,.5);top:60%;right:10%;animation-delay:-5s;animation-duration:18s;border-radius:50%}
@@ -206,7 +206,7 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
 .footer-social{display:flex;gap:12px}
 .footer-social a{width:40px;height:40px;border-radius:50%;background:var(--bg-2);border:1px solid var(--border);display:grid;place-items:center;color:var(--text-dim);transition:all .2s}
 .footer-social a:hover,.footer-social a:focus-visible{background:var(--accent);color:#0A0A0B;border-color:var(--accent)}
-.reveal{opacity:0;transform:translateY(34px);transition:opacity .6s ease,transform .6s ease}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)}
 .reveal.visible{opacity:1;transform:translateY(0)}
 .reveal.delay-1{transition-delay:.1s}
 .reveal.delay-2{transition-delay:.2s}
@@ -949,16 +949,14 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
     });
   }
 
-  /* OPTIMIZED 3D HERO CANVAS */
+  /* LIQUID LIGHT HERO CANVAS */
   function initCanvas(){
     var canvas = document.getElementById('hero-canvas');
     if(!canvas || !canvas.getContext) return;
-    canvas.style.willChange = 'transform';
     var ctx = canvas.getContext('2d', { alpha: true });
-    var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    var dpr = Math.min(window.devicePixelRatio || 1, 1.25);
     var width, height, cx, cy;
     var mouseX = 0, mouseY = 0, targetMouseX = 0, targetMouseY = 0;
-    var t = 0;
     var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var rafId = null;
 
@@ -976,195 +974,113 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
       cy = height / 2;
     }
     resize();
-    window.addEventListener('resize', resize, {passive:true});
+    window.addEventListener('resize', function(){ resize(); initBlobs(); }, {passive:true});
 
     var lastMouseMove = 0;
     canvas.parentElement.addEventListener('mousemove', function(e){
       var now = performance.now();
-      if(now - lastMouseMove < 32) return;
+      if(now - lastMouseMove < 40) return;
       lastMouseMove = now;
       var rect = canvas.parentElement.getBoundingClientRect();
       targetMouseX = ((e.clientX - rect.left) / width - 0.5) * 2;
       targetMouseY = ((e.clientY - rect.top) / height - 0.5) * 2;
     }, {passive:true});
 
-    var torusR = 170, torusr = 55;
-    var torusPoints = [];
-    var torusRings = 12, torusSectors = 20;
-    for(var i=0; i<torusRings; i++){
-      for(var j=0; j<torusSectors; j++){
-        var u = i/torusRings * Math.PI * 2;
-        var v = j/torusSectors * Math.PI * 2;
-        torusPoints.push({x:(torusR+torusr*Math.cos(v))*Math.cos(u), y:(torusR+torusr*Math.cos(v))*Math.sin(u), z:torusr*Math.sin(v)});
+    var blobs = [];
+    function initBlobs(){
+      blobs = [
+        {x:.35, y:.35, r:.22, hue:78, sat:100, light:58, phase:0, speed:0.0009, dx:0.12, dy:0.08},
+        {x:.65, y:.55, r:.28, hue:38, sat:100, light:65, phase:2.1, speed:0.0007, dx:-0.10, dy:0.12},
+        {x:.5, y:.75, r:.20, hue:185, sat:100, light:58, phase:4.2, speed:0.0011, dx:0.08, dy:-0.10},
+        {x:.2, y:.6, r:.18, hue:78, sat:100, light:62, phase:1.4, speed:0.0008, dx:0.14, dy:0.05}
+      ];
+    }
+    initBlobs();
+
+    function softStep(a,b,x){ return Math.max(0, Math.min(1, (x-a)/(b-a))); }
+    function noiseShape(time, phase, quality){
+      var pts = [];
+      var count = quality? 24 : 16;
+      for(var i=0; i<count; i++){
+        var ang = (i/count) * Math.PI * 2;
+        var rad = 1 + Math.sin(ang*3 + time + phase)*0.18 + Math.cos(ang*5 - time*0.7 + phase*1.3)*0.10 + Math.sin(ang*2 + time*0.4)*0.08;
+        pts.push({x:Math.cos(ang)*rad, y:Math.sin(ang)*rad});
       }
+      return pts;
     }
 
-    var cubeSize = 68;
-    var cubePoints = [
-      {x:-cubeSize,y:-cubeSize,z:-cubeSize},{x:cubeSize,y:-cubeSize,z:-cubeSize},
-      {x:cubeSize,y:cubeSize,z:-cubeSize},{x:-cubeSize,y:cubeSize,z:-cubeSize},
-      {x:-cubeSize,y:-cubeSize,z:cubeSize},{x:cubeSize,y:-cubeSize,z:cubeSize},
-      {x:cubeSize,y:cubeSize,z:cubeSize},{x:-cubeSize,y:cubeSize,z:cubeSize}
-    ];
-    var cubeEdges = [[0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7]];
-
-    var particles = [];
-    for(var i=0; i<60; i++){
-      particles.push({
-        x:(Math.random()-0.5)*width, y:(Math.random()-0.5)*height, z:(Math.random()-0.5)*700,
-        vx:(Math.random()-0.5)*0.6, vy:(Math.random()-0.5)*0.6, vz:(Math.random()-0.5)*0.6,
-        size:Math.random()*1.8+0.5
-      });
-    }
-
-    function rotate(p, rx, ry, rz){
-      var cosX = Math.cos(rx), sinX = Math.sin(rx);
-      var y1 = p.y*cosX - p.z*sinX;
-      var z1 = p.y*sinX + p.z*cosX;
-      var cosY = Math.cos(ry), sinY = Math.sin(ry);
-      var x2 = p.x*cosY - z1*sinY;
-      var z2 = p.x*sinY + z1*cosY;
-      var cosZ = Math.cos(rz), sinZ = Math.sin(rz);
-      var x3 = x2*cosZ - y1*sinZ;
-      var y3 = x2*sinZ + y1*cosZ;
-      return {x:x3, y:y3, z:z2};
-    }
-
-    function project(p, camX, camY){
-      var scale = 720 / (720 + p.z + 200);
-      return { x: cx + p.x*scale + camX, y: cy + p.y*scale + camY, z: p.z, scale: scale };
-    }
-
-    var lastFrame = 0;
-    var skipFrame = false;
+    var lastFrame = 0, skip = false;
     function loop(now){
       rafId = requestAnimationFrame(loop);
-      if(document.hidden) return;
-      if(prefersReduced) return;
-      skipFrame = !skipFrame;
-      if(skipFrame) return;
+      if(document.hidden || prefersReduced) return;
+      skip = !skip;
+      if(skip) return;
       if(now - lastFrame < 32) return;
       lastFrame = now;
 
-      t += 0.014;
-      mouseX += (targetMouseX - mouseX) * 0.08;
-      mouseY += (targetMouseY - mouseY) * 0.08;
-      var camX = mouseX * 70;
-      var camY = mouseY * 45;
+      mouseX += (targetMouseX - mouseX) * 0.06;
+      mouseY += (targetMouseY - mouseY) * 0.06;
 
       ctx.clearRect(0,0,width,height);
 
-      var grad = ctx.createRadialGradient(cx+mouseX*100, cy+mouseY*60, 0, cx, cy, Math.max(width,height));
-      grad.addColorStop(0, 'rgba(200,255,0,0.08)');
-      grad.addColorStop(0.5, 'rgba(255,184,77,0.04)');
-      grad.addColorStop(1, 'rgba(10,10,11,0)');
-      ctx.fillStyle = grad;
+      // subtle base gradient
+      var base = ctx.createRadialGradient(cx, cy, 0, cx + mouseX*80, cy + mouseY*60, Math.max(width,height));
+      base.addColorStop(0, 'rgba(200,255,0,0.06)');
+      base.addColorStop(0.5, 'rgba(10,10,11,0)');
+      ctx.fillStyle = base;
       ctx.fillRect(0,0,width,height);
 
-      ctx.fillStyle = '#C8FF00';
-      for(var i=0; i<particles.length; i++){
-        var pt = particles[i];
-        pt.x += pt.vx + mouseX*2.5;
-        pt.y += pt.vy + mouseY*1.5;
-        pt.z += pt.vz;
-        if(pt.x < -width/2) pt.x = width/2;
-        if(pt.x > width/2) pt.x = -width/2;
-        if(pt.y < -height/2) pt.y = height/2;
-        if(pt.y > height/2) pt.y = -height/2;
-        if(pt.z < -350) pt.z = 350;
-        if(pt.z > 350) pt.z = -350;
-        var pr = project(rotate(pt, t*0.2, t*0.3, 0), camX, camY);
-        var alpha = Math.max(0.15, 0.5 * ((pr.z+350)/700));
-        ctx.globalAlpha = alpha;
+      for(var i=0; i<blobs.length; i++){
+        var b = blobs[i];
+        b.phase += b.speed;
+        var bx = width * (b.x + Math.sin(b.phase)*0.12 + mouseX * b.dx * 0.08);
+        var by = height * (b.y + Math.cos(b.phase*0.7)*0.10 + mouseY * b.dy * 0.08);
+        var br = Math.min(width, height) * (b.r + Math.sin(b.phase*0.5)*0.03);
+
+        var g = ctx.createRadialGradient(bx, by, 0, bx, by, br);
+        var c1 = 'hsla(' + b.hue + ',' + b.sat + '%,' + b.light + '%,0.55)';
+        var c2 = 'hsla(' + b.hue + ',' + b.sat + '%,' + b.light + '%,0.18)';
+        var c3 = 'hsla(' + b.hue + ',' + b.sat + '%,' + b.light + '%,0)';
+        g.addColorStop(0, c1);
+        g.addColorStop(0.45, c2);
+        g.addColorStop(1, c3);
+
+        var pts = noiseShape(b.phase, b.phase*0.6, i < 2);
         ctx.beginPath();
-        ctx.arc(pr.x, pr.y, pt.size*pr.scale, 0, Math.PI*2);
-        ctx.fill();
-      }
-      ctx.globalAlpha = 1;
-
-      var rx = 0.4 + Math.sin(t*0.7)*0.16 + mouseY*0.35;
-      var ry = t*0.35 + mouseX*0.4;
-      var rz = mouseX*0.25;
-      var torusProj = [];
-      for(var k=0; k<torusPoints.length; k++){
-        var rp = rotate(torusPoints[k], rx, ry, rz);
-        rp.x += 50;
-        torusProj.push(project(rp, camX, camY));
-      }
-
-      ctx.lineWidth = 1.6;
-      ctx.shadowBlur = 0;
-      for(var a=0; a<torusRings; a++){
-        for(var b=0; b<torusSectors; b++){
-          var idx = a*torusSectors + b;
-          var p1 = torusProj[idx];
-          var p2 = torusProj[a*torusSectors + ((b+1)%torusSectors)];
-          var p3 = torusProj[((a+1)%torusRings)*torusSectors + b];
-          var alpha = Math.max(0.12, 0.55 * ((p1.z+250)/500));
-          ctx.strokeStyle = 'rgba(200,255,0,' + alpha + ')';
-          ctx.beginPath(); ctx.moveTo(p1.x,p1.y); ctx.lineTo(p2.x,p2.y); ctx.stroke();
-          ctx.strokeStyle = 'rgba(255,184,77,' + alpha*0.6 + ')';
-          ctx.beginPath(); ctx.moveTo(p1.x,p1.y); ctx.lineTo(p3.x,p3.y); ctx.stroke();
+        for(var k=0; k<pts.length; k++){
+          var p = pts[k];
+          var x = bx + p.x * br;
+          var y = by + p.y * br;
+          if(k===0) ctx.moveTo(x,y);
+          else ctx.lineTo(x,y);
         }
-      }
-
-      ctx.fillStyle = '#C8FF00';
-      for(var k=0; k<torusProj.length; k+=2){
-        var pp = torusProj[k];
-        var a2 = Math.max(0.25, 0.65 * ((pp.z+250)/500));
-        ctx.globalAlpha = a2;
-        ctx.beginPath();
-        ctx.arc(pp.x, pp.y, 2*pp.scale, 0, Math.PI*2);
+        ctx.closePath();
+        ctx.fillStyle = g;
+        ctx.filter = 'blur(28px)';
         ctx.fill();
-      }
-      ctx.globalAlpha = 1;
-
-      var cRx = t*0.6;
-      var cRy = t*0.35 + mouseY*0.3;
-      var cRz = t*0.2 + mouseX*0.3;
-      var cubeProj = [];
-      for(var k=0; k<cubePoints.length; k++){
-        var cp = rotate(cubePoints[k], cRx, cRy, cRz);
-        cp.x -= 140;
-        cp.y += 30;
-        cubeProj.push(project(cp, camX, camY));
+        ctx.filter = 'none';
       }
 
-      ctx.lineWidth = 2;
-      ctx.strokeStyle = 'rgba(0,255,200,0.75)';
-      for(var k=0; k<cubeEdges.length; k++){
-        var e = cubeEdges[k];
-        var p1 = cubeProj[e[0]];
-        var p2 = cubeProj[e[1]];
-        var alpha = Math.max(0.2, 0.6 * ((p1.z+p2.z+500)/1000));
-        ctx.globalAlpha = alpha;
-        ctx.beginPath(); ctx.moveTo(p1.x,p1.y); ctx.lineTo(p2.x,p2.y); ctx.stroke();
-      }
-      ctx.globalAlpha = 1;
-
-      ctx.fillStyle = '#00FFC8';
-      for(var k=0; k<cubeProj.length; k++){
-        var cp = cubeProj[k];
-        var a2 = Math.max(0.3, 0.7 * ((cp.z+250)/500));
-        ctx.globalAlpha = a2;
-        ctx.beginPath();
-        ctx.arc(cp.x, cp.y, 2.8*cp.scale, 0, Math.PI*2);
-        ctx.fill();
+      // very fine grain overlay
+      ctx.globalAlpha = 0.035;
+      ctx.fillStyle = '#fff';
+      for(var i=0; i<300; i+=7){
+        var gx = (i * 137.5 + now * 0.02) % width;
+        var gy = (i * 73.3) % height;
+        ctx.fillRect(gx, gy, 1.2, 1.2);
       }
       ctx.globalAlpha = 1;
     }
 
     function onVisibility(){
-      if(document.hidden && rafId){
-        cancelAnimationFrame(rafId);
-        rafId = null;
-      } else if(!rafId){
-        rafId = requestAnimationFrame(loop);
-      }
+      if(document.hidden && rafId){ cancelAnimationFrame(rafId); rafId = null; }
+      else if(!rafId) rafId = requestAnimationFrame(loop);
     }
     document.addEventListener('visibilitychange', onVisibility, {passive:true});
     loop(0);
   }
+
+  
 
   
 
