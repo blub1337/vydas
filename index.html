@@ -113,8 +113,6 @@ nav.scrolled{background:rgba(10,10,11,.94);border-color:rgba(255,255,255,.14)}
 .btn-primary:hover,.btn-primary:focus-visible{transform:translateY(-3px);box-shadow:0 12px 40px rgba(200,255,0,.25);filter:brightness(1.05)}
 .btn-secondary{display:inline-flex;align-items:center;gap:10px;padding:16px 32px;border-radius:var(--radius-full);background:var(--surface);border:1px solid var(--border);color:var(--text);font-weight:600;font-size:.95rem;transition:all .25s;backdrop-filter:blur(8px)}
 .btn-secondary:hover,.btn-secondary:focus-visible{border-color:var(--accent);color:var(--accent);background:rgba(200,255,0,.06)}
-.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px;max-width:720px;margin-left:auto;margin-right:auto}
-.hero-stat{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px 16px;border-radius:var(--radius);background:var(--bg-2);border:1px solid var(--border);min-height:120px}
 .hero-stat .num{font-size:2.2rem;font-weight:700;color:var(--accent);line-height:1}
 .hero-stat .label{font-size:.85rem;color:var(--text-dim);margin-top:8px;line-height:1.3;max-width:120px}
 .section-header{margin-left:auto;margin-right:auto;max-width:760px;text-align:center;margin-bottom:56px}
@@ -123,7 +121,7 @@ nav.scrolled{background:rgba(10,10,11,.94);border-color:rgba(255,255,255,.14)}
 .section-header h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,5vw,3.6rem);font-weight:700;line-height:1.08;letter-spacing:-.02em;margin-bottom:16px}
 .section-header h2 em{font-style:normal;color:var(--accent-2)}
 .section-header p{color:var(--text-dim);max-width:580px;font-size:1.05rem;line-height:1.6}
-#services,#process,#testimonials,#contact{padding:100px 0}
+#services,#process,#contact{padding:100px 0}
 #portfolio,#pricing,#faq{padding:100px 0;background:var(--bg-1)}
 .services-grid{align-items:stretch;display:grid;grid-template-columns:1fr;gap:20px}
 .service-card{position:relative;padding:28px;border-radius:var(--radius);background:linear-gradient(180deg,var(--bg-2),var(--bg-1));border:1px solid var(--border);overflow:hidden;transition:transform .35s,box-shadow .35s,border-color .35s;transform-style:preserve-3d}
@@ -166,13 +164,7 @@ nav.scrolled{background:rgba(10,10,11,.94);border-color:rgba(255,255,255,.14)}
 .price-features li:last-child{border-bottom:none}
 .price-features i{color:var(--accent);font-size:.85rem}
 .price-card .btn-primary{width:100%;justify-content:center}
-.testimonials-grid{display:grid;grid-template-columns:1fr;gap:24px;align-items:stretch}
-.testi-card{display:flex;flex-direction:column;gap:18px;padding:28px;border-radius:var(--radius-lg);background:var(--bg-2);border:1px solid var(--border);height:100%}
-.testi-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-sm)}
-.testi-stars{color:var(--accent-2);font-size:.9rem;margin-bottom:16px;letter-spacing:2px}
 .testi-card p{flex:1 1 auto;color:var(--text);line-height:1.6;margin:0}
-.testi-author{display:flex;align-items:center;gap:14px;margin-top:auto;padding-top:16px;border-top:1px solid var(--border)}
-.testi-avatar{width:48px;height:48px;border-radius:50%;background:var(--accent);color:var(--bg);display:grid;place-items:center;font-weight:700;flex-shrink:0}
 .testi-author div{font-size:.95rem;font-weight:700}
 .testi-author span{display:block;font-size:.8rem;color:var(--text-muted);font-weight:500}
 .faq-list{max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
@@ -221,7 +213,7 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
 .reveal.delay-3{transition-delay:.3s}
 *:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
-@media (min-width:640px){.hero-stats{grid-template-columns:repeat(4,1fr)}.services-grid{grid-template-columns:repeat(2,1fr)}.portfolio-grid{grid-template-columns:repeat(2,1fr)}.testimonials-grid{grid-template-columns:repeat(2,1fr)}.pricing-grid{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:640px){.services-grid{grid-template-columns:repeat(2,1fr)}.portfolio-grid{grid-template-columns:repeat(2,1fr)}.pricing-grid{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:repeat(2,1fr)}}
 @media (min-width:1024px){#menuToggle{display:none}.nav-links{display:flex}.nav-cta{display:inline-flex}.mobile-menu{display:none!important}.hero-content{text-align:center}.hero-sub{margin-left:auto;margin-right:auto;max-width:640px}.hero-actions{justify-content:center}.services-grid{grid-template-columns:repeat(3,1fr)}.portfolio-grid{grid-template-columns:repeat(3,1fr)}.pricing-grid{grid-template-columns:repeat(3,1fr)}.process-grid{grid-template-columns:repeat(4,1fr)}.contact-grid{grid-template-columns:1fr 1fr;align-items:stretch}.footer-grid{grid-template-columns:repeat(4,1fr)}.footer-bottom{flex-direction:row}}
   svg[aria-hidden="true"]{display:inline-block;vertical-align:middle;flex-shrink:0}
 .contact-cta{display:flex;flex-direction:column;gap:18px;padding:32px;border-radius:var(--radius-lg);background:var(--bg-2);border:1px solid var(--border);justify-content:center;height:100%}
@@ -279,7 +271,7 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
     <div class="shape shape-2"></div>
   </div>
   <div class="container hero-content">
-    <div class="hero-badge reveal" data-i18n="hero_badge"></div>
+    <div class="hero-badge reveal" data-i18n="hero_badge">Custom Web Design · Premium Ιστοσελίδες</div>
     <h1 class="reveal delay-1" data-th="hero_h"><em>όντως</em> φέρνουν<span class="dim"> κόσμο μέσα.</span></h1>
     <p class="hero-sub reveal delay-2" data-i18n="hero_p"></p>
     
@@ -288,13 +280,7 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
       <a href="#portfolio" class="btn-secondary" data-i18n="hero_cta2"></a>
     </div>
     
-    <div class="hero-stats reveal delay-3">
-      <div class="hero-stat"><div class="num">50+</div><div class="label" data-i18n="stat1_label"></div></div>
-      <div class="hero-stat"><div class="num">100%</div><div class="label" data-i18n="stat2_label"></div></div>
-      <div class="hero-stat"><div class="num">2</div><div class="label" data-i18n="stat3_label"></div></div>
-    </div>
-  </div>
-</section>
+    </section>
 
 <!-- SERVICES -->
 <section id="services" aria-labelledby="services-title">
@@ -575,55 +561,6 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section id="testimonials" aria-labelledby="testimonials-title">
-  <div class="container">
-    <header class="section-header center reveal">
-      <span class="section-tag" data-i18n="testi_tag"></span>
-      <h2 id="testimonials-title" data-th="testi_h"><em>πελάτες</em> μας</h2>
-      <p data-i18n="testi_p"></p>
-    </header>
-    
-    <div class="testimonials-grid">
-      <article class="testi-card reveal">
-        <div class="testi-stars" aria-label="5 στα 5 Τέλειο">★★★★★</div>
-        <p data-i18n="testi1_t"></p>
-        <div class="testi-author">
-          <div class="testi-avatar" aria-hidden="true">Π</div>
-          <div>
-            <div data-i18n="testi1_r"></div>
-            <span>Καφενείο, Αγρίνιο</span>
-          </div>
-        </div>
-      </article>
-      
-      <article class="testi-card reveal delay-1">
-        <div class="testi-stars" aria-label="5 στα 5 Τέλειο">★★★★★</div>
-        <p data-i18n="testi2_t"></p>
-        <div class="testi-author">
-          <div class="testi-avatar" aria-hidden="true">Κ</div>
-          <div>
-            <div data-i18n="testi2_r"></div>
-            <span>Cafe Bar, Αγρίνιο</span>
-          </div>
-        </div>
-      </article>
-      
-      <article class="testi-card reveal delay-2">
-        <div class="testi-stars" aria-label="5 στα 5 Τέλειο">★★★★★</div>
-        <p data-i18n="testi3_t"></p>
-        <div class="testi-author">
-          <div class="testi-avatar" aria-hidden="true">I</div>
-          <div>
-            <div data-i18n="testi3_r"></div>
-            <span>Εστιατόριο, Αγρίνιο</span>
-          </div>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
 <!-- FAQ -->
 <section id="faq" aria-labelledby="faq-title">
   <div class="container">
@@ -785,7 +722,7 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
   var T = {
     gr: {
       nav_services:'Υπηρεσίες', nav_portfolio:'Πορτφόλιο', nav_process:'Διαδικασία', nav_pricing:'Τιμές', nav_testimonials:'Μαρτυρίες', nav_faq:'FAQ', nav_cta:'Πάρε Προσφορά', lang_btn:'EN',
-      hero_badge:'Custom Web Design · Premium Ιστοσελίδες · Αγρίνιο',
+      hero_badge:'Custom Web Design · Premium Ιστοσελίδες',
       hero_p:'Εγχειρίδια websites για cafes, εστιατόρια και τοπικές επιχειρήσεις. Χωρίς templates, χωρίς συζήτηση — design που φέρνει κόσμο μέσα.',
       hero_cta1:'Πάρε Προσφορά', hero_cta2:'Δες τη δουλειά μας',
       stat1_label:'Projects Delivered', stat2_label:'Custom Built', stat3_label:'EN / GR Bilingual',
@@ -829,7 +766,7 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
     },
     en: {
       nav_services:'Services', nav_portfolio:'Portfolio', nav_process:'Process', nav_pricing:'Pricing', nav_testimonials:'Testimonials', nav_faq:'FAQ', nav_cta:'Get a Quote', lang_btn:'GR',
-      hero_badge:'Custom Web Design · Premium Websites · Agrinio',
+      hero_badge:'Custom Web Design · Premium Websites',
       hero_p:'Handcrafted websites for cafes, restaurants and local businesses. No templates, no back-and-forth — design that brings customers in.',
       hero_cta1:'Get a Quote', hero_cta2:'View Our Work',
       stat1_label:'Projects Delivered', stat2_label:'Custom Built', stat3_label:'EN / GR Bilingual',
