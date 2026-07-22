@@ -937,6 +937,7 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
   };
 
   /* Preloader */
+  setTimeout(function(){ var p = document.getElementById('preloader'); if(p) p.classList.add('hide'); }, 2500);
   window.addEventListener('load', function(){
     setTimeout(function(){
       var p = document.getElementById('preloader');
@@ -1112,7 +1113,7 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
     initFAQ();
     initSpotlight();
     initCanvas();
-    initParallax();
+    
   });
 
   , {passive:true});
