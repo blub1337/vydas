@@ -226,11 +226,12 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
   svg[aria-hidden="true"]{display:inline-block;vertical-align:middle;flex-shrink:0}
 .contact-cta{display:flex;flex-direction:column;gap:18px;padding:32px;border-radius:var(--radius-lg);background:var(--bg-2);border:1px solid var(--border);justify-content:center;height:100%}
 .contact-cta .btn-primary,.contact-cta .btn-secondary{justify-content:center}
+.footer-link-text{display:block;color:var(--text-dim);font-size:.9rem;margin-bottom:.4rem}
 </style>
 </head>
 <body>
 <!-- PRELOADER -->
-<div id="preloader" role="status" aria-live="polite" aria-label="Seite lädt">
+<div id="preloader" role="status" aria-live="polite" aria-label="Φόρτωση σελίδας">
   <div class="preloader-inner">VYDAS<span>.NET</span>
     <div class="preloader-bar"><i></i></div>
   </div>
@@ -250,7 +251,7 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
     <div class="nav-right">
       <button class="lang-btn" onclick="toggleLanguage()" aria-label="Sprache wechseln" data-i18n="lang_btn">EN</button>
       <a href="https://chat.whatsapp.com/Grx1qNjlCgcAdEYfcWGvNx?s=cl&amp;p=a&amp;ilr=1" target="_blank" rel="noopener" class="nav-cta" data-i18n="nav_cta">Πάρε Προσφορά</a>
-      <button id="menuToggle" onclick="toggleMenu()" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobileMenu"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+      <button id="menuToggle" onclick="toggleMenu()" aria-label="Άνοιγμα μενού" aria-expanded="false" aria-controls="mobileMenu"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
     </div>
   </div>
 </nav>
@@ -585,7 +586,7 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
     
     <div class="testimonials-grid">
       <article class="testi-card reveal">
-        <div class="testi-stars" aria-label="5 von 5 Sternen">★★★★★</div>
+        <div class="testi-stars" aria-label="5 στα 5 Τέλειο">★★★★★</div>
         <p data-i18n="testi1_t">Η ιστοσελίδα που μας έφτιαξαν ήταν εξαιρετική. Οι πελάτες μας συχνά κάνουν κομπλιμέντο. Συνιστώ ανεπιφύλακτα!</p>
         <div class="testi-author">
           <div class="testi-avatar" aria-hidden="true">Π</div>
@@ -597,7 +598,7 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
       </article>
       
       <article class="testi-card reveal delay-1">
-        <div class="testi-stars" aria-label="5 von 5 Sternen">★★★★★</div>
+        <div class="testi-stars" aria-label="5 στα 5 Τέλειο">★★★★★</div>
         <p data-i18n="testi2_t">Επαγγελματική δουλειά, γρήγορη παράδοση. Το μενού online άλλαξε το κατάστημά μας. Άριστη συνεργασία.</p>
         <div class="testi-author">
           <div class="testi-avatar" aria-hidden="true">Κ</div>
@@ -609,7 +610,7 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
       </article>
       
       <article class="testi-card reveal delay-2">
-        <div class="testi-stars" aria-label="5 von 5 Sternen">★★★★★</div>
+        <div class="testi-stars" aria-label="5 στα 5 Τέλειο">★★★★★</div>
         <p data-i18n="testi3_t">Από την πρώτη επαφή ήταν άψογοι. Κατάλαβαν ακριβώς τι θέλαμε και το υλοποίησαν πάνω από τις προσδοκίες μας.</p>
         <div class="testi-author">
           <div class="testi-avatar" aria-hidden="true">I</div>
@@ -764,9 +765,9 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
       <div class="footer-col">
         <h4 data-i18n="footer_social">Folge uns</h4>
         <div class="footer-social">
-          <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
-          <a href="#" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
-          <a href="#" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+          <a href="javascript:void(0);" aria-disabled="true" aria-label="Instagram><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+          <a href="javascript:void(0);" aria-disabled="true" aria-label="Facebook><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+          <a href="javascript:void(0);" aria-disabled="true" aria-label="LinkedIn><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
         </div>
       </div>
     </div>
@@ -830,7 +831,7 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
     },
     en: {
       nav_services:'Services', nav_portfolio:'Portfolio', nav_process:'Process', nav_pricing:'Pricing', nav_testimonials:'Testimonials', nav_faq:'FAQ', nav_cta:'Get a Quote', lang_btn:'GR',
-      hero_badge:'Custom Web Design · 15 Sites Live · Agrinio',
+      hero_badge:'Custom Web Design · Premium Ιστοσελίδες · Agrinio',
       hero_p:'Custom websites for cafes, restaurants and local businesses. No templates, no compromises — design that brings people in.',
       hero_cta1:'Get a Quote', hero_cta2:'See our work',
       stat1_label:'Projects Delivered', stat2_label:'Custom Built', stat3_label:'+ EN Bilingual', stat4_label:'Templates Used',
