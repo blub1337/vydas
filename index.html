@@ -949,14 +949,16 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
     });
   }
 
-  /* Canvas 3D wireframe torus */
+  /* EXTREME 3D HERO CANVAS */
   function initCanvas(){
     var canvas = document.getElementById('hero-canvas');
     if(!canvas || !canvas.getContext) return;
     var ctx = canvas.getContext('2d');
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
-    var width, height;
-    var mouseX = 0, mouseY = 0;
+    var width, height, cx, cy;
+    var mouseX = 0, mouseY = 0, targetMouseX = 0, targetMouseY = 0;
+    var t = 0;
+    var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     function resize(){
       width = canvas.parentElement.clientWidth;
@@ -967,88 +969,197 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
       canvas.style.height = height + 'px';
       ctx.setTransform(1,0,0,1,0,0);
       ctx.scale(dpr, dpr);
+      cx = width / 2;
+      cy = height / 2;
     }
     resize();
     window.addEventListener('resize', resize, {passive:true});
     canvas.parentElement.addEventListener('mousemove', function(e){
       var rect = canvas.parentElement.getBoundingClientRect();
-      mouseX = (e.clientX - rect.left) / width - 0.5;
-      mouseY = (e.clientY - rect.top) / height - 0.5;
+      targetMouseX = ((e.clientX - rect.left) / width - 0.5) * 2;
+      targetMouseY = ((e.clientY - rect.top) / height - 0.5) * 2;
     }, {passive:true});
 
-    var points = [];
-    var rings = 10, sectors = 16;
-    var R = 160, r = 50;
-    for(var i = 0; i < rings; i++){
-      for(var j = 0; j < sectors; j++){
-        var u = i / rings * Math.PI * 2;
-        var v = j / sectors * Math.PI * 2;
-        points.push({
-          x: (R + r * Math.cos(v)) * Math.cos(u),
-          y: (R + r * Math.cos(v)) * Math.sin(u),
-          z: r * Math.sin(v)
-        });
+    var torusR = 190, torusr = 60;
+    var torusPoints = [];
+    var torusRings = 16, torusSectors = 26;
+    for(var i=0; i<torusRings; i++){
+      for(var j=0; j<torusSectors; j++){
+        var u = i/torusRings * Math.PI * 2;
+        var v = j/torusSectors * Math.PI * 2;
+        torusPoints.push({x:(torusR+torusr*Math.cos(v))*Math.cos(u), y:(torusR+torusr*Math.cos(v))*Math.sin(u), z:torusr*Math.sin(v)});
       }
     }
 
-    var angleX = 0.2, angleY = 0.4, angleZ = 0;
-    var t = 0;
-    var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var lastFrame = 0;
+    var cubeSize = 75;
+    var cubePoints = [
+      {x:-cubeSize,y:-cubeSize,z:-cubeSize},{x:cubeSize,y:-cubeSize,z:-cubeSize},
+      {x:cubeSize,y:cubeSize,z:-cubeSize},{x:-cubeSize,y:cubeSize,z:-cubeSize},
+      {x:-cubeSize,y:-cubeSize,z:cubeSize},{x:cubeSize,y:-cubeSize,z:cubeSize},
+      {x:cubeSize,y:cubeSize,z:cubeSize},{x:-cubeSize,y:cubeSize,z:cubeSize}
+    ];
+    var cubeEdges = [[0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7]];
 
+    var particles = [];
+    for(var i=0; i<140; i++){
+      particles.push({
+        x:(Math.random()-0.5)*width, y:(Math.random()-0.5)*height, z:(Math.random()-0.5)*700,
+        vx:(Math.random()-0.5)*0.7, vy:(Math.random()-0.5)*0.7, vz:(Math.random()-0.5)*0.7,
+        size:Math.random()*2.2+0.6
+      });
+    }
+
+    function rotate(p, rx, ry, rz){
+      var y1 = p.y*Math.cos(rx) - p.z*Math.sin(rx);
+      var z1 = p.y*Math.sin(rx) + p.z*Math.cos(rx);
+      var x2 = p.x*Math.cos(ry) - z1*Math.sin(ry);
+      var z2 = p.x*Math.sin(ry) + z1*Math.cos(ry);
+      var x3 = x2*Math.cos(rz) - y1*Math.sin(rz);
+      var y3 = x2*Math.sin(rz) + y1*Math.cos(rz);
+      return {x:x3, y:y3, z:z2};
+    }
+
+    function project(p, camX, camY){
+      var scale = 720 / (720 + p.z + 200);
+      return { x: cx + p.x*scale + camX, y: cy + p.y*scale + camY, z: p.z, scale: scale };
+    }
+
+    var lastFrame = 0;
     function loop(now){
       requestAnimationFrame(loop);
-      if(now - lastFrame < 50) return;
+      if(now - lastFrame < 28) return;
       lastFrame = now;
       if(document.hidden) return;
+      if(prefersReduced && now % 2 === 0) return;
 
-      t += prefersReduced ? 0.003 : 0.008;
-      angleY += 0.003;
-      angleX = 0.2 + Math.sin(t) * 0.12 + mouseY * 0.25;
-      angleZ = mouseX * 0.2;
-      ctx.clearRect(0, 0, width, height);
+      t += 0.012;
+      mouseX += (targetMouseX - mouseX) * 0.07;
+      mouseY += (targetMouseY - mouseY) * 0.07;
+      var camX = mouseX * 90;
+      var camY = mouseY * 60;
 
-      var projected = [];
-      for(var k = 0; k < points.length; k++){
-        var p = points[k];
-        var y1 = p.y * Math.cos(angleX) - p.z * Math.sin(angleX);
-        var z1 = p.y * Math.sin(angleX) + p.z * Math.cos(angleX);
-        var x2 = p.x * Math.cos(angleY) - z1 * Math.sin(angleY);
-        var z2 = p.x * Math.sin(angleY) + z1 * Math.cos(angleY);
-        var x3 = x2 * Math.cos(angleZ) - y1 * Math.sin(angleZ);
-        var y3 = x2 * Math.sin(angleZ) + y1 * Math.cos(angleZ);
-        var scale = 520 / (520 + z2 + 200);
-        projected.push({ x: width/2 + x3 * scale, y: height/2 + y3 * scale, z: z2 });
-      }
+      ctx.clearRect(0,0,width,height);
 
-      ctx.lineWidth = 1.4;
-      for(var a = 0; a < rings; a++){
-        for(var b = 0; b < sectors; b++){
-          var idx = a * sectors + b;
-          var p1 = projected[idx];
-          var p2 = projected[a * sectors + ((b + 1) % sectors)];
-          var p3 = projected[((a + 1) % rings) * sectors + b];
-          var alpha = Math.max(0.08, 0.35 * ((p1.z + 250) / 500));
-          ctx.strokeStyle = 'rgba(200,255,0,' + alpha + ')';
-          ctx.beginPath(); ctx.moveTo(p1.x, p1.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
-          ctx.strokeStyle = 'rgba(255,184,77,' + alpha * 0.8 + ')';
-          ctx.beginPath(); ctx.moveTo(p1.x, p1.y); ctx.lineTo(p3.x, p3.y); ctx.stroke();
-        }
-      }
+      var grad = ctx.createRadialGradient(cx+mouseX*120, cy+mouseY*80, 0, cx, cy, Math.max(width,height));
+      grad.addColorStop(0, 'rgba(200,255,0,0.10)');
+      grad.addColorStop(0.4, 'rgba(255,184,77,0.05)');
+      grad.addColorStop(1, 'rgba(10,10,11,0)');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0,0,width,height);
 
-      ctx.fillStyle = 'rgba(200,255,0,0.85)';
-      for(var k = 0; k < projected.length; k += 4){
-        var pp = projected[k];
-        var a2 = Math.max(0.15, 0.55 * ((pp.z + 250) / 500));
-        ctx.globalAlpha = a2;
+      ctx.fillStyle = '#C8FF00';
+      for(var i=0; i<particles.length; i++){
+        var pt = particles[i];
+        pt.x += pt.vx + mouseX*3;
+        pt.y += pt.vy + mouseY*2;
+        pt.z += pt.vz;
+        if(pt.x < -width/2) pt.x = width/2;
+        if(pt.x > width/2) pt.x = -width/2;
+        if(pt.y < -height/2) pt.y = height/2;
+        if(pt.y > height/2) pt.y = -height/2;
+        if(pt.z < -350) pt.z = 350;
+        if(pt.z > 350) pt.z = -350;
+        var pr = project(rotate(pt, t*0.25, t*0.35, 0), camX, camY);
+        var alpha = Math.max(0.15, 0.65 * ((pr.z+350)/700));
+        ctx.globalAlpha = alpha;
         ctx.beginPath();
-        ctx.arc(pp.x, pp.y, 1.4, 0, Math.PI * 2);
+        ctx.arc(pr.x, pr.y, pt.size*pr.scale, 0, Math.PI*2);
         ctx.fill();
       }
       ctx.globalAlpha = 1;
+
+      var rx = 0.4 + Math.sin(t*0.8)*0.18 + mouseY*0.4;
+      var ry = t*0.4 + mouseX*0.5;
+      var rz = mouseX*0.3;
+      var torusProj = [];
+      for(var k=0; k<torusPoints.length; k++){
+        var rp = rotate(torusPoints[k], rx, ry, rz);
+        rp.x += 55;
+        torusProj.push(project(rp, camX, camY));
+      }
+
+      ctx.lineWidth = 2;
+      for(var a=0; a<torusRings; a++){
+        for(var b=0; b<torusSectors; b++){
+          var idx = a*torusSectors + b;
+          var p1 = torusProj[idx];
+          var p2 = torusProj[a*torusSectors + ((b+1)%torusSectors)];
+          var p3 = torusProj[((a+1)%torusRings)*torusSectors + b];
+          var alpha = Math.max(0.12, 0.6 * ((p1.z+250)/500));
+          ctx.strokeStyle = 'rgba(200,255,0,' + alpha + ')';
+          ctx.shadowColor = 'rgba(200,255,0,0.6)';
+          ctx.shadowBlur = 14;
+          ctx.beginPath(); ctx.moveTo(p1.x,p1.y); ctx.lineTo(p2.x,p2.y); ctx.stroke();
+          ctx.strokeStyle = 'rgba(255,184,77,' + alpha*0.7 + ')';
+          ctx.shadowColor = 'rgba(255,184,77,0.5)';
+          ctx.beginPath(); ctx.moveTo(p1.x,p1.y); ctx.lineTo(p3.x,p3.y); ctx.stroke();
+        }
+      }
+
+      ctx.fillStyle = '#C8FF00';
+      ctx.shadowColor = '#C8FF00';
+      ctx.shadowBlur = 14;
+      for(var k=0; k<torusProj.length; k+=2){
+        var pp = torusProj[k];
+        var a2 = Math.max(0.25, 0.75 * ((pp.z+250)/500));
+        ctx.globalAlpha = a2;
+        ctx.beginPath();
+        ctx.arc(pp.x, pp.y, 2.4*pp.scale, 0, Math.PI*2);
+        ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+
+      var cRx = t*0.65;
+      var cRy = t*0.4 + mouseY*0.35;
+      var cRz = t*0.25 + mouseX*0.35;
+      var cubeProj = [];
+      for(var k=0; k<cubePoints.length; k++){
+        var cp = rotate(cubePoints[k], cRx, cRy, cRz);
+        cp.x -= 160;
+        cp.y += 35;
+        cubeProj.push(project(cp, camX, camY));
+      }
+
+      ctx.lineWidth = 2.4;
+      ctx.shadowBlur = 18;
+      ctx.shadowColor = 'rgba(0,255,200,0.7)';
+      ctx.strokeStyle = 'rgba(0,255,200,0.8)';
+      for(var k=0; k<cubeEdges.length; k++){
+        var e = cubeEdges[k];
+        var p1 = cubeProj[e[0]];
+        var p2 = cubeProj[e[1]];
+        var alpha = Math.max(0.2, 0.7 * ((p1.z+p2.z+500)/1000));
+        ctx.globalAlpha = alpha;
+        ctx.beginPath(); ctx.moveTo(p1.x,p1.y); ctx.lineTo(p2.x,p2.y); ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+
+      ctx.fillStyle = '#00FFC8';
+      ctx.shadowColor = '#00FFC8';
+      ctx.shadowBlur = 14;
+      for(var k=0; k<cubeProj.length; k++){
+        var cp = cubeProj[k];
+        var a2 = Math.max(0.3, 0.8 * ((cp.z+250)/500));
+        ctx.globalAlpha = a2;
+        ctx.beginPath();
+        ctx.arc(cp.x, cp.y, 3.2*cp.scale, 0, Math.PI*2);
+        ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+      ctx.shadowBlur = 0;
+
+      ctx.strokeStyle = 'rgba(200,255,0,0.08)';
+      ctx.lineWidth = 1;
+      for(var i=0; i<torusProj.length; i+=18){
+        var tp = torusProj[i];
+        var cp = cubeProj[i % cubeProj.length];
+        ctx.beginPath(); ctx.moveTo(tp.x, tp.y); ctx.lineTo(cp.x, cp.y); ctx.stroke();
+      }
     }
     loop(0);
   }
+
+  
 
   document.addEventListener('DOMContentLoaded', function(){
     applyLang(lang);
@@ -1056,7 +1167,7 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
     initFAQ();
     initSpotlight();
     initCanvas();
-  });
+    });
 })();
 </script>
 </body>
