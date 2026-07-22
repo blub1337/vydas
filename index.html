@@ -781,14 +781,13 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
 (function(){
   'use strict';
 
-  /* Translations */
   var T = {
     gr: {
       nav_services:'Υπηρεσίες', nav_portfolio:'Πορτφόλιο', nav_process:'Διαδικασία', nav_pricing:'Τιμές', nav_testimonials:'Μαρτυρίες', nav_faq:'FAQ', nav_cta:'Πάρε Προσφορά', lang_btn:'EN',
       hero_badge:'Custom Web Design · Premium Ιστοσελίδες · Αγρίνιο',
       hero_p:'Εγχειρίδια websites για cafes, εστιατόρια και τοπικές επιχειρήσεις. Χωρίς templates, χωρίς συζήτηση — design που φέρνει κόσμο μέσα.',
       hero_cta1:'Πάρε Προσφορά', hero_cta2:'Δες τη δουλειά μας',
-      stat1_label:'Projects Delivered', stat2_label:'Custom Built', stat3_label:'+ EN Bilingual',
+      stat1_label:'Projects Delivered', stat2_label:'Custom Built', stat3_label:'EN / GR Bilingual',
       services_tag:'Υπηρεσίες', services_p:'Ολοκληρωμένες λύσεις για την ψηφιακή παρουσία της επιχείρησής σου.',
       srv1_t:'Σχεδιασμός Ιστοσελίδας', srv1_d:'Κομψές, σύγχρονο design προσαρμοσμένο στην ταυτότητα του καταστήματος.',
       srv2_t:'Mobile Friendly', srv2_d:'Άψογα optimized για κινητά — οι περισσότεροι πελάτες σε βλέπουν από το κινητό.',
@@ -824,54 +823,52 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
       contact_wa:'WhatsApp', contact_wa_d:'Άμεση απάντηση σε λίγα λεπτά',
       contact_loc:'Τοποθεσία', contact_loc_d:'Αγρίνιο, Ελλάδα',
       contact_time:'Ωράριο', contact_time_d:'Δευτέρα–Σάββατο, 09:00–21:00',
-      form_name:'Όνομα', form_email:'Email', form_msg:'Μήνυμα', form_submit:'Αποστολή μηνύματος',
       footer_desc:'Premium ιστοσελίδες για καφενεία, εστιατόρια και τοπικές επιχειρήσεις. Χωρίς templates, χωρίς συζήτηση.',
-      footer_nav:'Navigation', footer_legal:'Rechtliches', footer_privacy:'Πολιτική Απορρήτου', footer_terms:'Όροι Χρήσης', footer_imprint:'Impressum', footer_social:'Folge uns', footer_copy:'© 2026 VYDAS.NET — Alle Rechte vorbehalten.'
+      footer_nav:'Navigation', footer_legal:'Νομικά', footer_privacy:'Πολιτική Απορρήτου', footer_terms:'Όροι Χρήσης', footer_imprint:'Impressum', footer_social:'Ακολούθησέ μας', footer_copy:'© 2026 VYDAS.NET — Με επιφύλαξη παντός δικαιώματος.'
     },
     en: {
       nav_services:'Services', nav_portfolio:'Portfolio', nav_process:'Process', nav_pricing:'Pricing', nav_testimonials:'Testimonials', nav_faq:'FAQ', nav_cta:'Get a Quote', lang_btn:'GR',
-      hero_badge:'Custom Web Design · Premium Ιστοσελίδες · Agrinio',
-      hero_p:'Custom websites for cafes, restaurants and local businesses. No templates, no compromises — design that brings people in.',
-      hero_cta1:'Get a Quote', hero_cta2:'See our work',
-      stat1_label:'Projects Delivered', stat2_label:'Custom Built', stat3_label:'+ EN Bilingual',
-      services_tag:'Services', services_p:'Complete solutions for your business digital presence.',
-      srv1_t:'Web Design', srv1_d:'Elegant, modern design tailored to your venue identity.',
-      srv2_t:'Mobile Friendly', srv2_d:'Perfectly optimized for mobile — most customers see you on their phones.',
-      srv3_t:'Google Maps', srv3_d:'Embedded map with directions to your venue in one click.',
-      srv4_t:'Digital Menu', srv4_d:'Beautiful menu with photos and prices — easily updatable.',
-      srv5_t:'Photography', srv5_d:'Professional photos of your venue and dishes for stunning results.',
+      hero_badge:'Custom Web Design · Premium Websites · Agrinio',
+      hero_p:'Handcrafted websites for cafes, restaurants and local businesses. No templates, no back-and-forth — design that brings customers in.',
+      hero_cta1:'Get a Quote', hero_cta2:'View Our Work',
+      stat1_label:'Projects Delivered', stat2_label:'Custom Built', stat3_label:'EN / GR Bilingual',
+      services_tag:'Services', services_p:'Complete solutions for your digital business presence.',
+      srv1_t:'Website Design', srv1_d:'Clean, modern design tailored to your shop\'s identity.',
+      srv2_t:'Mobile Friendly', srv2_d:'Flawlessly optimized for mobile — most customers find you on their phone.',
+      srv3_t:'Google Maps', srv3_d:'Embedded map with directions to your shop in one tap.',
+      srv4_t:'Digital Menu', srv4_d:'Beautiful menu with photos and prices — easy to update.',
+      srv5_t:'Photography', srv5_d:'Professional shop and dish photos for an impressive result.',
       srv6_t:'SEO & Speed', srv6_d:'Pages that load in seconds and rank easily on Google.',
       port_tag:'Portfolio', port_p:'Websites we designed for cafes and restaurants.',
       proc_tag:'Process', proc_p:'Simple steps from idea to delivery.',
-      proc1_t:'Discussion', proc1_d:'We have a chat about your needs and venue character.',
+      proc1_t:'Discovery', proc1_d:'We talk about your needs and the character of your shop.',
       proc2_t:'Design', proc2_d:'We create the design and send it for your approval.',
       proc3_t:'Development', proc3_d:'We build the website with speed and attention to detail.',
-      proc4_t:'Delivery', proc4_d:'We put it online and it is ready to welcome customers.',
-      price_tag:'Pricing', price_p:'Choose the plan that suits you. No hidden costs.',
+      proc4_t:'Launch', proc4_d:'We publish it online and it is ready to welcome customers.',
+      price_tag:'Pricing', price_p:'Pick the package that fits you. No hidden costs.',
       price1_t:'Starter', price1_s:'Ideal for small cafes', price1_period:'/one-time',
-      price1_f1:'Single page (Landing)', price1_f2:'Mobile friendly', price1_f3:'Google Maps', price1_f4:'WhatsApp contact', price1_f5:'Digital menu', price1_f6:'Social Media Links',
+      price1_f1:'One page (Landing)', price1_f2:'Mobile friendly', price1_f3:'Google Maps', price1_f4:'WhatsApp contact', price1_f5:'Digital menu', price1_f6:'Social media links',
       price2_t:'Professional', price2_s:'For cafes that want to stand out', price2_period:'/one-time',
       price2_f1:'Multi-page (up to 5)', price2_f2:'Digital menu', price2_f3:'Pexels photos', price2_f4:'Basic SEO', price2_f5:'Google Maps', price2_f6:'WhatsApp contact',
       price3_t:'Business+', price3_s:'Full solution with subscription', price3_period:'/month',
-      price3_f1:'Unlimited pages', price3_f2:'Custom design', price3_f3:'Online ordering', price3_f4:'Reservation management', price3_f5:'Monthly updates', price3_f6:'24/7 support',
-      price_btn:'Get started', popular_badge:'Popular',
-      testi_tag:'Testimonials', testi_p:'Customer satisfaction is our priority.',
-      testi1_t:'The website they built for us was outstanding. Our customers frequently compliment it. Highly recommended!', testi1_r:'Cafe Plateia',
-      testi2_t:'Professional work, fast delivery. The online menu transformed our business. Excellent collaboration.', testi2_r:'Coffee State',
-      testi3_t:'From the first contact they were flawless. They understood exactly what we wanted and delivered beyond our expectations.', testi3_r:'Il Nove',
+      price3_f1:'Unlimited pages', price3_f2:'Custom design', price3_f3:'Online orders', price3_f4:'Booking management', price3_f5:'Monthly updates', price3_f6:'24/7 support',
+      price_btn:'Start Now', popular_badge:'Popular',
+      testi_tag:'Testimonials', testi_p:'Our customers\' satisfaction is our priority.',
+      testi1_t:'The website they built for us was excellent. Our customers often compliment it. Highly recommended!', testi1_r:'Cafe Plateia',
+      testi2_t:'Professional work, fast delivery. The online menu changed our shop. Excellent collaboration.', testi2_r:'Coffee State',
+      testi3_t:'From the first contact they were flawless. They understood exactly what we wanted and delivered beyond expectations.', testi3_r:'Il Nove',
       faq_tag:'FAQ', faq_p:'Everything you need to know before starting.',
-      faq1_q:'How long does the build take?', faq1_a:'Usually 7–14 days from design approval. Depends on number of pages and materials you send us.',
-      faq2_q:'Do I need photos?', faq2_a:'Not necessarily. We can use professional Pexels/Unsplash photos matching your style. If you have your own, even better.',
+      faq1_q:'How long does it take to build?', faq1_a:'Usually 7–14 days from design approval. It depends on the number of pages and the material you send us.',
+      faq2_q:'Do I need photos?', faq2_a:'Not necessarily. We can use professional photos from Pexels/Unsplash that match your style. If you have your own, even better.',
       faq3_q:'Can I change something later?', faq3_a:'Of course. The Business+ package includes monthly updates. For one-time packages we offer changes at a small fee.',
-      faq4_q:'What about domain and hosting?', faq4_a:'We fully handle deployment on Cloudflare or your chosen provider. We can also guide you to purchase a domain.',
-      cta_p:'Contact us on WhatsApp and let\'s build your venue website.', cta_btn:'Send us a message',
+      faq4_q:'What about domain and hosting?', faq4_a:'We fully handle publishing on Cloudflare or a provider of your choice. We can also guide you in buying a domain.',
+      cta_p:'Message us on WhatsApp and let\'s build your shop\'s website.', cta_btn:'Send a Message',
       contact_tag:'Contact', contact_p:'Send us a message and we will get back to you immediately.',
-      contact_wa:'WhatsApp', contact_wa_d:'Fast reply within minutes',
+      contact_wa:'WhatsApp', contact_wa_d:'Instant reply in a few minutes',
       contact_loc:'Location', contact_loc_d:'Agrinio, Greece',
-      contact_time:'Working Hours', contact_time_d:'Mon–Sat, 09:00–21:00',
-      form_name:'Name', form_email:'Email', form_msg:'Message', form_submit:'Send message',
-      footer_desc:'Premium websites for cafes, restaurants and local businesses. No templates, no compromises.',
-      footer_nav:'Navigation', footer_legal:'Legal', footer_privacy:'Privacy Policy', footer_terms:'Terms of Use', footer_imprint:'Imprint', footer_social:'Follow us', footer_copy:'© 2026 VYDAS.NET — All rights reserved.'
+      contact_time:'Hours', contact_time_d:'Mon–Sat, 09:00–21:00',
+      footer_desc:'Premium websites for cafes, restaurants and local businesses. No templates, no back-and-forth.',
+      footer_nav:'Navigation', footer_legal:'Legal', footer_privacy:'Privacy Policy', footer_terms:'Terms of Use', footer_imprint:'Imprint', footer_social:'Follow Us', footer_copy:'© 2026 VYDAS.NET — All rights reserved.'
     }
   };
 
@@ -888,37 +885,56 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
       contact_h:'Πες μας τι <em>χρειάζεσαι</em>'
     },
     en: {
-      hero_h:'Websites that <em>actually</em> bring<span class="dim"> people in.</span>',
+      hero_h:'Websites that <em>actually</em> bring<span class="dim"> customers in.</span>',
       services_h:'Everything your <em>cafe</em> needs',
       port_h:'Recent <em>work</em>',
       proc_h:'How we <em>work</em>',
       price_h:'Transparent <em>pricing</em>',
-      testi_h:'What <em>clients</em> say',
+      testi_h:'What our <em>clients</em> say',
       faq_h:'Frequently asked <em>questions</em>',
       cta_h:'Ready to <em>start</em>?',
       contact_h:'Tell us what you <em>need</em>'
     }
   };
 
-  var lang = 'gr';
+  var lang = localStorage.getItem('vydas-lang') || 'gr';
 
   function setText(el, val){
+    if(!el || val === undefined) return;
     if(val.indexOf('<') > -1) el.innerHTML = val; else el.textContent = val;
   }
 
-  window.toggleLanguage = function(){
-    lang = lang === 'gr' ? 'en' : 'gr';
+  function applyLang(newLang){
+    lang = newLang;
+    localStorage.setItem('vydas-lang', lang);
     var t = T[lang];
     var th = TH[lang];
     document.documentElement.lang = lang === 'gr' ? 'el' : 'en';
     document.querySelectorAll('[data-i18n]').forEach(function(el){
       var key = el.getAttribute('data-i18n');
-      if(t[key] !== undefined) setText(el, t[key]);
+      if(t[key] !== undefined){
+        var svg = el.querySelector('svg');
+        if(svg){
+          var txt = document.createTextNode(' ' + t[key]);
+          el.appendChild(txt);
+          var combined = '';
+          el.childNodes.forEach(function(n){ if(n.nodeType === 3) combined += n.textContent; });
+          el.innerHTML = '';
+          el.appendChild(svg);
+          el.appendChild(document.createTextNode(' ' + t[key]));
+        } else {
+          setText(el, t[key]);
+        }
+      }
     });
     document.querySelectorAll('[data-th]').forEach(function(el){
       var key = el.getAttribute('data-th');
       if(th[key] !== undefined) el.innerHTML = th[key];
     });
+  }
+
+  window.toggleLanguage = function(){
+    applyLang(lang === 'gr' ? 'en' : 'gr');
   };
 
   /* Mobile menu */
@@ -937,12 +953,12 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
   };
 
   /* Preloader */
-  setTimeout(function(){ var p = document.getElementById('preloader'); if(p) p.classList.add('hide'); }, 2500);
+  setTimeout(function(){ var p = document.getElementById('preloader'); if(p) p.classList.add('hide'); }, 1200);
   window.addEventListener('load', function(){
     setTimeout(function(){
       var p = document.getElementById('preloader');
       if(p) p.classList.add('hide');
-    }, 400);
+    }, 300);
   });
 
   /* Scroll nav background */
@@ -955,17 +971,17 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
   /* Scroll reveal */
   function initReveal(){
     if(!('IntersectionObserver' in window)){
-      document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('visible'); });
+      document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('active'); });
       return;
     }
     var observer = new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
         if(entry.isIntersecting){
-          entry.target.classList.add('visible');
+          entry.target.classList.add('active');
           observer.unobserve(entry.target);
         }
       });
-    }, {threshold: 0.12, rootMargin: '0px 0px -40px 0px'});
+    }, {threshold: 0.15, rootMargin: '0px 0px -30px 0px'});
     document.querySelectorAll('.reveal').forEach(function(el){ observer.observe(el); });
   }
 
@@ -977,11 +993,8 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
         var open = item.classList.toggle('open');
         btn.setAttribute('aria-expanded', open ? 'true' : 'false');
         var answer = item.querySelector('.faq-answer');
-        if(open){
-          answer.style.maxHeight = answer.scrollHeight + 'px';
-        } else {
-          answer.style.maxHeight = '0';
-        }
+        if(open) answer.style.maxHeight = answer.scrollHeight + 'px';
+        else answer.style.maxHeight = '0';
       });
     });
   }
@@ -1026,8 +1039,8 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
     }, {passive:true});
 
     var points = [];
-    var rings = 12, sectors = 18;
-    var R = 180, r = 60;
+    var rings = 10, sectors = 16;
+    var R = 160, r = 50;
     for(var i = 0; i < rings; i++){
       for(var j = 0; j < sectors; j++){
         var u = i / rings * Math.PI * 2;
@@ -1043,22 +1056,18 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
     var angleX = 0.2, angleY = 0.4, angleZ = 0;
     var t = 0;
     var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var frameSkip = prefersReduced ? 2 : 1;
-    var frame = 0;
-
     var lastFrame = 0;
+
     function loop(now){
       requestAnimationFrame(loop);
-      if(now - lastFrame < 33) return;
+      if(now - lastFrame < 50) return;
       lastFrame = now;
-      frame++;
-      if(frame % frameSkip !== 0) return;
       if(document.hidden) return;
 
-      t += prefersReduced ? 0.003 : 0.010;
-      angleY += 0.004;
-      angleX = 0.2 + Math.sin(t) * 0.12 + mouseY * 0.4;
-      angleZ = mouseX * 0.3;
+      t += prefersReduced ? 0.003 : 0.008;
+      angleY += 0.003;
+      angleX = 0.2 + Math.sin(t) * 0.12 + mouseY * 0.25;
+      angleZ = mouseX * 0.2;
       ctx.clearRect(0, 0, width, height);
 
       var projected = [];
@@ -1071,15 +1080,10 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
         var x3 = x2 * Math.cos(angleZ) - y1 * Math.sin(angleZ);
         var y3 = x2 * Math.sin(angleZ) + y1 * Math.cos(angleZ);
         var scale = 520 / (520 + z2 + 200);
-        projected.push({
-          x: width/2 + x3 * scale,
-          y: height/2 + y3 * scale,
-          z: z2,
-          k: k
-        });
+        projected.push({ x: width/2 + x3 * scale, y: height/2 + y3 * scale, z: z2 });
       }
 
-      ctx.lineWidth = 1.6;
+      ctx.lineWidth = 1.4;
       for(var a = 0; a < rings; a++){
         for(var b = 0; b < sectors; b++){
           var idx = a * sectors + b;
@@ -1100,68 +1104,22 @@ footer{padding:64px 0 32px;background:var(--bg-1);border-top:1px solid var(--bor
         var a2 = Math.max(0.15, 0.55 * ((pp.z + 250) / 500));
         ctx.globalAlpha = a2;
         ctx.beginPath();
-        ctx.arc(pp.x, pp.y, 1.6, 0, Math.PI * 2);
+        ctx.arc(pp.x, pp.y, 1.4, 0, Math.PI * 2);
         ctx.fill();
       }
       ctx.globalAlpha = 1;
     }
-    loop();
+    loop(0);
   }
 
   document.addEventListener('DOMContentLoaded', function(){
+    applyLang(lang);
     initReveal();
     initFAQ();
     initSpotlight();
     initCanvas();
-    
   });
-
-  , {passive:true});
-    hero.addEventListener('mouseleave', function(){
-      if(content) content.style.transform = '';
-      if(shapes) shapes.style.transform = '';
-    });
-  }
 })();
-
-  var translations = {"en":{"nav_services":"Services","nav_portfolio":"Portfolio","nav_process":"Process","nav_pricing":"Pricing","nav_faq":"FAQ","lang_btn":"GR","nav_cta":"Get a Quote","hero_badge":"Custom Web Design · Premium Websites · Agrinio","hero_p":"Handcrafted websites for cafes, restaurants and local businesses. No templates, no back-and-forth — design that brings customers in.","hero_cta1":"Get a Quote","hero_cta2":"View Our Work","stat1_label":"Projects Delivered","stat2_label":"Custom Built","stat3_label":"EN / GR Bilingual","services_tag":"Services","services_p":"Complete solutions for your digital business presence.","srv1_t":"Website Design","srv1_d":"Clean, modern design tailored to your shop's identity.","srv2_t":"Mobile Friendly","srv2_d":"Flawlessly optimized for mobile — most customers find you on their phone.","srv3_t":"Google Maps","srv3_d":"Embedded map with directions to your shop in one tap.","srv4_t":"Digital Menu","srv4_d":"Beautiful menu with photos and prices — easy to update.","srv5_t":"Photography","srv5_d":"Professional shop and dish photos for an impressive result.","srv6_t":"SEO & Speed","srv6_d":"Pages that load in seconds and rank easily on Google.","port_tag":"Portfolio","port_p":"Websites we designed for cafes and restaurants.","proc_tag":"Process","proc_p":"Simple steps from idea to delivery.","proc1_t":"Discovery","proc1_d":"We talk about your needs and the character of your shop.","proc2_t":"Design","proc2_d":"We create the design and send it for your approval.","proc3_t":"Development","proc3_d":"We build the website with speed and attention to detail.","proc4_t":"Launch","proc4_d":"We publish it online and it is ready to welcome customers.","price_tag":"Pricing","price_p":"Pick the package that fits you. No hidden costs.","price1_t":"Starter","price1_s":"Ideal for small cafes","price1_period":"/one-time","price1_f1":"One page (Landing)","price1_f2":"Mobile friendly","price1_f3":"Google Maps","price1_f4":"WhatsApp contact","price1_f5":"Digital menu","price1_f6":"Social media links","price_btn":"Start Now","popular_badge":"Popular","price2_t":"Professional","price2_s":"For cafes that want to stand out","price2_period":"/one-time","price2_f1":"Multi-page (up to 5)","price2_f2":"Digital menu","price2_f3":"Pexels photos","price2_f4":"Basic SEO","price2_f5":"Google Maps","price2_f6":"WhatsApp contact","price3_t":"Business+","price3_s":"Full solution with subscription","price3_period":"/month","price3_f1":"Unlimited pages","price3_f2":"Custom design","price3_f3":"Online orders","price3_f4":"Booking management","price3_f5":"Monthly updates","price3_f6":"24/7 support","testi_tag":"Testimonials","testi_p":"Our customers' satisfaction is our priority.","testi1_t":"The website they built for us was excellent. Our customers often compliment it. Highly recommended!","testi1_r":"Cafe Plateia","testi2_t":"Professional work, fast delivery. The online menu changed our shop. Excellent collaboration.","testi2_r":"Coffee State","testi3_t":"From the first contact they were flawless. They understood exactly what we wanted and delivered beyond expectations.","testi3_r":"Il Nove","faq_tag":"FAQ","faq_p":"Everything you need to know before starting.","faq1_q":"How long does it take to build?","faq1_a":"Usually 7–14 days from design approval. It depends on the number of pages and the material you send us.","faq2_q":"Do I need photos?","faq2_a":"Not necessarily. We can use professional photos from Pexels/Unsplash that match your style. If you have your own, even better.","faq3_q":"Can I change something later?","faq3_a":"Of course. The Business+ package includes monthly updates. For one-time packages we offer changes at a small fee.","faq4_q":"What about domain and hosting?","faq4_a":"We fully handle publishing on Cloudflare or a provider of your choice. We can also guide you in buying a domain.","cta_p":"Message us on WhatsApp and let's build your shop's website.","cta_btn":"Send a Message","contact_tag":"Contact","contact_p":"Send us a message and we will get back to you immediately.","contact_wa":"WhatsApp","contact_wa_d":"Instant reply in a few minutes","contact_loc":"Location","contact_loc_d":"Agrinio, Greece","contact_time":"Hours","contact_time_d":"Mon–Sat, 09:00–21:00","contact_wa_btn":"Instant message on WhatsApp","contact_email_btn":"Email: info@vydas.net","footer_desc":"Premium websites for cafes, restaurants and local businesses. No templates, no back-and-forth.","footer_nav":"Navigation","footer_legal":"Legal","footer_privacy":"Privacy Policy","footer_terms":"Terms of Use","footer_imprint":"Imprint","footer_social":"Follow Us","footer_copy":"© 2026 VYDAS.NET — All rights reserved."},"gr":{"nav_services":"Υπηρεσίες","nav_portfolio":"Πορτφόλιο","nav_process":"Διαδικασία","nav_pricing":"Τιμές","nav_faq":"FAQ","lang_btn":"EN","nav_cta":"Πάρε Προσφορά","hero_badge":"Custom Web Design · Premium Ιστοσελίδες · Αγρίνιο","hero_p":"Εγχειρίδια websites για cafes, εστιατόρια και τοπικές επιχειρήσεις. Χωρίς templates, χωρίς συζήτηση — design που φέρνει κόσμο μέσα.","hero_cta1":"Πάρε Προσφορά","hero_cta2":"Δες τη δουλειά μας","stat1_label":"Projects Delivered","stat2_label":"Custom Built","stat3_label":"EN / GR Bilingual","services_tag":"Υπηρεσίες","services_p":"Ολοκληρωμένες λύσεις για την ψηφιακή παρουσία της επιχείρησής σου.","srv1_t":"Σχεδιασμός Ιστοσελίδας","srv1_d":"Κομψές, σύγχρονο design προσαρμοσμένο στην ταυτότητα του καταστήματος.","srv2_t":"Mobile Friendly","srv2_d":"Άψογα optimized για κινητά — οι περισσότεροι πελάτες σε βλέπουν από το κινητό.","srv3_t":"Google Maps","srv3_d":"Ενσωμάτωση χάρτη με οδηγίες προς το κατάστημά σου με ένα κλικ.","srv4_t":"Ψηφιακό Μενού","srv4_d":"Όμορφο μενού με φωτογραφίες και τιμές — εύκολα ενημερώσιμο.","srv5_t":"Φωτογραφίες","srv5_d":"Επαγγελματικές φωτογραφίες καταστήματος και πιάτων για εντυπωσιακό αποτέλεσμα.","srv6_t":"SEO & Ταχύτητα","srv6_d":"Σελίδες που φορτώνουν σε δευτερόλεπτα και βρίσκονται εύκολα στη Google.","port_tag":"Πορτφόλιο","port_p":"Ιστοσελίδες που σχεδιάσαμε για καφενεία και εστιατόρια.","proc_tag":"Διαδικασία","proc_p":"Απλά βήματα από την ιδέα στην παράδοση.","proc1_t":"Συζήτηση","proc1_d":"Κάνουμε μια κουβέντα για τις ανάγκες και τον χαρακτήρα του καταστήματος.","proc2_t":"Σχεδιασμός","proc2_d":"Δημιουργούμε το design και σας στέλνουμε για έγκριση.","proc3_t":"Ανάπτυξη","proc3_d":"Χτίζουμε την ιστοσελίδα με ταχύτητα και προσοχή στη λεπτομέρεια.","proc4_t":"Παράδοση","proc4_d":"Την ανεβάζουμε online και είναι έτοιμη να δεχτεί πελάτες.","price_tag":"Τιμές","price_p":"Επίλεξε το πακέτο που σου ταιριάζει. Χωρίς κρυφά κόστη.","price1_t":"Starter","price1_s":"Ιδανικό για μικρά καφενεία","price1_period":"/εφάπαξ","price1_f1":"Μία σελίδα (Landing)","price1_f2":"Mobile friendly","price1_f3":"Google Maps","price1_f4":"Επαφή WhatsApp","price1_f5":"Ψηφιακό μενού","price1_f6":"Social Media Links","price_btn":"Ξεκίνα τώρα","popular_badge":"Δημοφιλές","price2_t":"Professional","price2_s":"Για καφενεία που θέλουν να ξεχωρίσουν","price2_period":"/εφάπαξ","price2_f1":"Πολυσελίδα (έως 5)","price2_f2":"Ψηφιακό μενού","price2_f3":"Φωτογραφίες Pexels","price2_f4":"SEO βασικό","price2_f5":"Google Maps","price2_f6":"Επαφή WhatsApp","price3_t":"Business+","price3_s":"Πλήρης λύση με συνδρομή","price3_period":"/μήνα","price3_f1":"Απεριόριστες σελίδες","price3_f2":"Σχεδιασμός κατ' απαίτηση","price3_f3":"Online παραγγελίες","price3_f4":"Διαχείριση κρατήσεων","price3_f5":"Monthly updates","price3_f6":"Υποστήριξη 24/7","testi_tag":"Μαρτυρίες","testi_p":"Η ικανοποίηση των πελατών μας είναι προτεραιότητα.","testi1_t":"Η ιστοσελίδα που μας έφτιαξαν ήταν εξαιρετική. Οι πελάτες μας συχνά κάνουν κομπλιμέντο. Συνιστώ ανεπιφύλακτα!","testi1_r":"Cafe Plateia","testi2_t":"Επαγγελματική δουλειά, γρήγορη παράδοση. Το μενού online άλλαξε το κατάστημά μας. Άριστη συνεργασία.","testi2_r":"Coffee State","testi3_t":"Από την πρώτη επαφή ήταν άψογοι. Κατάλαβαν ακριβώς τι θέλαμε και το υλοποίησαν πάνω από τις προσδοκίες μας.","testi3_r":"Il Nove","faq_tag":"FAQ","faq_p":"Ό,τι χρειάζεται να ξέρεις πριν ξεκινήσεις.","faq1_q":"Πόσο χρόνο χρειάζεται η κατασκευή;","faq1_a":"Συνήθως 7–14 ημέρες από την έγκριση του design. Εξαρτάται από τον αριθμό σελίδων και το υλικό που μας στέλνεις.","faq2_q":"Χρειάζεται να έχω φωτογραφίες;","faq2_a":"Όχι απαραίτητα. Μπορούμε να χρησιμοποιήσουμε επαγγελματικές φωτογραφίες από Pexels/Unsplash που ταιριάζουν στο στυλ σου. Αν έχεις δικές σου, ακόμα καλύτερα.","faq3_q":"Μπορώ να αλλάξω κάτι μετά;","faq3_a":"Φυσικά. Το πακέτο Business+ περιλαμβάνει μηνιαίες ανανεώσεις. Για εφάπαξ πακέτα προσφέρουμε αλλαγές με μικρή χρέωση.","faq4_q":"Τι γίνεται με το domain και hosting;","faq4_a":"Αναλαμβάνουμε πλήρως την ανάρτηση στο Cloudflare ή στον πάροχο της επιλογής σου. Μπορούμε επίσης να σε καθοδηγήσουμε για αγορά domain.","cta_p":"Επικοινώνησε μαζί μας στο WhatsApp και φτιάξουμε την ιστοσελίδα του καταστήματός σου.","cta_btn":"Στείλε μας μήνυμα","contact_tag":"Επικοινωνία","contact_p":"Στείλε μας μήνυμα και θα επικοινωνήσουμε μαζί σου άμεσα.","contact_wa":"WhatsApp","contact_wa_d":"Άμεση απάντηση σε λίγα λεπτά","contact_loc":"Τοποθεσία","contact_loc_d":"Αγρίνιο, Ελλάδα","contact_time":"Ωράριο","contact_time_d":"Δευτέρα–Σάββατο, 09:00–21:00","contact_wa_btn":"Άμεσο μήνυμα στο WhatsApp","contact_email_btn":"Email: info@vydas.net","footer_desc":"Premium ιστοσελίδες για καφενεία, εστιατόρια και τοπικές επιχειρήσεις. Χωρίς templates, χωρίς συζήτηση.","footer_nav":"Navigation","footer_legal":"Νομικά","footer_privacy":"Πολιτική Απορρήτου","footer_terms":"Όροι Χρήσης","footer_imprint":"Impressum","footer_social":"Ακολούθησέ μας","footer_copy":"© 2026 VYDAS.NET — Με επιφύλαξη παντός δικαιώματος."}};
-  var th = {"en":{"hero_h":"Websites that <em>actually</em> bring<span class=\"dim\"> customers in.</span>","services_h":"Everything your <em>cafe</em> needs","port_h":"Recent <em>work</em>","proc_h":"How we <em>work</em>","price_h":"Transparent <em>pricing</em>","testi_h":"What our <em>clients</em> say","faq_h":"Frequently asked <em>questions</em>","cta_h":"Ready to <em>start</em>?","contact_h":"Tell us what you <em>need</em>"},"gr":{"hero_h":"Websites που <em>όντως</em> φέρνουν<span class=\"dim\"> κόσμο μέσα.</span>","services_h":"Όλα όσα χρειάζεται το <em>καφενείο</em> σου","port_h":"Πρόσφατα <em>έργα</em>","proc_h":"Πώς <em>δουλεύουμε</em>","price_h":"Διαφανείς <em>τιμές</em>","testi_h":"Τι λένε οι <em>πελάτες</em> μας","faq_h":"Συχνές <em>ερωτήσεις</em>","cta_h":"Έτοιμος να <em>ξεκινήσεις</em>;","contact_h":"Πες μας τι <em>χρειάζεσαι</em>"}};
-  var currentLang = localStorage.getItem('vydas-lang') || 'gr';
-
-  function applyLanguage(lang){
-    document.documentElement.lang = lang === 'gr' ? 'el' : 'en';
-    document.querySelectorAll('[data-i18n]').forEach(function(el){
-      var key = el.getAttribute('data-i18n');
-      var t = translations[lang] && translations[lang][key];
-      if(!t) return;
-      // Keep child SVGs intact for buttons
-      var svg = el.querySelector('svg');
-      if(svg){
-        el.childNodes.forEach(function(n){ if(n.nodeType === 3) n.textContent = ' '; });
-        var text = document.createTextNode(t);
-        if(svg.nextSibling) el.insertBefore(text, svg.nextSibling);
-        else el.appendChild(text);
-      } else {
-        el.textContent = t;
-      }
-    });
-    document.querySelectorAll('[data-th]').forEach(function(el){
-      var key = el.getAttribute('data-th');
-      var t = th[lang] && th[lang][key];
-      if(t) el.innerHTML = t;
-    });
-  }
-
-  function toggleLanguage(){
-    currentLang = currentLang === 'gr' ? 'en' : 'gr';
-    localStorage.setItem('vydas-lang', currentLang);
-    applyLanguage(currentLang);
-  }
-
-  function initLanguage(){
-    applyLanguage(currentLang);
-  }
-
 </script>
 </body>
 </html>
