@@ -157,16 +157,30 @@ nav.scrolled{background:rgba(10,10,11,.94);border-color:rgba(255,255,255,.14)}
 .service-card:hover .service-icon{transform:scale(1.1)}
 .service-card h3{font-size:1.25rem;font-weight:700;margin-bottom:10px}
 .service-card p{font-size:.95rem;color:var(--text-dim);line-height:1.6}
-.portfolio-grid{align-items:stretch;display:grid;grid-template-columns:1fr;gap:24px}
-.port-card{position:relative;border-radius:var(--radius);overflow:hidden;background:rgba(20,20,23,.92);border:1px solid var(--border);aspect-ratio:4/3;transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s;transform-style:preserve-3d}
-
-.port-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .65s cubic-bezier(.22,1,.36,1)}
+.portfolio-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;align-items:stretch}
+.portfolio-toolbar{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:48px}
+.filter-btn{padding:10px 22px;border-radius:50px;background:transparent;border:1px solid var(--border);color:var(--text-dim);font-size:.84rem;font-weight:700;cursor:pointer;transition:all .25s cubic-bezier(.22,1,.36,1)}
+.filter-btn:hover{border-color:var(--accent-2);color:var(--text)}
+.filter-btn.active{background:var(--accent);border-color:var(--accent);color:#0A0A0B;box-shadow:0 10px 34px rgba(200,255,0,.22)}
+.port-card{position:relative;border-radius:var(--radius);overflow:hidden;background:var(--bg-2);border:1px solid var(--border);transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s,border-color .35s;transform-style:preserve-3d;display:flex;flex-direction:column}
+.port-card.hidden{display:none}
+.port-card:hover{transform:translateY(-8px) scale(1.02);border-color:rgba(0,229,255,.45);box-shadow:0 28px 80px rgba(0,0,0,.45),0 0 45px rgba(0,229,255,.12)}
+.port-image{position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;background:linear-gradient(135deg,var(--bg-3),var(--bg-2))}
+.port-image.img-fallback{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#1A1A1F 0%,#141417 100%)}
+.port-image.img-fallback::after{content:attr(data-initial);font-family:'Space Grotesk',sans-serif;font-size:3.5rem;font-weight:800;color:rgba(255,255,255,.12);text-transform:uppercase}
+.port-card img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.22,1,.36,1)}
 .port-card:hover img{transform:scale(1.08)}
-.port-card:hover{transform:translateY(-8px) scale(1.03);border-color:rgba(0,229,255,.45);box-shadow:0 24px 70px rgba(0,229,255,.15)}
-
-.port-card .cat{font-size:.78rem;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:.08em}
 .port-link{position:absolute;inset:0;z-index:2}
 .port-link:focus-visible{outline:3px solid var(--accent);outline-offset:-4px}
+.port-meta{position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:20px 22px 22px;flex:1;background:var(--bg-2);z-index:1}
+.port-cat{display:inline-flex;align-self:flex-start;padding:5px 12px;border-radius:50px;background:rgba(200,255,0,.12);border:1px solid rgba(200,255,0,.35);color:var(--accent);font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.port-meta h3{font-family:'Space Grotesk',sans-serif;font-size:1.15rem;font-weight:700;letter-spacing:-.01em;color:var(--text)}
+.port-year{font-size:.78rem;color:var(--text-muted);margin-top:3px}
+.port-arrow{position:absolute;top:16px;right:16px;width:42px;height:42px;border-radius:50%;background:rgba(10,10,11,.75);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text);opacity:0;transform:translateY(-8px);transition:opacity .3s,transform .3s,border-color .3s;z-index:3;pointer-events:none}
+.port-card:hover .port-arrow{opacity:1;transform:translateY(0);border-color:rgba(0,229,255,.5);color:var(--accent-3)}
+@media (max-width:1100px){.portfolio-grid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:820px){.portfolio-grid{grid-template-columns:repeat(2,1fr);gap:18px}.portfolio-toolbar{gap:8px;margin-bottom:36px}.filter-btn{padding:8px 16px;font-size:.8rem}}
+@media (max-width:520px){.portfolio-grid{grid-template-columns:1fr}.port-meta{padding:18px}}
 .process-grid{align-items:stretch;display:grid;grid-template-columns:1fr;gap:20px;counter-reset:step}
 .proc-card{position:relative;padding:28px;border-radius:var(--radius);background:rgba(20,20,23,.92);border:1px solid var(--border);transition:transform .3s cubic-bezier(.22,1,.36,1),border-color .3s,box-shadow .3s;overflow:hidden}
 
@@ -375,116 +389,229 @@ footer{padding:64px 0 32px;background:rgba(10,10,11,.90);border-top:1px solid va
     </div>
 
     <div class="portfolio-grid">
-      <article class="port-card port-featured reveal" data-cat="cafe">
+      <article class="port-card reveal" data-cat="cafe">
         <a href="https://plateia.cipherclaw.workers.dev" target="_blank" rel="noopener" class="port-link" aria-label="Cafe Plateia"></a>
-        <div class="port-image"><img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1200&q=80" alt="Cafe Plateia" width="1200" height="800" loading="lazy" decoding="async"></div>
-        <div class="port-meta"><span class="port-cat" data-i18n="cat_cafe"></span><h3>Cafe Plateia</h3><p class="port-year">2024</p></div>
-        <span class="port-arrow" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></span>
+        <div class="port-image" data-initial="CA">
+          <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Cafe Plateia" width="800" height="600" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentNode.classList.add('img-fallback');">
+        </div>
+        <div class="port-meta">
+          <span class="port-cat" data-i18n="cat_cafe"></span>
+          <h3>Cafe Plateia</h3>
+          <p class="port-year">2024</p>
+        </div>
+        <span class="port-arrow" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </span>
       </article>
-
       <article class="port-card reveal delay-1" data-cat="cafe">
         <a href="https://bonjour.cipherclaw.workers.dev" target="_blank" rel="noopener" class="port-link" aria-label="Bonjour"></a>
-        <div class="port-image"><img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=800&q=80" alt="Bonjour" width="800" height="600" loading="lazy" decoding="async"></div>
-        <div class="port-meta"><span class="port-cat" data-i18n="cat_cafe"></span><h3>Bonjour</h3><p class="port-year">2024</p></div>
-        <span class="port-arrow" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></span>
+        <div class="port-image" data-initial="BO">
+          <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Bonjour" width="800" height="600" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentNode.classList.add('img-fallback');">
+        </div>
+        <div class="port-meta">
+          <span class="port-cat" data-i18n="cat_cafe"></span>
+          <h3>Bonjour</h3>
+          <p class="port-year">2024</p>
+        </div>
+        <span class="port-arrow" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </span>
       </article>
-
       <article class="port-card reveal delay-2" data-cat="cafe">
         <a href="https://coffeestate.cipherclaw.workers.dev" target="_blank" rel="noopener" class="port-link" aria-label="Coffee State"></a>
-        <div class="port-image"><img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=800&q=80" alt="Coffee State" width="800" height="600" loading="lazy" decoding="async"></div>
-        <div class="port-meta"><span class="port-cat" data-i18n="cat_cafe"></span><h3>Coffee State</h3><p class="port-year">2024</p></div>
-        <span class="port-arrow" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></span>
+        <div class="port-image" data-initial="CO">
+          <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Coffee State" width="800" height="600" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentNode.classList.add('img-fallback');">
+        </div>
+        <div class="port-meta">
+          <span class="port-cat" data-i18n="cat_cafe"></span>
+          <h3>Coffee State</h3>
+          <p class="port-year">2024</p>
+        </div>
+        <span class="port-arrow" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </span>
       </article>
-
+      <article class="port-card reveal" data-cat="cafe">
+        <a href="https://zucchero.cipherclaw.workers.dev" target="_blank" rel="noopener" class="port-link" aria-label="Zucchero"></a>
+        <div class="port-image" data-initial="ZU">
+          <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Zucchero" width="800" height="600" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentNode.classList.add('img-fallback');">
+        </div>
+        <div class="port-meta">
+          <span class="port-cat" data-i18n="cat_cafe"></span>
+          <h3>Zucchero</h3>
+          <p class="port-year">2024</p>
+        </div>
+        <span class="port-arrow" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </span>
+      </article>
+      <article class="port-card reveal delay-1" data-cat="cafe">
+        <a href="https://elatte.cipherclaw.workers.dev" target="_blank" rel="noopener" class="port-link" aria-label="E Latte"></a>
+        <div class="port-image" data-initial="EL">
+          <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="E Latte" width="800" height="600" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentNode.classList.add('img-fallback');">
+        </div>
+        <div class="port-meta">
+          <span class="port-cat" data-i18n="cat_cafe"></span>
+          <h3>E Latte</h3>
+          <p class="port-year">2024</p>
+        </div>
+        <span class="port-arrow" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </span>
+      </article>
+      <article class="port-card reveal delay-2" data-cat="cafe">
+        <a href="https://mrcoffee.cipherclaw.workers.dev" target="_blank" rel="noopener" class="port-link" aria-label="Mr Coffee"></a>
+        <div class="port-image" data-initial="MR">
+          <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Mr Coffee" width="800" height="600" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentNode.classList.add('img-fallback');">
+        </div>
+        <div class="port-meta">
+          <span class="port-cat" data-i18n="cat_cafe"></span>
+          <h3>Mr Coffee</h3>
+          <p class="port-year">2024</p>
+        </div>
+        <span class="port-arrow" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </span>
+      </article>
       <article class="port-card reveal" data-cat="cafebar">
         <a href="https://bcafebar.cipherclaw.workers.dev" target="_blank" rel="noopener" class="port-link" aria-label="B. Cafe Bar"></a>
-        <div class="port-image"><img src="https://images.unsplash.com/photo-1559305616-3f99cd43e353?auto=format&fit=crop&w=800&q=80" alt="B. Cafe Bar" width="800" height="600" loading="lazy" decoding="async"></div>
-        <div class="port-meta"><span class="port-cat" data-i18n="cat_cafebar"></span><h3>B. Cafe Bar</h3><p class="port-year">2024</p></div>
-        <span class="port-arrow" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></span>
+        <div class="port-image" data-initial="BC">
+          <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="B. Cafe Bar" width="800" height="600" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentNode.classList.add('img-fallback');">
+        </div>
+        <div class="port-meta">
+          <span class="port-cat" data-i18n="cat_cafebar"></span>
+          <h3>B. Cafe Bar</h3>
+          <p class="port-year">2024</p>
+        </div>
+        <span class="port-arrow" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </span>
       </article>
-
       <article class="port-card reveal delay-1" data-cat="cafebar">
         <a href="https://liveloula.cipherclaw.workers.dev" target="_blank" rel="noopener" class="port-link" aria-label="Liveloula"></a>
-        <div class="port-image"><img src="https://images.unsplash.com/photo-1572116469696-31de0f17cc34?auto=format&fit=crop&w=800&q=80" alt="Liveloula" width="800" height="600" loading="lazy" decoding="async"></div>
-        <div class="port-meta"><span class="port-cat" data-i18n="cat_cafebar"></span><h3>Liveloula</h3><p class="port-year">2024</p></div>
-        <span class="port-arrow" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></span>
+        <div class="port-image" data-initial="LI">
+          <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Liveloula" width="800" height="600" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentNode.classList.add('img-fallback');">
+        </div>
+        <div class="port-meta">
+          <span class="port-cat" data-i18n="cat_cafebar"></span>
+          <h3>Liveloula</h3>
+          <p class="port-year">2024</p>
+        </div>
+        <span class="port-arrow" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </span>
       </article>
-
-      <article class="port-card reveal delay-2" data-cat="restaurant">
-        <a href="https://ilnove.cipherclaw.workers.dev" target="_blank" rel="noopener" class="port-link" aria-label="Il Nove"></a>
-        <div class="port-image"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" alt="Il Nove" width="800" height="600" loading="lazy" decoding="async"></div>
-        <div class="port-meta"><span class="port-cat" data-i18n="cat_restaurant"></span><h3>Il Nove</h3><p class="port-year">2024</p></div>
-        <span class="port-arrow" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></span>
-      </article>
-
-      <article class="port-card reveal" data-cat="grill">
-        <a href="https://akis.cipherclaw.workers.dev" target="_blank" rel="noopener" class="port-link" aria-label="Akis"></a>
-        <div class="port-image"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" alt="Akis" width="800" height="600" loading="lazy" decoding="async"></div>
-        <div class="port-meta"><span class="port-cat" data-i18n="cat_grill"></span><h3>Akis</h3><p class="port-year">2024</p></div>
-        <span class="port-arrow" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></span>
-      </article>
-
-      <article class="port-card reveal delay-1" data-cat="grill">
-        <a href="https://grillfilias.cipherclaw.workers.dev" target="_blank" rel="noopener" class="port-link" aria-label="Grill Filias"></a>
-        <div class="port-image"><img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=800&q=80" alt="Grill Filias" width="800" height="600" loading="lazy" decoding="async"></div>
-        <div class="port-meta"><span class="port-cat" data-i18n="cat_grill"></span><h3>Grill Filias</h3><p class="port-year">2024</p></div>
-        <span class="port-arrow" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></span>
-      </article>
-
-      <article class="port-card reveal delay-2" data-cat="fastfood">
-        <a href="https://roadrunner.cipherclaw.workers.dev" target="_blank" rel="noopener" class="port-link" aria-label="Road Runner"></a>
-        <div class="port-image"><img src="https://images.unsplash.com/photo-1561758033-d8d2058a0851?auto=format&fit=crop&w=800&q=80" alt="Road Runner" width="800" height="600" loading="lazy" decoding="async"></div>
-        <div class="port-meta"><span class="port-cat" data-i18n="cat_fastfood"></span><h3>Road Runner</h3><p class="port-year">2024</p></div>
-        <span class="port-arrow" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></span>
-      </article>
-
-      <article class="port-card reveal" data-cat="fastfood">
-        <a href="https://panda.cipherclaw.workers.dev" target="_blank" rel="noopener" class="port-link" aria-label="Panda"></a>
-        <div class="port-image"><img src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?auto=format&fit=crop&w=800&q=80" alt="Panda" width="800" height="600" loading="lazy" decoding="async"></div>
-        <div class="port-meta"><span class="port-cat" data-i18n="cat_fastfood"></span><h3>Panda</h3><p class="port-year">2024</p></div>
-        <span class="port-arrow" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></span>
-      </article>
-
-      <article class="port-card reveal delay-1" data-cat="cafe">
-        <a href="https://zucchero.cipherclaw.workers.dev" target="_blank" rel="noopener" class="port-link" aria-label="Zucchero"></a>
-        <div class="port-image"><img src="https://images.unsplash.com/photo-1563729784474-d77ddb9330d4?auto=format&fit=crop&w=800&q=80" alt="Zucchero" width="800" height="600" loading="lazy" decoding="async"></div>
-        <div class="port-meta"><span class="port-cat" data-i18n="cat_cafe"></span><h3>Zucchero</h3><p class="port-year">2024</p></div>
-        <span class="port-arrow" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></span>
-      </article>
-
-      <article class="port-card reveal delay-2" data-cat="cafe">
-        <a href="https://elatte.cipherclaw.workers.dev" target="_blank" rel="noopener" class="port-link" aria-label="E Latte"></a>
-        <div class="port-image"><img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80" alt="E Latte" width="800" height="600" loading="lazy" decoding="async"></div>
-        <div class="port-meta"><span class="port-cat" data-i18n="cat_cafe"></span><h3>E Latte</h3><p class="port-year">2024</p></div>
-        <span class="port-arrow" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></span>
-      </article>
-
-      <article class="port-card reveal" data-cat="cafe">
-        <a href="https://mrcoffee.cipherclaw.workers.dev" target="_blank" rel="noopener" class="port-link" aria-label="Mr Coffee"></a>
-        <div class="port-image"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80" alt="Mr Coffee" width="800" height="600" loading="lazy" decoding="async"></div>
-        <div class="port-meta"><span class="port-cat" data-i18n="cat_cafe"></span><h3>Mr Coffee</h3><p class="port-year">2024</p></div>
-        <span class="port-arrow" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></span>
-      </article>
-
-      <article class="port-card reveal delay-1" data-cat="cafebar">
+      <article class="port-card reveal delay-2" data-cat="cafebar">
         <a href="https://dos.cipherclaw.workers.dev" target="_blank" rel="noopener" class="port-link" aria-label="Dos Cafe Bar"></a>
-        <div class="port-image"><img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=800&q=80" alt="Dos Cafe Bar" width="800" height="600" loading="lazy" decoding="async"></div>
-        <div class="port-meta"><span class="port-cat" data-i18n="cat_cafebar"></span><h3>Dos Cafe Bar</h3><p class="port-year">2024</p></div>
-        <span class="port-arrow" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></span>
+        <div class="port-image" data-initial="DO">
+          <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Dos Cafe Bar" width="800" height="600" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentNode.classList.add('img-fallback');">
+        </div>
+        <div class="port-meta">
+          <span class="port-cat" data-i18n="cat_cafebar"></span>
+          <h3>Dos Cafe Bar</h3>
+          <p class="port-year">2024</p>
+        </div>
+        <span class="port-arrow" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </span>
       </article>
-
+      <article class="port-card reveal" data-cat="restaurant">
+        <a href="https://ilnove.cipherclaw.workers.dev" target="_blank" rel="noopener" class="port-link" aria-label="Il Nove"></a>
+        <div class="port-image" data-initial="IL">
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Il Nove" width="800" height="600" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentNode.classList.add('img-fallback');">
+        </div>
+        <div class="port-meta">
+          <span class="port-cat" data-i18n="cat_restaurant"></span>
+          <h3>Il Nove</h3>
+          <p class="port-year">2024</p>
+        </div>
+        <span class="port-arrow" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </span>
+      </article>
+      <article class="port-card reveal delay-1" data-cat="grill">
+        <a href="https://akis.cipherclaw.workers.dev" target="_blank" rel="noopener" class="port-link" aria-label="Akis"></a>
+        <div class="port-image" data-initial="AK">
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Akis" width="800" height="600" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentNode.classList.add('img-fallback');">
+        </div>
+        <div class="port-meta">
+          <span class="port-cat" data-i18n="cat_grill"></span>
+          <h3>Akis</h3>
+          <p class="port-year">2024</p>
+        </div>
+        <span class="port-arrow" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </span>
+      </article>
+      <article class="port-card reveal delay-2" data-cat="grill">
+        <a href="https://grillfilias.cipherclaw.workers.dev" target="_blank" rel="noopener" class="port-link" aria-label="Grill Filias"></a>
+        <div class="port-image" data-initial="GR">
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Grill Filias" width="800" height="600" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentNode.classList.add('img-fallback');">
+        </div>
+        <div class="port-meta">
+          <span class="port-cat" data-i18n="cat_grill"></span>
+          <h3>Grill Filias</h3>
+          <p class="port-year">2024</p>
+        </div>
+        <span class="port-arrow" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </span>
+      </article>
+      <article class="port-card reveal" data-cat="fastfood">
+        <a href="https://roadrunner.cipherclaw.workers.dev" target="_blank" rel="noopener" class="port-link" aria-label="Road Runner"></a>
+        <div class="port-image" data-initial="RO">
+          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Road Runner" width="800" height="600" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentNode.classList.add('img-fallback');">
+        </div>
+        <div class="port-meta">
+          <span class="port-cat" data-i18n="cat_fastfood"></span>
+          <h3>Road Runner</h3>
+          <p class="port-year">2024</p>
+        </div>
+        <span class="port-arrow" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </span>
+      </article>
+      <article class="port-card reveal delay-1" data-cat="fastfood">
+        <a href="https://panda.cipherclaw.workers.dev" target="_blank" rel="noopener" class="port-link" aria-label="Panda"></a>
+        <div class="port-image" data-initial="PA">
+          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Panda" width="800" height="600" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentNode.classList.add('img-fallback');">
+        </div>
+        <div class="port-meta">
+          <span class="port-cat" data-i18n="cat_fastfood"></span>
+          <h3>Panda</h3>
+          <p class="port-year">2024</p>
+        </div>
+        <span class="port-arrow" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </span>
+      </article>
       <article class="port-card reveal delay-2" data-cat="ngo">
         <a href="https://jolly-mud-5973.cipherclaw.workers.dev/" target="_blank" rel="noopener" class="port-link" aria-label="Frodizo"></a>
-        <div class="port-image"><img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=800&q=80" alt="Frodizo" width="800" height="600" loading="lazy" decoding="async"></div>
-        <div class="port-meta"><span class="port-cat" data-i18n="cat_ngo"></span><h3>Frodizo</h3><p class="port-year">2024</p></div>
-        <span class="port-arrow" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></span>
+        <div class="port-image" data-initial="FR">
+          <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Frodizo" width="800" height="600" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentNode.classList.add('img-fallback');">
+        </div>
+        <div class="port-meta">
+          <span class="port-cat" data-i18n="cat_ngo"></span>
+          <h3>Frodizo</h3>
+          <p class="port-year">2024</p>
+        </div>
+        <span class="port-arrow" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </span>
       </article>
-
       <article class="port-card reveal" data-cat="ngo">
         <a href="https://wild-cell-41b0.cipherclaw.workers.dev/" target="_blank" rel="noopener" class="port-link" aria-label="Frodizo V2"></a>
-        <div class="port-image"><img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=80" alt="Frodizo V2" width="800" height="600" loading="lazy" decoding="async"></div>
-        <div class="port-meta"><span class="port-cat" data-i18n="cat_ngo"></span><h3>Frodizo V2</h3><p class="port-year">2024</p></div>
-        <span class="port-arrow" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></span>
+        <div class="port-image" data-initial="FR">
+          <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Frodizo V2" width="800" height="600" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentNode.classList.add('img-fallback');">
+        </div>
+        <div class="port-meta">
+          <span class="port-cat" data-i18n="cat_ngo"></span>
+          <h3>Frodizo V2</h3>
+          <p class="port-year">2024</p>
+        </div>
+        <span class="port-arrow" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </span>
       </article>
     </div>
   </div>
